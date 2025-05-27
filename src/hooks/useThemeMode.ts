@@ -7,6 +7,8 @@ export default function useThemeMode(threshold: number = 500) {
     const storedTheme = localStorage.getItem("theme");
     return storedTheme === "light" || storedTheme === "dark"
       ? storedTheme
+      : window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
       : "light";
   };
   const [currentTheme, setCurrentTheme] = useState<"light" | "dark">(
