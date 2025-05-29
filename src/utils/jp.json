@@ -1,0 +1,13 @@
+{
+  "lang": "English",
+  "title": "理想的なステイをしよう!! – ニセコセントラル",
+  "login": "ログイン",
+  "createAccount": "アカウントを作成",
+  "navMenu": [
+    ["会社概要", "/about"],
+    ["ブログ", "/blog"],
+    ["ニセコ", "/niseko"],
+    ["ライブカメラ", "live"],
+    ["天気", "/weather"]
+  ]
+}

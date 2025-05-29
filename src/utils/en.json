@@ -1,0 +1,13 @@
+{
+  "lang": "日本語",
+  "title": "Stay. Play. Experience. Find your holiday in the heart of Niseko. – NisekoCentral",
+  "login": "Login",
+  "createAccount": "Create Account",
+  "navMenu": [
+    ["About Us", "/about"],
+    ["Blog", "/blog"],
+    ["Niseko", "/niseko"],
+    ["Live Camera", "live"],
+    ["Weather", "/weather"]
+  ]
+}

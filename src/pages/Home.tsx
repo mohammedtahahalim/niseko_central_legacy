@@ -1,3 +1,7 @@
+import { useContext } from "react";
+import { AppContext } from "../utils/context";
+
 export default function Home() {
-  return <div>Home</div>;
+  const { appContent } = useContext(AppContext);
+  return <div>{appContent.Header}</div>;
 }

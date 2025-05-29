@@ -1,16 +1,23 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import useThemeMode from "./hooks/useThemeMode";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { CircularProgress, CssBaseline, ThemeProvider } from "@mui/material";
 import Home from "./pages/Home";
 import { AppContext } from "./utils/context";
 import Main from "./layouts/Main";
+import useLanguage from "./hooks/useLanguage";
 
 function App() {
-  const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(2000);
+  const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(500);
+  const { setLang, appContent, loading } = useLanguage();
+
+  if (loading) return <CircularProgress />;
+
   return (
     <BrowserRouter>
-      <AppContext.Provider value={{ handleThemeChange, currentTheme }}>
+      <AppContext.Provider
+        value={{ handleThemeChange, currentTheme, setLang, appContent }}
+      >
         <ThemeProvider theme={themeStyle}>
           <CssBaseline />
           <Routes>

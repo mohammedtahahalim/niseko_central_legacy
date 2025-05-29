@@ -44,6 +44,22 @@ export default function useThemeMode(threshold: number = 500) {
       mode: currentTheme,
       ...(currentTheme === "light" ? lightPalette : darkPalette),
     },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            textTransform: "capitalize",
+          },
+        },
+      },
+      MuiTypography: {
+        styleOverrides: {
+          root: {
+            color: currentTheme === "light" ? "#3498db" : "#e74c3c",
+          },
+        },
+      },
+    },
   });
 
   const handleThemeChange = () => {
