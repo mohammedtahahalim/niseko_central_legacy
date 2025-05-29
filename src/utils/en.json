@@ -7,7 +7,15 @@
     ["About Us", "/about"],
     ["Blog", "/blog"],
     ["Niseko", "/niseko"],
-    ["Live Camera", "live"],
+    ["Live Camera", "/live"],
     ["Weather", "/weather"]
+  ],
+  "specialMenu": [
+    ["Accommodation", "/accommodation"],
+    ["Long Stay", "long-stay"],
+    ["Special Deals", "/special-deals"],
+    ["Guest Services", "/guest-service"],
+    ["FAQ", "/faq"],
+    ["Contact", "/contact"]
   ]
 }

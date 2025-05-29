@@ -7,7 +7,15 @@
     ["会社概要", "/about"],
     ["ブログ", "/blog"],
     ["ニセコ", "/niseko"],
-    ["ライブカメラ", "live"],
+    ["ライブカメラ", "/live"],
     ["天気", "/weather"]
+  ],
+  "specialMenu": [
+    ["宿泊施設", "/accommodation"],
+    ["ロングステイ", "/long-stay"],
+    ["お得情報", "/special-deals"],
+    ["サービス", "/guest-service"],
+    ["Q&A", "/faq"],
+    ["お問い合わせ", "/contact"]
   ]
 }

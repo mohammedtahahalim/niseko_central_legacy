@@ -59,6 +59,19 @@ export default function useThemeMode(threshold: number = 500) {
           },
         },
       },
+      MuiSvgIcon: {
+        styleOverrides: {
+          root: {
+            color: currentTheme === "light" ? "#3498db" : "#e74c3c",
+            fontSize: "1.75rem",
+            cursor: "pointer",
+            transition: "all 0.25s ease-in-out",
+            "&:hover": {
+              color: currentTheme === "dark" ? "#3498db" : "#e74c3c",
+            },
+          },
+        },
+      },
     },
   });
 

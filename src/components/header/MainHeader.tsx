@@ -28,7 +28,7 @@ export default function MainHeader() {
         variant="subtitle1"
         textTransform={"capitalize"}
         textOverflow={"ellipsis"}
-        textAlign={"center"}
+        textAlign={{ sm: "end", xs: "center" }}
         maxWidth={{ xs: "90%", sm: "40%" }}
       >
         {appContent.title?.split("–")[0]}
