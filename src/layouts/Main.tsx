@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Container } from "@mui/material";
+import { Stack, Container } from "@mui/material";
 import MuiBox from "../components/MuiBox";
 
 export default function Main() {
   return (
-    <div>
+    <Stack direction={"column"} sx={{ height: "100%", minHeight: "100vh" }}>
       <Header />
       <Container
         sx={{
@@ -15,14 +15,11 @@ export default function Main() {
         }}
         disableGutters
       >
-        <MuiBox
-          variant="primary"
-          sx={{ width: "100%", height: "100%", border: "1px solid blue" }}
-        >
+        <MuiBox variant="primary">
           <Outlet />
         </MuiBox>
       </Container>
       <Footer />
-    </div>
+    </Stack>
   );
 }

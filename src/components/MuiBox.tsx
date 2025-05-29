@@ -24,6 +24,7 @@ const ModifiedBox = styled(Box, {
       : currenttheme === "dark"
       ? "#181818"
       : "#E7E7E7",
+  flex: "1",
 }));
 
 export default function MuiBox({ variant, children, sx }: TModifiedBox) {
