@@ -3,5 +3,5 @@ import { AppContext } from "../utils/context";
 
 export default function Home() {
   const { appContent } = useContext(AppContext);
-  return <div>{appContent.Header}</div>;
+  return <div>{appContent.title}</div>;
 }
