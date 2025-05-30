@@ -6,11 +6,7 @@ export default function Logo() {
   return (
     <Link to={"/"}>
       <img
-        src={
-          currentTheme === "light"
-            ? "/src/assets/logo_light.png"
-            : "/src/assets/logo_dark.png"
-        }
+        src={currentTheme === "light" ? "/logo_light.png" : "/logo_dark.png"}
         alt=""
       />
     </Link>
