@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Stack, Container } from "@mui/material";
-import MuiBox from "../components/MuiBox";
 
 export default function Main() {
   return (
@@ -15,9 +14,7 @@ export default function Main() {
         }}
         disableGutters
       >
-        <MuiBox variant="primary">
-          <Outlet />
-        </MuiBox>
+        <Outlet />
       </Container>
       <Footer />
     </Stack>

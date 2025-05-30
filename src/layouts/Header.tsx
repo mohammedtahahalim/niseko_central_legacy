@@ -3,17 +3,11 @@ import Welcome from "../components/header/Welcome";
 import { Container, Stack } from "@mui/material";
 import MuiBox from "../components/MuiBox";
 import PostHeader from "../components/header/PostHeader";
-//import styled from "@emotion/styled";
-
-/*
-const mobileMenu = styled("div")({
-  width: "150px",
-  height: "100vh",
-  position: "absolute",
-});
-*/
+import { useContext } from "react";
+import { AppContext } from "../utils/context";
 
 export default function Header() {
+  const { currentTheme } = useContext(AppContext);
   return (
     <Stack
       direction={"column"}
@@ -27,7 +21,15 @@ export default function Header() {
         </Container>
       </MuiBox>
 
-      <MuiBox variant="primary">
+      <MuiBox
+        variant="primary"
+        sx={{
+          borderBottom: {
+            sm: "none",
+            xs: `1px solid ${currentTheme === "dark" ? "#181818" : "#E7E7E7"}`,
+          },
+        }}
+      >
         <Container disableGutters>
           <Welcome />
         </Container>

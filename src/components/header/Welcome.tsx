@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { AppContext } from "../../utils/context";
 import { Stack, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import Logo from "../Logo";
 
 export default function Welcome() {
-  const { currentTheme, appContent } = useContext(AppContext);
+  const { appContent } = useContext(AppContext);
   return (
     <Stack
       direction={{ xs: "column", sm: "row" }}
@@ -14,16 +14,7 @@ export default function Welcome() {
       }}
       px={"2rem"}
     >
-      <Link to={"/"}>
-        <img
-          src={
-            currentTheme === "light"
-              ? "/src/assets/logo_light.png"
-              : "/src/assets/logo_dark.png"
-          }
-          alt=""
-        />
-      </Link>
+      <Logo />
       <Typography
         variant="subtitle1"
         textTransform={"capitalize"}
@@ -31,7 +22,7 @@ export default function Welcome() {
         textAlign={{ sm: "end", xs: "center" }}
         maxWidth={{ xs: "90%", sm: "40%" }}
       >
-        {appContent.title?.split("–")[0]}
+        {appContent.title.split("–")[0]}
       </Typography>
     </Stack>
   );
