@@ -28,14 +28,14 @@ function App() {
               <Route path="/niseko" element={<Home />} />
               <Route path="/live" element={<Home />} />
               <Route path="/Weather" element={<Home />} />
-              <Route path="/login" element={<Home />} />
-              <Route path="/signup" element={<Home />} />
               <Route path="/long-stay" element={<Home />} />
               <Route path="/special-deals" element={<Home />} />
               <Route path="/guest-service" element={<Home />} />
               <Route path="/faq" element={<Home />} />
               <Route path="/contact" element={<Home />} />
             </Route>
+            <Route path="/login" element={<Home />} />
+            <Route path="/signup" element={<Home />} />
           </Routes>
         </ThemeProvider>
       </AppContext.Provider>

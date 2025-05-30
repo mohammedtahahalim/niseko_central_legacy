@@ -1,11 +1,12 @@
 import { createContext } from "react";
 import type { TAppContext } from "./types";
+import defaultContent from "./en.json";
 
 const defaultAppContext: TAppContext = {
   currentTheme: (localStorage.getItem("theme") as "light" | "dark") || "light",
   handleThemeChange: () => {},
   setLang: () => {},
-  appContent: {},
+  appContent: defaultContent,
 };
 
 export const AppContext = createContext<TAppContext>(defaultAppContext);

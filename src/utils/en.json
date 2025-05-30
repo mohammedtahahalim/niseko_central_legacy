@@ -3,33 +3,75 @@
   "title": "Stay. Play. Experience. Find your holiday in the heart of Niseko. – NisekoCentral",
   "login": "Login",
   "createAccount": "Create Account",
-  "navMenu": [
-    ["About", "/about"],
-    ["Blog", "/blog"],
-    ["Niseko", "/niseko"],
-    ["Live", "/live"],
-    ["Weather", "/weather"]
-  ],
-  "specialMenu": [
-    ["Accommodation", "/"],
-    ["Long Stay", "/long-stay"],
-    ["Special Deals", "/special-deals"],
-    ["Guest Services", "/guest-service"],
-    ["FAQ", "/faq"],
-    ["Contact", "/contact"]
-  ],
-  "menu": "menu",
-  "mobileMenu": [
-    ["Accommodation", "/"],
-    ["Special Deals", "/special-deals"],
-    ["Guest Services", "/guest-service"],
-    ["FAQ", "/faq"],
-    ["About Us", "/about"],
-    ["Blog", "/blog"],
-    ["Niseko", "/niseko"],
-    ["Weather", "/weather"],
-    ["Contact", "/contact"],
-    ["Create Account", "/signup"],
-    ["Login", "/login"]
-  ]
+  "header": {
+    "navMenu": [
+      ["About", "/about"],
+      ["Blog", "/blog"],
+      ["Niseko", "/niseko"],
+      ["Live", "/live"],
+      ["Weather", "/weather"]
+    ],
+    "specialMenu": [
+      ["Accommodation", "/"],
+      ["Long Stay", "/long-stay"],
+      ["Special Deals", "/special-deals"],
+      ["Guest Services", "/guest-service"],
+      ["FAQ", "/faq"],
+      ["Contact", "/contact"]
+    ],
+    "menu": "menu",
+    "mobileMenu": [
+      ["Accommodation", "/"],
+      ["Special Deals", "/special-deals"],
+      ["Guest Services", "/guest-service"],
+      ["FAQ", "/faq"],
+      ["About Us", "/about"],
+      ["Blog", "/blog"],
+      ["Niseko", "/niseko"],
+      ["Weather", "/weather"],
+      ["Contact", "/contact"],
+      ["Create Account", "/signup"],
+      ["Login", "/login"]
+    ]
+  },
+  "footer": {
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "menus": [
+      [
+        "Accommodation",
+        "Testimonials",
+        "FAQ",
+        "Express Check-in",
+        "Map  ",
+        "Invest "
+      ],
+      [
+        "Guest Services",
+        "Transfers",
+        "Concierge",
+        "Winter Services",
+        "Summer Services",
+        "Experience Niseko Passport"
+      ],
+      [
+        "About Us",
+        "Our Team",
+        "Careers",
+        "Management",
+        "Agents",
+        "Owners",
+        "Groups"
+      ],
+      ["Blog", "Niseko", "Live Camera", "Weather"]
+    ],
+    "newsletter": {
+      "title": "Join our Mailing List!",
+      "subtitle": "Get exclusive offers, news about special deals and more! *All fields are required.",
+      "subscribe": "Subscribe",
+      "given_name": "Given Name",
+      "full_name": "Full Name",
+      "email": "Email"
+    }
+  }
 }

@@ -15,18 +15,17 @@ export default function PostHeader() {
       p={"0.5rem"}
     >
       <Stack direction={"row"} gap={{ md: "1rem", sm: "0.5rem" }}>
-        {Array.isArray(appContent.specialMenu) &&
-          appContent.specialMenu.map((element: any) => (
-            <Button
-              component={Link}
-              to={element[1]}
-              key={element[0]}
-              color={currentLocation === element[1] ? "secondary" : "primary"}
-              variant={currentLocation === element[1] ? "outlined" : "text"}
-            >
-              {element[0]}
-            </Button>
-          ))}
+        {appContent.header.specialMenu.map((element: any) => (
+          <Button
+            component={Link}
+            to={element[1]}
+            key={element[0]}
+            color={currentLocation === element[1] ? "secondary" : "primary"}
+            variant={currentLocation === element[1] ? "outlined" : "text"}
+          >
+            {element[0]}
+          </Button>
+        ))}
       </Stack>
       <SocialMedia />
     </Stack>

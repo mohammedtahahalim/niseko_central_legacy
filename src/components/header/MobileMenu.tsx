@@ -56,8 +56,8 @@ export default function MobileMenu({
         }}
       >
         <Stack direction={"column"} gap={"0.5rem"} p={"1rem"}>
-          {Array.isArray(appContent.mobileMenu) &&
-            appContent?.mobileMenu.map((element: any) => {
+          {"header" in appContent &&
+            appContent.header.mobileMenu.map((element: any) => {
               return (
                 <Button
                   component={Link}
@@ -78,11 +78,13 @@ export default function MobileMenu({
             variant="contained"
             color="secondary"
             onClick={() =>
-              appContent.lang === "English" ? setLang("en") : setLang("jp")
+              "lang" in appContent && appContent.lang === "English"
+                ? setLang("en")
+                : setLang("jp")
             }
             sx={{ maxWidth: "50%", alignSelf: "center" }}
           >
-            {appContent.lang}
+            {"lang" in appContent && appContent.lang}
           </Button>
           <Box
             onClick={handleThemeChange}

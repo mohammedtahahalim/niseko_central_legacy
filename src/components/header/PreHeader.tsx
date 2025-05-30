@@ -38,7 +38,7 @@ export default function PreHeader() {
           <div ref={menuRef} style={{ display: "flex", gap: "5px" }}>
             <MenuIcon color="secondary" />
             <Typography variant="subtitle1" fontSize={"1rem"}>
-              {appContent?.menu}
+              {appContent.header.menu}
             </Typography>
           </div>
         </IconButton>
@@ -54,26 +54,22 @@ export default function PreHeader() {
           disableGutters
         >
           <Stack direction={"row"} gap={0.2}>
-            {(Array.isArray(appContent.navMenu) ? appContent.navMenu : []).map(
-              (element: any) => {
-                return (
-                  <Button
-                    key={element[0]}
-                    component={Link}
-                    to={element[1]}
-                    size="small"
-                    color={
-                      currentLocation === element[1] ? "secondary" : "primary"
-                    }
-                    variant={
-                      currentLocation === element[1] ? "outlined" : "text"
-                    }
-                  >
-                    {element[0]}
-                  </Button>
-                );
-              }
-            )}
+            {appContent.header.navMenu.map((element: any) => {
+              return (
+                <Button
+                  key={element[0]}
+                  component={Link}
+                  to={element[1]}
+                  size="small"
+                  color={
+                    currentLocation === element[1] ? "secondary" : "primary"
+                  }
+                  variant={currentLocation === element[1] ? "outlined" : "text"}
+                >
+                  {element[0]}
+                </Button>
+              );
+            })}
           </Stack>
           <Stack direction={"row-reverse"} alignItems={"center"} gap={0.2}>
             <Box
@@ -101,7 +97,7 @@ export default function PreHeader() {
               sx={{ textTransform: "uppercase" }}
               color="secondary"
             >
-              {appContent?.lang}
+              {appContent.lang}
             </Button>
             <Button variant="text" component={Link} to="/signup">
               {appContent.createAccount}

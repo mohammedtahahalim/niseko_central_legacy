@@ -64,6 +64,20 @@ export default function useThemeMode(threshold: number = 500) {
             fontFamily: "Source Code Pro",
           },
         },
+        variants: [
+          {
+            props: { color: "primary" },
+            style: {
+              color: currentTheme === "light" ? "#3498db" : "#e74c3c",
+            },
+          },
+          {
+            props: { color: "secondary" },
+            style: {
+              color: currentTheme === "light" ? "#4A637D" : "#7895B1",
+            },
+          },
+        ],
       },
       MuiSvgIcon: {
         styleOverrides: {
