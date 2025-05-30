@@ -3,7 +3,7 @@ import { AppContext } from "../../utils/context";
 import { Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export default function MainHeader() {
+export default function Welcome() {
   const { currentTheme, appContent } = useContext(AppContext);
   return (
     <Stack

@@ -23,6 +23,18 @@ function App() {
           <Routes>
             <Route element={<Main />}>
               <Route path="/" element={<Home />} />
+              <Route path="/about" element={<Home />} />
+              <Route path="/blog" element={<Home />} />
+              <Route path="/niseko" element={<Home />} />
+              <Route path="/live" element={<Home />} />
+              <Route path="/Weather" element={<Home />} />
+              <Route path="/login" element={<Home />} />
+              <Route path="/signup" element={<Home />} />
+              <Route path="/long-stay" element={<Home />} />
+              <Route path="/special-deals" element={<Home />} />
+              <Route path="/guest-service" element={<Home />} />
+              <Route path="/faq" element={<Home />} />
+              <Route path="/contact" element={<Home />} />
             </Route>
           </Routes>
         </ThemeProvider>

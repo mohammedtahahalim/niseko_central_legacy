@@ -12,30 +12,30 @@ export default function useThemeMode(threshold: number = 500) {
       : "light";
   };
   const [currentTheme, setCurrentTheme] = useState<"light" | "dark">(
-    getInitialTheme()
+    getInitialTheme
   );
 
   const themeCooldown = useRef<boolean>(false);
 
   const lightPalette: PaletteOptions = {
     primary: {
-      main: "#3498db",
-      contrastText: "#e0e0e0",
+      main: "#4A637D",
+      contrastText: "#ffffff",
     },
     secondary: {
-      main: "#1abc9c",
-      contrastText: "#ffffff",
+      main: "#3498db",
+      contrastText: "#e0e0e0",
     },
   };
 
   const darkPalette: PaletteOptions = {
     primary: {
-      main: "#e74c3c",
-      contrastText: "#ecf0f1",
+      main: "#7895B1",
+      contrastText: "#ffffff",
     },
     secondary: {
-      main: "#9b59b6",
-      contrastText: "#ffffff",
+      main: "#e74c3c",
+      contrastText: "#ecf0f1",
     },
   };
 
@@ -49,6 +49,7 @@ export default function useThemeMode(threshold: number = 500) {
         styleOverrides: {
           root: {
             textTransform: "capitalize",
+            fontFamily: "1.1rem",
           },
         },
       },
@@ -56,18 +57,22 @@ export default function useThemeMode(threshold: number = 500) {
         styleOverrides: {
           root: {
             color: currentTheme === "light" ? "#3498db" : "#e74c3c",
+            textTransform: "capitalize",
+          },
+          subtitle1: {
+            fontSize: "0.9rem",
+            fontFamily: "Source Code Pro",
           },
         },
       },
       MuiSvgIcon: {
         styleOverrides: {
           root: {
-            color: currentTheme === "light" ? "#3498db" : "#e74c3c",
             fontSize: "1.75rem",
             cursor: "pointer",
             transition: "all 0.25s ease-in-out",
             "&:hover": {
-              color: currentTheme === "dark" ? "#3498db" : "#e74c3c",
+              color: currentTheme === "light" ? "#3498db" : "#e74c3c",
             },
           },
         },

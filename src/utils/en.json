@@ -4,18 +4,32 @@
   "login": "Login",
   "createAccount": "Create Account",
   "navMenu": [
-    ["About Us", "/about"],
+    ["About", "/about"],
     ["Blog", "/blog"],
     ["Niseko", "/niseko"],
-    ["Live Camera", "/live"],
+    ["Live", "/live"],
     ["Weather", "/weather"]
   ],
   "specialMenu": [
-    ["Accommodation", "/accommodation"],
-    ["Long Stay", "long-stay"],
+    ["Accommodation", "/"],
+    ["Long Stay", "/long-stay"],
     ["Special Deals", "/special-deals"],
     ["Guest Services", "/guest-service"],
     ["FAQ", "/faq"],
     ["Contact", "/contact"]
+  ],
+  "menu": "menu",
+  "mobileMenu": [
+    ["Accommodation", "/"],
+    ["Special Deals", "/special-deals"],
+    ["Guest Services", "/guest-service"],
+    ["FAQ", "/faq"],
+    ["About Us", "/about"],
+    ["Blog", "/blog"],
+    ["Niseko", "/niseko"],
+    ["Weather", "/weather"],
+    ["Contact", "/contact"],
+    ["Create Account", "/signup"],
+    ["Login", "/login"]
   ]
 }

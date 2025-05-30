@@ -2,10 +2,12 @@ import { Button, Stack } from "@mui/material";
 import SocialMedia from "../SocialMedia";
 import { useContext } from "react";
 import { AppContext } from "../../utils/context";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-export default function SpecialMenu() {
+export default function PostHeader() {
   const { appContent } = useContext(AppContext);
+  const currentLocation = useLocation().pathname;
+
   return (
     <Stack
       direction={"row"}
@@ -16,10 +18,11 @@ export default function SpecialMenu() {
         {Array.isArray(appContent.specialMenu) &&
           appContent.specialMenu.map((element: any) => (
             <Button
-              variant="text"
               component={Link}
               to={element[1]}
               key={element[0]}
+              color={currentLocation === element[1] ? "secondary" : "primary"}
+              variant={currentLocation === element[1] ? "outlined" : "text"}
             >
               {element[0]}
             </Button>

@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { IconButton, Stack } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -8,15 +8,22 @@ export default function SocialMedia() {
   return (
     <Stack
       direction={"row"}
-      gap={"10px"}
       display={{ md: "flex", xs: "none" }}
       justifyContent={"center"}
       alignItems={"center"}
     >
-      <FacebookIcon />
-      <XIcon />
-      <InstagramIcon />
-      <LinkedInIcon />
+      <IconButton href="https://www.facebook.com/nisekocentral">
+        <FacebookIcon color="primary" />
+      </IconButton>
+      <IconButton href="https://twitter.com/nisekocentral">
+        <XIcon color="primary" />
+      </IconButton>
+      <IconButton href="https://www.instagram.com/nisekocentral/">
+        <InstagramIcon color="primary" />
+      </IconButton>
+      <IconButton href="https://www.linkedin.com/company/ht-holidays">
+        <LinkedInIcon color="primary" />
+      </IconButton>
     </Stack>
   );
 }

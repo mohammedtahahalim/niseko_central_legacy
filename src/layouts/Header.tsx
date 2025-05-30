@@ -1,8 +1,8 @@
-import SubHeader from "../components/header/SubHeader";
-import MainHeader from "../components/header/MainHeader";
+import PreHeader from "../components/header/PreHeader";
+import Welcome from "../components/header/Welcome";
 import { Container, Stack } from "@mui/material";
 import MuiBox from "../components/MuiBox";
-import SpecialMenu from "../components/header/SpecialMenu";
+import PostHeader from "../components/header/PostHeader";
 //import styled from "@emotion/styled";
 
 /*
@@ -21,20 +21,20 @@ export default function Header() {
         position: "relative",
       }}
     >
-      <MuiBox variant="secondary" sx={{ display: { xs: "none", sm: "flex" } }}>
-        <Container disableGutters>
-          <SubHeader />
+      <MuiBox variant="secondary">
+        <Container disableGutters sx={{ position: "relative" }}>
+          <PreHeader />
         </Container>
       </MuiBox>
 
       <MuiBox variant="primary">
         <Container disableGutters>
-          <MainHeader />
+          <Welcome />
         </Container>
       </MuiBox>
       <MuiBox variant="secondary" sx={{ display: { xs: "none", sm: "flex" } }}>
         <Container disableGutters>
-          <SpecialMenu />
+          <PostHeader />
         </Container>
       </MuiBox>
     </Stack>
