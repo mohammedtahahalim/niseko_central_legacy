@@ -1,7 +1,13 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import useThemeMode from "./hooks/useThemeMode";
-import { CircularProgress, CssBaseline, ThemeProvider } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  Container,
+  CssBaseline,
+  ThemeProvider,
+} from "@mui/material";
 import Home from "./pages/Home";
 import { AppContext } from "./utils/context";
 import Main from "./layouts/Main";
@@ -11,7 +17,23 @@ function App() {
   const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(500);
   const { setLang, appContent, loading } = useLanguage();
 
-  if (loading) return <CircularProgress />;
+  if (loading)
+    return (
+      <Container
+        disableGutters
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CssBaseline />
+        <Box sx={{ transform: "translateY(-100%)" }}>
+          <CircularProgress />
+        </Box>
+      </Container>
+    );
 
   return (
     <BrowserRouter>

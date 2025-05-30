@@ -1,7 +1,16 @@
-import { useContext } from "react";
-import { AppContext } from "../utils/context";
+import { Stack } from "@mui/material";
+import SearchBookings from "../layouts/SearchBookings";
+import BookingResults from "../layouts/BookingResults";
 
 export default function Home() {
-  const { appContent } = useContext(AppContext);
-  return <div>{appContent.title}</div>;
+  return (
+    <Stack
+      direction={{ md: "row", xs: "column" }}
+      display={"flex"}
+      width={"100%"}
+    >
+      <SearchBookings />
+      <BookingResults />
+    </Stack>
+  );
 }

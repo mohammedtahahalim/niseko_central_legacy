@@ -3,10 +3,14 @@ import type { TAppContent } from "../utils/types";
 import defaultEn from "../utils/en.json";
 import defaultJp from "../utils/jp.json";
 
+const getInitialLanguage = (): "en" | "jp" => {
+  const storedLanguage = localStorage.getItem("language") as "en" | "jp";
+  if (storedLanguage === "en" || storedLanguage === "jp") return storedLanguage;
+  return "en";
+};
+
 export default function useLanguage() {
-  const [lang, setLang] = useState<"en" | "jp">(
-    (localStorage.getItem("language") as "en" | "jp") || "en"
-  );
+  const [lang, setLang] = useState<"en" | "jp">(getInitialLanguage);
   const [appContent, setAppContent] = useState<TAppContent>(
     localStorage.getItem("language") === "jp" ? defaultJp : defaultEn
   );

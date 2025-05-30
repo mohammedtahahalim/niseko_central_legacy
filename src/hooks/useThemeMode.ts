@@ -2,15 +2,16 @@ import { useRef, useState } from "react";
 import { createTheme } from "@mui/material";
 import type { PaletteOptions } from "@mui/material/styles";
 
+const getInitialTheme = (): "light" | "dark" => {
+  const storedTheme = localStorage.getItem("theme");
+  return storedTheme === "light" || storedTheme === "dark"
+    ? storedTheme
+    : window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
 export default function useThemeMode(threshold: number = 500) {
-  const getInitialTheme = (): "light" | "dark" => {
-    const storedTheme = localStorage.getItem("theme");
-    return storedTheme === "light" || storedTheme === "dark"
-      ? storedTheme
-      : window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  };
   const [currentTheme, setCurrentTheme] = useState<"light" | "dark">(
     getInitialTheme
   );
@@ -49,7 +50,6 @@ export default function useThemeMode(threshold: number = 500) {
         styleOverrides: {
           root: {
             textTransform: "capitalize",
-            fontFamily: "1.1rem",
           },
         },
       },
