@@ -22,6 +22,22 @@ export type TAppContent = {
       email: string;
     };
   };
+  stay_dates_and_filters: string;
+  stay_label: string;
+  nights: string;
+  guests: string;
+  adults: string;
+  children: string;
+  infants: string;
+  price_range: string;
+  room_type: string;
+  room_options: string[];
+  find_accomodation_label: string;
+  accomodation_placeholder: string;
+  booking_card: {
+    see_more: string;
+    floor_plan: string;
+  };
 };
 
 export type TAppContext = {
@@ -29,4 +45,5 @@ export type TAppContext = {
   handleThemeChange: () => void;
   setLang: React.Dispatch<React.SetStateAction<"en" | "jp">>;
   appContent: TAppContent;
+  lang: "en" | "jp";
 };

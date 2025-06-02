@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
-import SearchBookings from "../layouts/SearchBookings";
-import BookingResults from "../layouts/BookingResults";
+import Filters from "../components/home/Filters";
+import Bookings from "../components/home/Bookings";
 
 export default function Home() {
   return (
@@ -8,9 +8,11 @@ export default function Home() {
       direction={{ md: "row", xs: "column" }}
       display={"flex"}
       width={"100%"}
+      gap={"10px"}
+      margin={"1.5rem 0rem"}
     >
-      <SearchBookings />
-      <BookingResults />
+      <Filters />
+      <Bookings />
     </Stack>
   );
 }

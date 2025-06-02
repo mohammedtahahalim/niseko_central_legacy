@@ -11,6 +11,7 @@ export default function Main() {
         sx={{
           display: "flex",
           flex: "1",
+          position: "relative",
         }}
         disableGutters
       >

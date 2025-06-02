@@ -13,6 +13,7 @@ export default function Welcome() {
         alignItems: "center",
       }}
       px={"2rem"}
+      py={"1rem"}
     >
       <Logo />
       <Typography
