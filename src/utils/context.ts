@@ -7,6 +7,7 @@ const defaultAppContext: TAppContext = {
   handleThemeChange: () => {},
   setLang: () => {},
   appContent: defaultContent,
+  lang: "en",
 };
 
 export const AppContext = createContext<TAppContext>(defaultAppContext);

@@ -21,22 +21,28 @@ export default function useThemeMode(threshold: number = 500) {
   const lightPalette: PaletteOptions = {
     primary: {
       main: "#4A637D",
-      contrastText: "#ffffff",
+      contrastText: "#D1D5DB",
     },
     secondary: {
-      main: "#3498db",
+      main: "#4D6EC2",
       contrastText: "#e0e0e0",
+    },
+    info: {
+      main: "rgb(77,110,194, 0.3)",
     },
   };
 
   const darkPalette: PaletteOptions = {
     primary: {
       main: "#7895B1",
-      contrastText: "#ffffff",
+      contrastText: "#D1D5DB",
     },
     secondary: {
-      main: "#e74c3c",
+      main: "#FF6B6B",
       contrastText: "#ecf0f1",
+    },
+    info: {
+      main: "rgb(255,107,107, 0.15)",
     },
   };
 
@@ -45,6 +51,7 @@ export default function useThemeMode(threshold: number = 500) {
       mode: currentTheme,
       ...(currentTheme === "light" ? lightPalette : darkPalette),
     },
+
     components: {
       MuiButton: {
         styleOverrides: {
@@ -56,19 +63,27 @@ export default function useThemeMode(threshold: number = 500) {
       MuiTypography: {
         styleOverrides: {
           root: {
-            color: currentTheme === "light" ? "#3498db" : "#e74c3c",
+            color: currentTheme === "light" ? "#4D6EC2" : "#FF6B6B",
             textTransform: "capitalize",
           },
           subtitle1: {
             fontSize: "0.9rem",
             fontFamily: "Source Code Pro",
           },
+          subtitle2: {
+            fontSize: "0.8rem",
+          },
+          h6: {
+            fontSize: "1.1rem",
+            fontFamily: "Source Code Pro",
+            fontWeight: "600",
+          },
         },
         variants: [
           {
             props: { color: "primary" },
             style: {
-              color: currentTheme === "light" ? "#3498db" : "#e74c3c",
+              color: currentTheme === "light" ? "#4D6EC2" : "#FF6B6B",
             },
           },
           {
@@ -86,7 +101,27 @@ export default function useThemeMode(threshold: number = 500) {
             cursor: "pointer",
             transition: "all 0.25s ease-in-out",
             "&:hover": {
-              color: currentTheme === "light" ? "#3498db" : "#e74c3c",
+              color: currentTheme === "light" ? "#4D6EC2" : "#FF6B6B",
+            },
+          },
+        },
+      },
+      MuiFormLabel: {
+        styleOverrides: {
+          root: {
+            fontFamily: "Source Code Pro",
+          },
+        },
+      },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          input: {
+            '&[type="range"]': {
+              border: "none",
+              accentColor: currentTheme === "light" ? "#4D6EC2" : "#FF6B6B",
+              width: "100%",
+              padding: 0,
+              margin: 0,
             },
           },
         },

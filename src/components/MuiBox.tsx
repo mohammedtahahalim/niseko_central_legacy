@@ -19,11 +19,11 @@ const ModifiedBox = styled(Box, {
   backgroundColor:
     variant === "primary"
       ? currenttheme === "dark"
-        ? "#222222"
-        : "#DDDDDD"
+        ? "#121212"
+        : "#FAFAFA"
       : currenttheme === "dark"
-      ? "#181818"
-      : "#E7E7E7",
+      ? "#1A1A1A"
+      : "#F3F4F6",
   flex: "1",
 }));
 

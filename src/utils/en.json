@@ -2,7 +2,7 @@
   "lang": "日本語",
   "title": "Stay. Play. Experience. Find your holiday in the heart of Niseko. – NisekoCentral",
   "login": "Login",
-  "createAccount": "Create Account",
+  "createAccount": "Sign Up",
   "header": {
     "navMenu": [
       ["About", "/about"],
@@ -30,7 +30,7 @@
       ["Niseko", "/niseko"],
       ["Weather", "/weather"],
       ["Contact", "/contact"],
-      ["Create Account", "/signup"],
+      ["Sign Up", "/signup"],
       ["Login", "/login"]
     ]
   },
@@ -73,5 +73,36 @@
       "full_name": "Full Name",
       "email": "Email"
     }
-  }
+  },
+  "stay_dates_and_filters": "Stay Dates & Filters",
+  "stay_label": "Stay Dates",
+  "nights": "Nights",
+  "guests": "Guests",
+  "adults": "Adults",
+  "children": "Children",
+  "infants": "Infants",
+  "price_range": "Price Range",
+  "room_type": "Room Type",
+  "room_options": [
+    "Studio Room",
+    "Studio Appartement",
+    "1 Bedroom",
+    "2 Bedroom",
+    "2 Bedroom Penthouse",
+    "3 Bedroom",
+    "3 Bedroom Penthouse",
+    "4 Bedroom",
+    "5 Bedroom"
+  ],
+  "find_accomodation_label": "Find Accommodation Name",
+  "accomodation_placeholder": "Enter keyword(s)",
+  "booking_card": {
+    "see_more": "See More",
+    "see_less": "See Less",
+    "floor_plan": "Floor Plan"
+  },
+  "book_now": "Book Now",
+  "send_inquiry": "Send Inquiry",
+  "charges_apply": "*Charges apply where number of adults exceeds number of beds",
+  "general_image_advise": "*General images of property. Actual room may differ."
 }

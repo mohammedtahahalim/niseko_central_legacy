@@ -2,7 +2,7 @@
   "lang": "English",
   "title": "理想的なステイをしよう!! – ニセコセントラル",
   "login": "ログイン",
-  "createAccount": "アカウントを作成",
+  "createAccount": "サインアップ",
   "header": {
     "navMenu": [
       ["会社概要", "/about"],
@@ -30,7 +30,7 @@
       ["ニセコ", "/niseko"],
       ["天気", "/weather"],
       ["お問い合わせ", "/contact"],
-      ["アカウント作成", "/signup"],
+      ["サインアップ", "/signup"],
       ["ログイン", "/login"]
     ]
   },
@@ -73,5 +73,36 @@
       "full_name": "フルネーム",
       "email": "メール"
     }
-  }
+  },
+  "stay_dates_and_filters": "滞在日とフィルター",
+  "stay_label": "滞在日",
+  "nights": "泊",
+  "guests": "ゲスト",
+  "adults": "大人",
+  "children": "子供",
+  "infants": "赤ちゃん",
+  "price_range": "価格帯",
+  "room_type": "部屋タイプ",
+  "room_options": [
+    "スタジオルーム",
+    "スタジオアパートメント",
+    "1ベッドルーム",
+    "2ベッドルーム」",
+    "2ベッドルームペントハウス",
+    "3ベッドルーム",
+    "3ベッドルームペントハウス",
+    "4ベッドルーム",
+    "5ベッドルーム"
+  ],
+  "find_accomodation_label": "宿泊施設名を検索",
+  "accomodation_placeholder": "キーワードを入力してください",
+  "booking_card": {
+    "see_more": "もっと見る",
+    "see_less": "閉じる",
+    "floor_plan": "フロアプラン"
+  },
+  "book_now": "予約へ進む",
+  "send_inquiry": "お問合せ送信",
+  "charges_apply": "*ベッド数を超える13歳以上のお客様のご利用は追加料金を頂戴いたします。",
+  "general_image_advise": "*物件の一般的な写真です。実際の客室とは異なる場合があります。"
 }
