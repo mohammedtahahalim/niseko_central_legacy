@@ -1,14 +1,14 @@
 import { Box, Button } from "@mui/material";
-import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import { useContext, useRef, useState } from "react";
 import { AppContext } from "../../utils/context";
 import FloorPlan from "./FloorPlan";
 
 type TBookingImage = {
   setSeeMore: React.Dispatch<React.SetStateAction<boolean>>;
+  seeMore: boolean;
 };
 
-export default function BookingImage({ setSeeMore }: TBookingImage) {
+export default function BookingImage({ setSeeMore, seeMore }: TBookingImage) {
   const { appContent } = useContext(AppContext);
   const [floorPlan, setFloorPlan] = useState<boolean>(false);
   const floorButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -24,37 +24,44 @@ export default function BookingImage({ setSeeMore }: TBookingImage) {
       flexDirection={"column"}
     >
       <Box
-        width={{ md: "100%", sm: "50%", xs: "80%" }}
+        width={{ md: "100%", sm: "50%", xs: "100%" }}
         overflow={"hidden"}
         alignSelf={"center"}
+        sx={{ aspectRatio: "3/4" }}
       >
         <img
-          src="placeholder.jpg"
+          src={`${Math.floor(Math.random() * 7 + 1)}.jpg`}
           alt=""
           width={"100%"}
           height={"100%"}
           style={{ borderRadius: "12px" }}
         />
       </Box>
-      <Box display={"flex"} width={"100%"} justifyContent={"space-between"}>
+      <Box
+        display={"flex"}
+        width={{ md: "100%", sm: "50%", xs: "100%" }}
+        justifyContent={"space-between"}
+        alignSelf={"center"}
+        px={"0.5rem"}
+      >
         <Button
           variant="text"
           color="secondary"
-          startIcon={<ZoomInIcon />}
           size="small"
           onClick={() => setSeeMore(true)}
         >
-          {appContent.booking_card.see_more || "See More"}
+          {seeMore
+            ? appContent.booking_card.see_less
+            : appContent.booking_card.see_more}
         </Button>
         <Button
           variant="text"
           color="secondary"
-          startIcon={<ZoomInIcon />}
           size="small"
           onClick={() => setFloorPlan(true)}
           ref={floorButtonRef}
         >
-          {appContent?.booking_card.floor_plan || "Floor Plan"}
+          {appContent.booking_card.floor_plan}
         </Button>
       </Box>
       {floorPlan && (

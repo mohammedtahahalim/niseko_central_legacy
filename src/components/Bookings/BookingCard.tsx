@@ -12,6 +12,11 @@ const StyledStack = styled(Stack, {
   overflow: "hidden",
   border: `0.1px solid ${theme.palette.divider}`,
   margin: "0.5rem",
+  borderRadius: "10px",
+  transition: "all 0.15s ease-in-out",
+  "&:hover": {
+    boxShadow: `6px 6px 12px ${theme.palette.info.main}`,
+  },
 }));
 
 export default function BookingCard() {
@@ -26,15 +31,20 @@ export default function BookingCard() {
           borderRadius="5px"
           gap="5px"
           direction={{ md: "row", xs: "column" }}
+          height={"fit-content"}
         >
-          <BookingImage setSeeMore={handleSeeMore} />
+          <BookingImage setSeeMore={handleSeeMore} seeMore={seeMore} />
           <BookingInfo />
           <Book />
         </Stack>
         <Box
           overflow={"hidden"}
-          maxHeight={seeMore ? "300px" : "0px"}
-          sx={{ transition: "max-height 0.75s ease-in-out" }}
+          maxHeight={seeMore ? "750px" : "0px"}
+          sx={{
+            transition: `max-height 0.4s ease-in-out`,
+          }}
+          alignSelf={"center"}
+          width={"95%"}
         >
           <MoreInfo />
         </Box>

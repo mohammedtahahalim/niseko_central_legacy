@@ -36,8 +36,13 @@ export type TAppContent = {
   accomodation_placeholder: string;
   booking_card: {
     see_more: string;
+    see_less: string;
     floor_plan: string;
   };
+  book_now: string;
+  send_inquiry: string;
+  charges_apply: string;
+  general_image_advise: string;
 };
 
 export type TAppContext = {

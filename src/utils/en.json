@@ -98,6 +98,11 @@
   "accomodation_placeholder": "Enter keyword(s)",
   "booking_card": {
     "see_more": "See More",
+    "see_less": "See Less",
     "floor_plan": "Floor Plan"
-  }
+  },
+  "book_now": "Book Now",
+  "send_inquiry": "Send Inquiry",
+  "charges_apply": "*Charges apply where number of adults exceeds number of beds",
+  "general_image_advise": "*General images of property. Actual room may differ."
 }

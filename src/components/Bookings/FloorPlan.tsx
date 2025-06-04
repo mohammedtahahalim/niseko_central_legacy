@@ -12,6 +12,9 @@ const StyledFloorPlan = styled(Box, {
   transform: "translate3d(-50%, -50%, 0)",
   color: "black",
   zIndex: "10",
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+  },
 }));
 
 type TFloorPlan = {
@@ -32,7 +35,6 @@ export default function FloorPlan({
         (floorButtonRef.current as HTMLElement).contains(e.target as Node)
       )
         return;
-      console.log("clicked from outside");
       setFloorPlan(false);
     };
     document.addEventListener("click", disableFloorPlan);
@@ -43,7 +45,7 @@ export default function FloorPlan({
 
   return (
     <StyledFloorPlan ref={floorRef}>
-      <img src="floor.png" alt="floor plan" />
+      <img src="floor.png" alt="floor plan" width={"100%"} />
     </StyledFloorPlan>
   );
 }

@@ -13,6 +13,7 @@ export default function Filters() {
   const [showFilters, setShowFilters] = useState<boolean>(
     window.innerWidth > 900
   );
+  const [searchFilter, setSearchFilter] = useState<string>("");
   const { lang } = useContext(AppContext);
 
   return (
@@ -41,7 +42,10 @@ export default function Filters() {
           <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             <DurationAndQuantity />
             <PriceAndType />
-            <Search />
+            <Search
+              setSearchFilter={setSearchFilter}
+              searchFilter={searchFilter}
+            />
           </Box>
         )}
       </Box>

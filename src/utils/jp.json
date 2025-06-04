@@ -98,6 +98,11 @@
   "accomodation_placeholder": "キーワードを入力してください",
   "booking_card": {
     "see_more": "もっと見る",
+    "see_less": "閉じる",
     "floor_plan": "フロアプラン"
-  }
+  },
+  "book_now": "予約へ進む",
+  "send_inquiry": "お問合せ送信",
+  "charges_apply": "*ベッド数を超える13歳以上のお客様のご利用は追加料金を頂戴いたします。",
+  "general_image_advise": "*物件の一般的な写真です。実際の客室とは異なる場合があります。"
 }
