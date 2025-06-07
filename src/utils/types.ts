@@ -43,6 +43,55 @@ export type TAppContent = {
   send_inquiry: string;
   charges_apply: string;
   general_image_advise: string;
+  about: {
+    about_nav_links: string[][];
+    sections: {
+      about: {
+        title: string;
+        subtitle: string;
+        navlink: string;
+        description: string[][];
+      };
+      management: {
+        title: string;
+        subtitle: string;
+        navlink: string;
+        description: string[][];
+        contact: string;
+      };
+      "niseko-jobs": {
+        title: string;
+        subtitle: string;
+        navlink: string;
+      };
+      testimonials: {
+        title: string;
+        subtitle: string;
+        navlink: string;
+      };
+    };
+    testimony_title: string;
+    testimonies: string[][];
+    jobs: {
+      title: string;
+      description: string;
+      currentJobs: {
+        seasonal: string;
+        yearly: string;
+      };
+      seasonal: {
+        jobTitle: string;
+        jobDescription: string;
+        jobLink: string;
+        jobStartDate: string;
+      }[];
+      yearly: {
+        jobTitle: string;
+        jobDescription: string;
+        jobLink: string;
+      }[];
+    };
+  };
 };
 
 export type TAppContext = {

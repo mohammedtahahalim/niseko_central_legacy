@@ -22,7 +22,7 @@ const ModifiedBox = styled(Box, {
         ? "#121212"
         : "#FAFAFA"
       : currenttheme === "dark"
-      ? "#1A1A1A"
+      ? "#262626"
       : "#F3F4F6",
   flex: "1",
 }));

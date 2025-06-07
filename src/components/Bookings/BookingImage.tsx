@@ -19,7 +19,7 @@ export default function BookingImage({ setSeeMore, seeMore }: TBookingImage) {
       height={"100%"}
       maxHeight={"300px"}
       sx={{ aspectRatio: "1" }}
-      p={"0.5rem"}
+      p={{ xs: "0.5rem 0.5rem 0rem", md: "0.5rem 1rem" }}
       display={"flex"}
       flexDirection={"column"}
     >

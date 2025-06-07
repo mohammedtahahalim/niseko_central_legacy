@@ -78,6 +78,14 @@ export default function useThemeMode(threshold: number = 500) {
             fontFamily: "Source Code Pro",
             fontWeight: "600",
           },
+          h5: {
+            fontFamily: "Source Code Pro",
+          },
+          body1: {
+            color: currentTheme === "light" ? "#000000" : "#ffffff",
+            fontSize: "0.9rem",
+            fontFamily: "Source Code Pro",
+          },
         },
         variants: [
           {

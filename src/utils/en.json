@@ -104,5 +104,153 @@
   "book_now": "Book Now",
   "send_inquiry": "Send Inquiry",
   "charges_apply": "*Charges apply where number of adults exceeds number of beds",
-  "general_image_advise": "*General images of property. Actual room may differ."
+  "general_image_advise": "*General images of property. Actual room may differ.",
+  "about": {
+    "about_nav_links": [
+      ["about", "/about"],
+      ["management", "/management"],
+      ["niseko-jobs", "/niseko-jobs"],
+      ["testimonials", "/testimonials"]
+    ],
+    "sections": {
+      "about": {
+        "title": "About Us",
+        "subtitle": "About Niseko Central",
+        "navlink": "About",
+        "description": [
+          [
+            "Niseko Central is the premier accommodation provider in Niseko-Hirafu, the heart of the greater Niseko area. We have been managing quality accommodations in Niseko for almost 20 years and are the market leaders in relation to product, services and service delivery.",
+            "Our unique portfolio of contemporary properties offers comfortable interiors and great design and finishes. Today, we manage and market 170 luxury condominiums and resort homes to suit all customers’ different needs.\n\nWe continue to be the go-to hospitality provider for the Niseko area and our passionate staff always strive to provide exceptional experiences for every guest, with the highest levels of personal service."
+          ],
+          [
+            "Our People",
+            "Our professional, multilingual resort staff are on call to meet your needs. Our team is committed to ensure that, right from your first call, you will be taken care by people who really understand your holiday expectations and needs."
+          ],
+          [
+            "Our History And Our Future",
+            "Niseko Central has re-branded! Formerly known as HT Holidays, Niseko Central has grown to become the largest accommodation provided in the Niseko area since its humble beginnings in 2003. The original Australian pioneers who founded Niseko Central shared a passion for skiing, a fascination with Niseko and its abundant powder snow, and a vision to introduce a hospitality and accommodation model based on a common concept in the ski resorts they had visited around the world.\n\n Ever since its establishment, the passion that inspired our founders has spread to the point where Niseko is now one of the fastest growing ski resorts in the world.We are proud to be a part of building a year-round resort that maintains the unique Japanese character, whilst attracting an international market base."
+          ]
+        ]
+      },
+      "management": {
+        "title": "About Us",
+        "subtitle": "Management",
+        "navlink": "Management",
+        "description": [
+          [
+            "Hokkaido Tourism Management is Niseko-Hirafu's premier property management company.",
+            "We have been managing quality condominiums and houses in Niseko since 2002. We are based in Niseko and we maintain, promote and take bookings for owner’s properties year round."
+          ],
+          [
+            "Choose Hokkaido Tourism Management because...",
+            "We manage close to 200 independently owned properties and are the strata building manager for over ten management associations - all in Niseko-Hirafu village.\n\nWe can satisfy all your strata management needs, including owners meetings, insurance, budgeting, maintenance and regular reporting.\n\nNiseko Central' Guest Services are second to none and match the quality of the accommodation we manage. To get the best customers and keep them coming back you need to provide guests with both great accommodation AND great service."
+          ]
+        ],
+        "contact": "Contact us for more information on how we can maximise your property's potential."
+      },
+      "niseko-jobs": {
+        "title": "Careers",
+        "subtitle": "Jobs In Niseko",
+        "navlink": "Careers/Jobs"
+      },
+      "testimonials": {
+        "title": "Careers",
+        "subtitle": "Staff Testimonials",
+        "navlink": "Testimonials"
+      }
+    },
+    "testimony_title": "View testimonials from former Niseko Central staff!",
+    "testimonies": [
+      [
+        "“Great time working with Niseko Central. Interesting job, meet new people, great colleagues. Of course I’ll never forget riding in fresh powder! I will definitely come back next winter!”",
+        "Catherina"
+      ],
+      [
+        "“Easily the most professional but fun workplace I have been involved in. Niseko Central are just as diligent at looking after their staff as they are at making sure their guests have the very best ski holiday EVER! If you want to join the coolest crew on earth, have fun while you work and experience the most incredible snow in the world then look no further.”",
+        "Emily"
+      ],
+      [
+        "“Working for Niseko Central is a great opportunity, either as a career break or the beginning of a career. They give great assistance in preparing for life in Japan and a fun working environment, all at one of the best ski resorts in the world. Niseko is a great place to experience Japanese culture and amazing food, and more than enough powder snow to keep anybody happy! It is a great team, and they really make you feel part of the Niseko Central family from your first day. Thanks guys!!”",
+        "Tom"
+      ],
+      [
+        "“Working for Niseko Central has been a great experience! The powder snow in Niseko will put a big grin on your face and have you high fiving your fellow skiers & riders! Niseko Central are well regarded in Niseko and working for Niseko Central puts you right in the centre of Niseko life!”",
+        "Kelvin"
+      ]
+    ],
+    "jobs": {
+      "title": "We combine hard work with great fun to give our staff a unique experience and lifestyle, unlike anywhere else in the world.",
+      "description": "Niseko Central is the leading supplier of premier and luxury accommodation in Niseko-Hirafu Alpine Resort, Hokkaido, Japan. Niseko-Hirafu is the fastest growing international alpine resort with most international guests coming from Australia, Hong Kong, Singapore and the UK. ",
+      "currentJobs": {
+        "seasonal": "Seasonal Positions",
+        "yearly": "Year-Round Positions"
+      },
+      "seasonal": [
+        {
+          "jobTitle": "Winter Season - Front Desk",
+          "jobLink": "https://htmniseko-jobs.vercel.app/",
+          "jobDescription": "The Front Desk staff provides friendly and professional customer service to our Guests.",
+          "jobStartDate": "November 2025"
+        },
+        {
+          "jobTitle": "Winter Season - Guest Host",
+          "jobLink": "https://htmniseko-jobs.vercel.app/",
+          "jobDescription": "Guest Hosts are the first point of direct contact with our Guests and always in the middle of the action to ensure each Guest is provided an amazing stay.",
+          "jobStartDate": "November 2025"
+        },
+        {
+          "jobTitle": "Winter Season - Guest Services Supervisor",
+          "jobLink": "https://htmniseko-jobs.vercel.app/",
+          "jobDescription": "The Guest Services Supervisor leads the Team and acts as the Manager on Duty to ensure all aspects of the hotel operation are looked after.",
+          "jobStartDate": "November 2025"
+        },
+        {
+          "jobTitle": "Winter Season - Night Operations",
+          "jobLink": "https://htmniseko-jobs.vercel.app/",
+          "jobDescription": "Our Night Operations team prepares for the next day of operations and handles anything that happens overnight.",
+          "jobStartDate": "November 2025"
+        },
+        {
+          "jobTitle": "Winter Season - Shuttle Driver",
+          "jobLink": "https://htmniseko-jobs.vercel.app/",
+          "jobDescription": "We are looking for friendly and professional drivers to drive our Guest shuttle buses.",
+          "jobStartDate": "December 2025"
+        },
+        {
+          "jobTitle": "Winter Season - Tour Desk",
+          "jobLink": "https://htmniseko-jobs.vercel.app/",
+          "jobDescription": "The Tour Desk staff helps Guests arrange activities and services to make the most out of their ski holiday.",
+          "jobStartDate": "November 2025"
+        },
+        {
+          "jobTitle": "Winter Season - Room Inspector",
+          "jobLink": "https://htmniseko-jobs.vercel.app/",
+          "jobDescription": "The room inspector will be responsible for checking for any damage to rooms after Niseko Central guests have checked out of their accommodation and also preparing rooms for arrival.",
+          "jobStartDate": "November 2025"
+        }
+      ],
+      "yearly": [
+        {
+          "jobTitle": "Niseko Central - Front Desk: ¥4.4 - 4.9m",
+          "jobLink": "https://htmniseko-jobs.vercel.app/",
+          "jobDescription": "The Niseko Central Front Desk is a fun and challenging place to work for anyone who enjoys communicating with people and working in a multicultural environment."
+        },
+        {
+          "jobTitle": "Niseko Central - Part-Time Housekeeper: ¥1,650-1,850 per hour (+¥300 per hour Dec-Mar)",
+          "jobLink": "https://htmniseko-jobs.vercel.app/",
+          "jobDescription": "HTM is looking to recruit a driven individual to work as a Housekeeper in our Niseko Central portfolio of properties."
+        },
+        {
+          "jobTitle": "Niseko Central - Housekeeping Supervisor: ¥5.0 - 5.7m",
+          "jobLink": "https://htmniseko-jobs.vercel.app/",
+          "jobDescription": "Niseko Central is looking for a Housekeeping Supervisor to provide Guests with an amazing stay by ensuring rooms and are cleaned to exceptional standards."
+        },
+        {
+          "jobTitle": "Niseko Central - Housekeeper: ¥4.4 - 4.9m",
+          "jobLink": "https://htmniseko-jobs.vercel.app/",
+          "jobDescription": "HTM is looking to recruit a driven individual to work as a Housekeeper in our Niseko Central portfolio of properties."
+        }
+      ]
+    }
+  }
 }
