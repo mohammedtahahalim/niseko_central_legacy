@@ -6,7 +6,7 @@ export default function BookingInfo() {
       width={{ md: "40%", xs: "100%" }}
       direction={"column"}
       gap={{ md: "10px", xs: "3px" }}
-      p={"0.5rem 1rem"}
+      p={{ md: "0.5rem 1rem", xs: "0rem 1rem 0.5rem" }}
     >
       <Typography variant="h6" color="secondary">
         Youtei Tracks 301a
