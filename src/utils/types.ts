@@ -92,6 +92,20 @@ export type TAppContent = {
       }[];
     };
   };
+  niseko_informations: string[][];
+  find_more_button: string;
+  find_all_button: string;
+  general_layout: {
+    [key: string]: {
+      title: string;
+      sous_title: string;
+      bannerIMG: string;
+    };
+  };
+  live_camera: {
+    title: string;
+    body: string;
+  };
 };
 
 export type TAppContext = {

@@ -1,3 +1,5 @@
+import { Stack } from "@mui/material";
+
 export default function Blog() {
-  return <div>Blog</div>;
+  return <Stack></Stack>;
 }

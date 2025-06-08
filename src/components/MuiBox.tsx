@@ -6,14 +6,14 @@ import type { SxProps, Theme } from "@mui/material/styles";
 
 interface TModifiedBox {
   children: React.ReactNode;
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "hybrid";
   sx?: SxProps<Theme>;
 }
 
 const ModifiedBox = styled(Box, {
   shouldForwardProp: (prop) => prop !== "variant" && prop !== "currenttheme",
 })<{
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "hybrid";
   currenttheme: "light" | "dark";
 }>(({ variant, currenttheme }) => ({
   backgroundColor:
@@ -21,9 +21,13 @@ const ModifiedBox = styled(Box, {
       ? currenttheme === "dark"
         ? "#121212"
         : "#FAFAFA"
+      : variant === "secondary"
+      ? currenttheme === "dark"
+        ? "#262626"
+        : "#F3F4F6"
       : currenttheme === "dark"
-      ? "#262626"
-      : "#F3F4F6",
+      ? "#1C252C"
+      : "#E8EEF2",
   flex: "1",
 }));
 

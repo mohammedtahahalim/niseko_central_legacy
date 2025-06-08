@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
-import Filters from "../components/home/Filters";
-import Bookings from "../components/home/Bookings";
+import Filters from "../components/Home/Filters";
+import Bookings from "../components/Home/Bookings";
 
 export default function Home() {
   return (
