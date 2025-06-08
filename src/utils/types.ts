@@ -106,6 +106,13 @@ export type TAppContent = {
     title: string;
     body: string;
   };
+  weather: {
+    title: string;
+    useful_links: {
+      name: string;
+      links: string[][];
+    };
+  };
 };
 
 export type TAppContext = {
