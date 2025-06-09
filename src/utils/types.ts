@@ -113,6 +113,10 @@ export type TAppContent = {
       links: string[][];
     };
   };
+  blog: {
+    carousel: string[][];
+  };
+  read_more: string;
 };
 
 export type TAppContext = {

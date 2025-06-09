@@ -6,20 +6,31 @@ import Loading from "../components/Loading";
 import Banner from "../components/Banner";
 import { Outlet, useLocation } from "react-router-dom";
 import { AppContext } from "../utils/context";
-export default function GeneralLayout() {
+import BlogCarousel from "../components/BlogCarousel";
+
+type TGeneralLayout = {
+  isBlog?: boolean;
+};
+
+export default function GeneralLayout({ isBlog }: TGeneralLayout) {
   const title = useLocation().pathname.split("-").join(" ").replace("/", "");
   const { appContent } = useContext(AppContext);
-  console.log(appContent.general_layout[title].sous_title);
+
+  console.log(isBlog);
+
   return (
     <Stack direction={"column"} sx={{ height: "100%", minHeight: "100vh" }}>
       <Header />
       <Suspense fallback={<Loading />}>
         <Stack direction={"column"} width={"100%"}>
-          <Banner
-            title={appContent.general_layout[title].title}
-            subtitle={appContent.general_layout[title].sous_title}
-            bannerIMG={appContent.general_layout[title].bannerIMG}
-          />
+          {!isBlog && (
+            <Banner
+              title={appContent.general_layout[title].title}
+              subtitle={appContent.general_layout[title].sous_title}
+              bannerIMG={appContent.general_layout[title].bannerIMG}
+            />
+          )}
+          {isBlog && <BlogCarousel />}
           <Container
             sx={{
               display: "flex",

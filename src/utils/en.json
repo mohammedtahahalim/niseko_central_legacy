@@ -318,5 +318,40 @@
         ["Avalanche and Backcountry Report", "http://niseko.nadare.info/"]
       ]
     }
-  }
+  },
+  "blog": {
+    "carousel": [
+      [
+        "Niseko Central 2025/26: Discover Insider Tips for Securing Your Ideal Accommodation at the Best Rates",
+        "/blog_4.jpg",
+        "https://www.nisekocentral.com/blog/niseko-central-winter-2025-26"
+      ],
+      [
+        "Why You Should Try Spring Rafting in Niseko",
+        "/blog_1.jpg",
+        "https://www.nisekocentral.com/blog/why-you-should-try-spring-rafting-in-niseko"
+      ],
+      [
+        "Your Guide to Vehicle Included Niseko Central Accommodations",
+        "/blog_2.jpg",
+        "https://www.nisekocentral.com/blog/complimentary-vehicles-2025-26"
+      ],
+      [
+        "Effortless Travel: Niseko Central’s Shuttle Service for a Smooth Arrival & Departure",
+        "/blog_3.jpg",
+        "https://www.nisekocentral.com/blog/niseko-central-shuttle-service"
+      ],
+      [
+        "Niseko Central 2025/26: Discover Insider Tips for Securing Your Ideal Accommodation at the Best Rates",
+        "/blog_4.jpg",
+        "https://www.nisekocentral.com/blog/niseko-central-winter-2025-26"
+      ],
+      [
+        "Why You Should Try Spring Rafting in Niseko",
+        "/blog_1.jpg",
+        "https://www.nisekocentral.com/blog/why-you-should-try-spring-rafting-in-niseko"
+      ]
+    ]
+  },
+  "read_more": "Read More"
 }

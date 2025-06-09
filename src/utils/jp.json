@@ -316,5 +316,40 @@
         ["雪崩とバックカントリーレポート", "http://niseko.nadare.info/"]
       ]
     }
-  }
+  },
+  "blog": {
+    "carousel": [
+      [
+        "ニセコセントラル 2025/26：最高の料金で理想の宿泊施設を確保するためのヒント",
+        "/blog_4.jpg",
+        "https://www.nisekocentral.com/blog/niseko-central-winter-2025-26"
+      ],
+      [
+        "ニセコで春ラフティングに挑戦すべき理由",
+        "/blog_1.jpg",
+        "https://www.nisekocentral.com/blog/why-you-should-try-spring-rafting-in-niseko"
+      ],
+      [
+        "ニセコセントラルの車両付き宿泊施設ガイド",
+        "/blog_2.jpg",
+        "https://www.nisekocentral.com/blog/complimentary-vehicles-2025-26"
+      ],
+      [
+        "快適な旅：ニセコセントラルシャトルサービスでスムーズな到着と出発を",
+        "/blog_3.jpg",
+        "https://www.nisekocentral.com/blog/niseko-central-shuttle-service"
+      ],
+      [
+        "ニセコセントラル 2025/26：最高の料金で理想の宿泊施設を確保するためのヒント",
+        "/blog_4.jpg",
+        "https://www.nisekocentral.com/blog/niseko-central-winter-2025-26"
+      ],
+      [
+        "ニセコで春ラフティングに挑戦すべき理由",
+        "blog_1.jpg",
+        "https://www.nisekocentral.com/blog/why-you-should-try-spring-rafting-in-niseko"
+      ]
+    ]
+  },
+  "read_more": "続きを読む"
 }

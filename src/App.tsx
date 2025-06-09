@@ -43,17 +43,19 @@ function App() {
             <Routes>
               <Route element={<Main />}>
                 <Route path="/" element={<Home />} />
-                <Route path="/blog" element={<Blog />} />
                 <Route path="/long-stay" element={<LongStay />} />
                 <Route path="/special-deals" element={<SpecialDeals />} />
                 <Route path="/guest-service" element={<GuestService />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/contact" element={<Contact />} />
               </Route>
-              <Route element={<GeneralLayout />}>
+              <Route element={<GeneralLayout isBlog={false} />}>
                 <Route path="/niseko" element={<Niseko />} />
                 <Route path="/live" element={<Live />} />
                 <Route path="/Weather" element={<Weather />} />
+              </Route>
+              <Route element={<GeneralLayout isBlog={true} />}>
+                <Route path="/blog" element={<Blog />} />
               </Route>
               <Route element={<AboutLayout />}>
                 <Route index path="/about" element={<About />} />
