@@ -1,5 +1,5 @@
 import { styled, Box, Typography, Button } from "@mui/material";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../utils/context";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
@@ -7,6 +7,7 @@ import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArro
 interface CarouselBoxProps {
   length: number;
   currIndex: number;
+  isTransitioning: boolean;
 }
 
 interface ImageBoxProps {
@@ -19,14 +20,20 @@ const StyledBox = styled(Box)({
   overflow: "hidden",
 });
 
-const CarouselBox = styled(Box)<CarouselBoxProps>(({ length, currIndex }) => ({
+const CarouselBox = styled(Box, {
+  shouldForwardProp: (prop) =>
+    prop !== "length" && prop !== "currIndex" && prop !== "isTransitioning",
+})<CarouselBoxProps>(({ length, currIndex, isTransitioning }) => ({
   width: `${length * 100}%`,
   height: "100%",
   display: "flex",
   transform: `translateX(-${(currIndex * 100) / length}%)`,
+  transition: isTransitioning ? "transform 0.5s ease-in-out" : "none",
 }));
 
-const ImageBox = styled(Box)<ImageBoxProps>(({ backURL }) => ({
+const ImageBox = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "backURL",
+})<ImageBoxProps>(({ backURL }) => ({
   height: "100%",
   flex: "1",
   position: "relative",
@@ -61,7 +68,7 @@ const Title = styled(Typography, {
   fontSize: "1.2rem",
 });
 
-const StyledArticle = styled(Box)({
+const StyledArticle = styled(Box)(({ theme }) => ({
   position: "absolute",
   top: "50%",
   left: "50%",
@@ -73,31 +80,76 @@ const StyledArticle = styled(Box)({
   zIndex: "3",
   backdropFilter: "blur(2px)",
   width: "100%",
-  maxWidth: "450px",
+  [theme.breakpoints.down("md")]: {
+    maxWidth: "250px",
+  },
+  [theme.breakpoints.up("md")]: {
+    maxWidth: "450px",
+  },
+}));
+
+const IndicatorBox = styled(Box)({
+  position: "fixed",
+  left: "50%",
+  transform: "translate3d(-50%, -200%, 0)",
+  display: "flex",
+  gap: "5px",
+  zIndex: "5",
 });
 
 export default function BlogCarousel() {
   const { appContent } = useContext(AppContext);
   const [currIndex, setCurrIndex] = useState<number>(1);
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(true);
+  const coolDownRef = useRef<boolean>(true);
+  const carouselData = appContent.blog.carousel;
+  const extendedCarousel = [
+    carouselData[carouselData.length - 1],
+    ...carouselData,
+    carouselData[0],
+  ];
 
-  useEffect(() => {
+  const handleTransitionEnd = () => {
     if (currIndex === 0) {
-      setCurrIndex(4);
-    }
-    if (currIndex === 5) {
+      setIsTransitioning(false);
+      setCurrIndex(carouselData.length);
+    } else if (currIndex === carouselData.length + 1) {
+      setIsTransitioning(false);
       setCurrIndex(1);
     }
-  }, [currIndex]);
+  };
+
+  const handleClick = (state: "next" | "previous") => {
+    if (coolDownRef.current) {
+      coolDownRef.current = false;
+      state === "next"
+        ? setCurrIndex((prev) => prev + 1)
+        : setCurrIndex((prev) => prev - 1);
+    }
+    setTimeout(() => {
+      coolDownRef.current = true;
+    }, 550);
+  };
+
+  useEffect(() => {
+    if (!isTransitioning) {
+      requestAnimationFrame(() => {
+        setIsTransitioning(true);
+      });
+    }
+  }, [isTransitioning]);
 
   return (
     <StyledBox>
       <CarouselBox
-        length={appContent.blog.carousel.length}
+        length={extendedCarousel.length}
         currIndex={currIndex}
+        isTransitioning={isTransitioning}
+        onTransitionEnd={handleTransitionEnd}
       >
-        {appContent.blog.carousel.map((carouselEntry) => {
+        {extendedCarousel.map((carouselEntry, idx) => {
           return (
-            <ImageBox backURL={carouselEntry[1]}>
+            <ImageBox backURL={carouselEntry[1]} key={idx}>
               <Overlay />
               <StyledArticle>
                 <Title variant="h6" color="primary">
@@ -120,11 +172,7 @@ export default function BlogCarousel() {
                 sx={{
                   right: "10px",
                 }}
-                onClick={() =>
-                  setCurrIndex(
-                    Math.min(currIndex + 1, appContent.blog.carousel.length - 1)
-                  )
-                }
+                onClick={() => handleClick("next")}
               >
                 <KeyboardDoubleArrowRightIcon />
               </StyledButton>
@@ -134,7 +182,7 @@ export default function BlogCarousel() {
                 sx={{
                   left: "10px",
                 }}
-                onClick={() => setCurrIndex(Math.max(currIndex - 1, 0))}
+                onClick={() => handleClick("previous")}
               >
                 <KeyboardDoubleArrowLeftIcon />
               </StyledButton>
@@ -142,6 +190,22 @@ export default function BlogCarousel() {
           );
         })}
       </CarouselBox>
+      <IndicatorBox>
+        {carouselData.map((_, idx) => {
+          return (
+            <Box
+              key={idx}
+              sx={{
+                width: "15px",
+                aspectRatio: "1",
+                borderRadius: "50px",
+                cursor: "pointer",
+              }}
+              bgcolor={idx === currIndex - 1 ? "#CCCCCC" : "#FFFFFF"}
+            ></Box>
+          );
+        })}
+      </IndicatorBox>
     </StyledBox>
   );
 }

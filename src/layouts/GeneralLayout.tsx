@@ -16,8 +16,6 @@ export default function GeneralLayout({ isBlog }: TGeneralLayout) {
   const title = useLocation().pathname.split("-").join(" ").replace("/", "");
   const { appContent } = useContext(AppContext);
 
-  console.log(isBlog);
-
   return (
     <Stack direction={"column"} sx={{ height: "100%", minHeight: "100vh" }}>
       <Header />
