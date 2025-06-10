@@ -89,7 +89,7 @@ const StyledArticle = styled(Box)(({ theme }) => ({
 }));
 
 const IndicatorBox = styled(Box)({
-  position: "fixed",
+  position: "absolute",
   left: "50%",
   transform: "translate3d(-50%, -200%, 0)",
   display: "flex",
@@ -202,6 +202,7 @@ export default function BlogCarousel() {
                 cursor: "pointer",
               }}
               bgcolor={idx === currIndex - 1 ? "#CCCCCC" : "#FFFFFF"}
+              onClick={() => setCurrIndex(idx + 1)}
             ></Box>
           );
         })}

@@ -339,7 +339,32 @@
         "/blog_4.jpg",
         "https://www.nisekocentral.com/blog/niseko-central-winter-2025-26"
       ]
-    ]
+    ],
+    "blog_intro": {
+      "title": "ニセコセントラルブログ",
+      "desc": "ニセコセントラルは認可旅行代理店であり、全日本旅行業協会の会員です（登録番号2-529）。"
+    },
+    "category_part": {
+      "title": "カテゴリー",
+      "categories": [
+        ["宿泊施設", "https://www.nisekocentral.com/blog/niseko-accommodation"],
+        [
+          "ニセコセントラルニュース",
+          "https://www.nisekocentral.com/blog/niseko-central-news"
+        ],
+        ["ニセコライフ", "https://www.nisekocentral.com/blog/niseko-life"],
+        ["特別セール", "https://www.nisekocentral.com/blog/special-deals"],
+        ["スタッフ", "https://www.nisekocentral.com/blog/staff"],
+        ["夏", "https://www.nisekocentral.com/blog/niseko-summer"],
+        ["旅行のヒント", "https://www.nisekocentral.com/blog/travel-tips"],
+        ["ビデオ", "https://www.nisekocentral.com/blog/videos"],
+        ["冬", "https://www.nisekocentral.com/blog/niseko-winter"]
+      ]
+    },
+    "rss_feed": "RSSフィードを購読する",
+    "posts": {
+      "title": "最新の投稿"
+    }
   },
   "read_more": "続きを読む"
 }

@@ -341,7 +341,35 @@
         "/blog_4.jpg",
         "https://www.nisekocentral.com/blog/niseko-central-winter-2025-26"
       ]
-    ]
+    ],
+    "blog_intro": {
+      "title": "Niseko Central Blog",
+      "desc": "Niseko Central is a licensed travel agent and a member of the All Nippon Travel Agents Association (License no 2-529)."
+    },
+    "category_part": {
+      "title": "Categories",
+      "categories": [
+        [
+          "accommodation",
+          "https://www.nisekocentral.com/blog/niseko-accommodation"
+        ],
+        [
+          "niseko central news",
+          "https://www.nisekocentral.com/blog/niseko-central-news"
+        ],
+        ["niseko life", "https://www.nisekocentral.com/blog/niseko-life"],
+        ["special deals", "https://www.nisekocentral.com/blog/special-deals"],
+        ["staff", "https://www.nisekocentral.com/blog/staff"],
+        ["summer", "https://www.nisekocentral.com/blog/niseko-summer"],
+        ["travel tips", "https://www.nisekocentral.com/blog/travel-tips"],
+        ["videos", "https://www.nisekocentral.com/blog/videos"],
+        ["winter", "https://www.nisekocentral.com/blog/niseko-winter"]
+      ]
+    },
+    "rss_feed": "Subscribe to our RSS Feed",
+    "posts": {
+      "title": "Most recent posts"
+    }
   },
   "read_more": "Read More"
 }

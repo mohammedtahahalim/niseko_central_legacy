@@ -14,6 +14,9 @@ const AboutNavLinks = styled(NavLink)(({ theme }) => ({
   fontSize: "1.1rem",
   color: theme.palette.primary.main,
   fontWeight: "600",
+  "&.active": {
+    color: theme.palette.secondary.main,
+  },
 }));
 
 export default function AboutLayout() {

@@ -9,13 +9,28 @@ import MoreInfo from "./MoreInfo";
 const StyledStack = styled(Stack, {
   shouldForwardProp: (prop) => prop !== "danger",
 })(({ theme }) => ({
-  overflow: "hidden",
   border: `0.1px solid ${theme.palette.divider}`,
   margin: "0.5rem",
   borderRadius: "10px",
-  transition: "all 0.15s ease-in-out",
+  transition: "all 0.5s ease-in-out",
+  backgroundColor: theme.palette.background.default,
+  position: "relative",
   "&:hover": {
-    boxShadow: `6px 6px 12px ${theme.palette.info.main}`,
+    "&::after": {
+      "--angle": "0deg",
+      content: "''",
+      position: "absolute",
+      height: "calc(100% + 6px)",
+      width: "calc(100% + 6px)",
+      borderRadius: "10px",
+      top: "50%",
+      left: "50%",
+      translate: "-50% -50%",
+      zIndex: "-1",
+      backgroundImage:
+        "conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545)",
+      animation: "spin 4s linear infinite",
+    },
   },
 }));
 
@@ -25,30 +40,28 @@ export default function BookingCard() {
     setSeeMore((seeMore) => !seeMore);
   };
   return (
-    <>
-      <StyledStack direction={"column"}>
-        <Stack
-          borderRadius="5px"
-          gap="5px"
-          direction={{ md: "row", xs: "column" }}
-          height={"fit-content"}
-        >
-          <BookingImage setSeeMore={handleSeeMore} seeMore={seeMore} />
-          <BookingInfo />
-          <Book />
-        </Stack>
-        <Box
-          overflow={"hidden"}
-          maxHeight={seeMore ? "750px" : "0px"}
-          sx={{
-            transition: `max-height 0.4s ease-in-out`,
-          }}
-          alignSelf={"center"}
-          width={"95%"}
-        >
-          <MoreInfo />
-        </Box>
-      </StyledStack>
-    </>
+    <StyledStack direction={"column"}>
+      <Stack
+        borderRadius="5px"
+        gap="5px"
+        direction={{ md: "row", xs: "column" }}
+        height={"fit-content"}
+      >
+        <BookingImage />
+        <BookingInfo setSeeMore={handleSeeMore} seeMore={seeMore} />
+        <Book />
+      </Stack>
+      <Box
+        overflow={"hidden"}
+        maxHeight={seeMore ? "750px" : "0px"}
+        sx={{
+          transition: `max-height 0.4s ease-in-out`,
+        }}
+        alignSelf={"center"}
+        width={"95%"}
+      >
+        <MoreInfo />
+      </Box>
+    </StyledStack>
   );
 }

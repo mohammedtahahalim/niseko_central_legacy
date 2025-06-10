@@ -115,6 +115,18 @@ export type TAppContent = {
   };
   blog: {
     carousel: string[][];
+    blog_intro: {
+      title: string;
+      desc: string;
+    };
+    category_part: {
+      title: string;
+      categories: string[][];
+    };
+    rss_feed: string;
+    posts: {
+      title: string;
+    };
   };
   read_more: string;
 };
