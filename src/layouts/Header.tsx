@@ -1,8 +1,8 @@
-import PreHeader from "../components/header/PreHeader";
-import Welcome from "../components/header/Welcome";
+import PreHeader from "../components/Header/PreHeader";
+import Welcome from "../components/Header/Welcome";
 import { Container, Stack } from "@mui/material";
 import MuiBox from "../components/MuiBox";
-import PostHeader from "../components/header/PostHeader";
+import PostHeader from "../components/Header/PostHeader";
 import { useContext } from "react";
 import { AppContext } from "../utils/context";
 

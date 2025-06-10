@@ -14,7 +14,8 @@ const StyledButton = styled(Button, {
   fontFamily: "Source Code Pro",
   border: activePositions ? `1px solid ${theme.palette.divider}` : "none",
   borderBottom: `none`,
-  borderRadius: "0px",
+  borderTopLeftRadius: "6px",
+  borderTopRightRadius: "6px",
   padding: "0.7rem 1rem",
   [theme.breakpoints.down("md")]: {
     width: "100%",
@@ -39,7 +40,7 @@ const OverlayBox = styled(Box)(({ theme }) => ({
   top: "100%",
   left: "0",
   width: "100%",
-  height: "2px",
+  height: "1px",
   backgroundColor: theme.palette.background.default,
   [theme.breakpoints.down("md")]: {
     transform: "translateY(-50%)",

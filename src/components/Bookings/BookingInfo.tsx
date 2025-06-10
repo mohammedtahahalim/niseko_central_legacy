@@ -1,11 +1,22 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography, Button } from "@mui/material";
+import { useContext, useRef, useState } from "react";
+import { AppContext } from "../../utils/context";
+import FloorPlan from "./FloorPlan";
 
-export default function BookingInfo() {
+interface BookingInfoProps {
+  seeMore: boolean;
+  setSeeMore: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function BookingInfo({ setSeeMore, seeMore }: BookingInfoProps) {
+  const { appContent } = useContext(AppContext);
+  const floorButtonRef = useRef<HTMLButtonElement | null>(null);
+  const [floorPlan, setFloorPlan] = useState<boolean>(false);
   return (
     <Stack
       width={{ md: "40%", xs: "100%" }}
       direction={"column"}
-      gap={{ md: "10px", xs: "3px" }}
+      gap={{ md: "5px", xs: "2px" }}
       p={{ md: "0.5rem 1rem", xs: "0rem 1rem 0.5rem" }}
     >
       <Typography variant="h6" color="secondary">
@@ -35,6 +46,39 @@ export default function BookingInfo() {
         <Typography variant="subtitle2" fontWeight={"200"} color="secondary">
           Mt Yotei View
         </Typography>
+        <Box
+          display={"flex"}
+          width={{ md: "100%", sm: "50%", xs: "100%" }}
+          justifyContent={"space-between"}
+          alignSelf={"center"}
+          marginTop={"5px"}
+        >
+          <Button
+            variant="text"
+            color="secondary"
+            size="small"
+            onClick={() => setSeeMore(true)}
+          >
+            {seeMore
+              ? appContent.booking_card.see_less
+              : appContent.booking_card.see_more}
+          </Button>
+          <Button
+            variant="text"
+            color="secondary"
+            size="small"
+            onClick={() => setFloorPlan(true)}
+            ref={floorButtonRef}
+          >
+            {appContent.booking_card.floor_plan}
+          </Button>
+        </Box>
+        {floorPlan && (
+          <FloorPlan
+            setFloorPlan={setFloorPlan}
+            floorButtonRef={floorButtonRef}
+          />
+        )}
       </Box>
     </Stack>
   );

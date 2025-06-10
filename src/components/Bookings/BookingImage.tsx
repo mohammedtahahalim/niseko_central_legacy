@@ -1,25 +1,12 @@
-import { Box, Button } from "@mui/material";
-import { useContext, useRef, useState } from "react";
-import { AppContext } from "../../utils/context";
-import FloorPlan from "./FloorPlan";
+import { Box } from "@mui/material";
 
-type TBookingImage = {
-  setSeeMore: React.Dispatch<React.SetStateAction<boolean>>;
-  seeMore: boolean;
-};
-
-export default function BookingImage({ setSeeMore, seeMore }: TBookingImage) {
-  const { appContent } = useContext(AppContext);
-  const [floorPlan, setFloorPlan] = useState<boolean>(false);
-  const floorButtonRef = useRef<HTMLButtonElement | null>(null);
-
+export default function BookingImage() {
   return (
     <Box
       width={{ md: "35%", xs: "100%" }}
       height={"100%"}
-      maxHeight={"300px"}
-      sx={{ aspectRatio: "1" }}
-      p={{ xs: "0.5rem 0.5rem 0rem", md: "0.5rem 1rem" }}
+      maxHeight={"230px"}
+      p={{ xs: "0.5rem 0.5rem", md: "0.5rem" }}
       display={"flex"}
       flexDirection={"column"}
     >
@@ -27,7 +14,7 @@ export default function BookingImage({ setSeeMore, seeMore }: TBookingImage) {
         width={{ md: "100%", sm: "50%", xs: "100%" }}
         overflow={"hidden"}
         alignSelf={"center"}
-        sx={{ aspectRatio: "3/4" }}
+        sx={{ aspectRatio: "1" }}
       >
         <img
           src={`${Math.floor(Math.random() * 7 + 1)}.jpg`}
@@ -37,39 +24,6 @@ export default function BookingImage({ setSeeMore, seeMore }: TBookingImage) {
           style={{ borderRadius: "12px" }}
         />
       </Box>
-      <Box
-        display={"flex"}
-        width={{ md: "100%", sm: "50%", xs: "100%" }}
-        justifyContent={"space-between"}
-        alignSelf={"center"}
-        px={"0.5rem"}
-      >
-        <Button
-          variant="text"
-          color="secondary"
-          size="small"
-          onClick={() => setSeeMore(true)}
-        >
-          {seeMore
-            ? appContent.booking_card.see_less
-            : appContent.booking_card.see_more}
-        </Button>
-        <Button
-          variant="text"
-          color="secondary"
-          size="small"
-          onClick={() => setFloorPlan(true)}
-          ref={floorButtonRef}
-        >
-          {appContent.booking_card.floor_plan}
-        </Button>
-      </Box>
-      {floorPlan && (
-        <FloorPlan
-          setFloorPlan={setFloorPlan}
-          floorButtonRef={floorButtonRef}
-        />
-      )}
     </Box>
   );
 }

@@ -26,6 +26,7 @@ import Signup from "./pages/Signup";
 import Management from "./pages/About/Management";
 import NisekoJobs from "./pages/About/NisekoJobs";
 import Testimonials from "./pages/About/Testimonials";
+import GeneralLayout from "./layouts/GeneralLayout";
 
 function App() {
   const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(500);
@@ -42,21 +43,25 @@ function App() {
             <Routes>
               <Route element={<Main />}>
                 <Route path="/" element={<Home />} />
-                <Route element={<AboutLayout />}>
-                  <Route index path="/about" element={<About />} />
-                  <Route path="/management" element={<Management />} />
-                  <Route path="/niseko-jobs" element={<NisekoJobs />} />
-                  <Route path="/testimonials" element={<Testimonials />} />
-                </Route>
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/niseko" element={<Niseko />} />
-                <Route path="/live" element={<Live />} />
-                <Route path="/Weather" element={<Weather />} />
                 <Route path="/long-stay" element={<LongStay />} />
                 <Route path="/special-deals" element={<SpecialDeals />} />
                 <Route path="/guest-service" element={<GuestService />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/contact" element={<Contact />} />
+              </Route>
+              <Route element={<GeneralLayout isBlog={false} />}>
+                <Route path="/niseko" element={<Niseko />} />
+                <Route path="/live" element={<Live />} />
+                <Route path="/Weather" element={<Weather />} />
+              </Route>
+              <Route element={<GeneralLayout isBlog={true} />}>
+                <Route path="/blog" element={<Blog />} />
+              </Route>
+              <Route element={<AboutLayout />}>
+                <Route index path="/about" element={<About />} />
+                <Route path="/management" element={<Management />} />
+                <Route path="/niseko-jobs" element={<NisekoJobs />} />
+                <Route path="/testimonials" element={<Testimonials />} />
               </Route>
               <Route element={<Auth />}>
                 <Route path="/login" element={<Login />} />

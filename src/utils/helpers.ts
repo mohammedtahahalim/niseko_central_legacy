@@ -41,3 +41,24 @@ export const dateFormat = (date: string): boolean => {
   );
   return dateRegex.test(date);
 };
+
+export const codeToIcon = {
+  "01d": "clear_day",
+  "01n": "clear_night",
+  "02d": "mostly_clear_day",
+  "02n": "mostly_clear_night",
+  "03d": "partly_cloudy",
+  "03n": "partly_cloudy",
+  "04d": "cloudy",
+  "04n": "cloudy",
+  "09d": "drizzle",
+  "09n": "drizzle",
+  "10d": "rain",
+  "10n": "rain",
+  "11d": "tstorm",
+  "11n": "tstorm",
+  "13d": "snow",
+  "13n": "snow",
+  "50d": "fog",
+  "50n": "fog",
+};

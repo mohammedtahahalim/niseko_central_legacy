@@ -253,5 +253,118 @@
         }
       ]
     }
-  }
+  },
+  "niseko_informations": [
+    [
+      "日本の北部、北海道に位置するニセコは、日本人や海外からの観光客が一年中訪れる観光地です。",
+      "/niseko_info_1.jpg",
+      "ニセコエリア、特にヒラフは、もともと温泉リゾートとして日本国内では人気がありましたが、世界的にはあまり知られていません。しかし、今では極上のパウダースノーで日本全国、そして世界的に有名です。\n\nニセコは今や世界で最も急速に成長しているスキーリゾートの一つであり、その中心には、この地域最大のリゾートビレッジであるヒラフがあります。日本独特の雰囲気と国際的な影響が融合したヒラフは、世界のどこにも類を見ない体験を提供します。"
+    ],
+    [
+      "ニセコへのアクセス",
+      "",
+      "ニセコに最も近い主要都市は札幌で、主要空港は新千歳国際空港です。アジアの主要ハブ空港から毎日運航する新千歳空港からは、電車、バス、または専用車など、ニセコへの移動手段が充実しています。ニセコセントラルでは、お客様の移動をサポートいたします。"
+    ],
+    [
+      "ニセコの冬",
+      "/niseko_info_2.jpg",
+      "日本のスキーシーズンは12月上旬から4月下旬まで続きます。積雪期には、リゾートは一面の雪に覆われ、スキーヤーやスノーボーダーは、グラン・ヒラフ、HANAZONO、アンヌプリ、ニセコビレッジの4つのリゾートにまたがる47kmの整備されたゲレンデと年間最大15メートルの積雪を堪能できます。山以外では、スノーモービル、キッズスノーパーク、トボガン、スノーシューなど、様々なアクティビティをお楽しみいただけます。"
+    ],
+    [
+      "ニセコの夏",
+      "/niseko_info_3.jpg",
+      "北海道の夏は6月から9月まで温暖な気候で、ニセコは南西部の北海道を体験するのに最適な拠点です。サイクリング、ラフティング、ハイキング、ゴルフ、地元観光など、さまざまなアクティビティのほか、多種多様な料理や新鮮な食材も楽しめます。"
+    ]
+  ],
+  "find_more_button": "推奨宿泊施設",
+  "find_all_button": "ニセコの宿泊施設をすべて見る",
+  "general_layout": {
+    "niseko": {
+      "title": "ニセコ",
+      "sous_title": "世界最高のスキーリゾート、ニセコ",
+      "bannerIMG": "/niseko_banner.jpg"
+    },
+    "live": {
+      "title": "ニセコセントラル",
+      "sous_title": "羊蹄山ライブカメラ",
+      "bannerIMG": "/live_camera_banner.jpg"
+    },
+    "weather": {
+      "title": "ニセコセントラル",
+      "sous_title": "天気",
+      "bannerIMG": "/weather_banner.jpg"
+    }
+  },
+  "live_camera": {
+    "title": "象徴的な羊蹄山を、ライブカメラで 1 年 365 日毎日撮影しています。",
+    "body": "ニセコで最も象徴的で、最も多く写真に撮られているランドマーク、羊蹄山。日本の有名な富士山に似ていることから、しばしばエゾ富士とも呼ばれるこの休火山は、標高1,898メートルです。ニセコの象徴であるこの山の絶景を、どこからでもお楽しみください（写真は30秒ごとに更新されます）。\n\nニセコ滞在中に羊蹄山の写真を投稿する際は、Instagramで#nisekocentralのタグを付けて投稿してください！"
+  },
+  "weather": {
+    "title": "ニセコセントラルの最新のニセコ積雪情報と天気予報をご確認ください。極上のパウダースノーと素晴らしい天候の中で、ニセコでの休暇をお楽しみください。",
+    "useful_links": {
+      "name": "便利なリンク",
+      "links": [
+        [
+          "ヤフー天気",
+          "http://weather.yahoo.co.jp/weather/jp/1b/1600/1395.html"
+        ],
+        [
+          "ニセコリフトレポート",
+          "http://www.niseko.ne.jp/en/weather/index.html"
+        ],
+        ["雪予報", "http://www.snow-forecast.com/resorts/Niseko/6day/mid"],
+        ["雪崩とバックカントリーレポート", "http://niseko.nadare.info/"]
+      ]
+    }
+  },
+  "blog": {
+    "carousel": [
+      [
+        "ニセコで春ラフティングに挑戦すべき理由",
+        "/blog_1.jpg",
+        "https://www.nisekocentral.com/blog/why-you-should-try-spring-rafting-in-niseko"
+      ],
+      [
+        "ニセコセントラルの車両付き宿泊施設ガイド",
+        "/blog_2.jpg",
+        "https://www.nisekocentral.com/blog/complimentary-vehicles-2025-26"
+      ],
+      [
+        "快適な旅：ニセコセントラルシャトルサービスでスムーズな到着と出発を",
+        "/blog_3.jpg",
+        "https://www.nisekocentral.com/blog/niseko-central-shuttle-service"
+      ],
+      [
+        "ニセコセントラル 2025/26：最高の料金で理想の宿泊施設を確保するためのヒント",
+        "/blog_4.jpg",
+        "https://www.nisekocentral.com/blog/niseko-central-winter-2025-26"
+      ]
+    ],
+    "blog_intro": {
+      "title": "ニセコセントラルブログ",
+      "desc": "ニセコセントラルは認可旅行代理店であり、全日本旅行業協会の会員です（登録番号2-529）。"
+    },
+    "category_part": {
+      "title": "カテゴリー",
+      "categories": [
+        ["宿泊施設", "https://www.nisekocentral.com/blog/niseko-accommodation"],
+        [
+          "ニセコセントラルニュース",
+          "https://www.nisekocentral.com/blog/niseko-central-news"
+        ],
+        ["ニセコライフ", "https://www.nisekocentral.com/blog/niseko-life"],
+        ["特別セール", "https://www.nisekocentral.com/blog/special-deals"],
+        ["スタッフ", "https://www.nisekocentral.com/blog/staff"],
+        ["夏", "https://www.nisekocentral.com/blog/niseko-summer"],
+        ["旅行のヒント", "https://www.nisekocentral.com/blog/travel-tips"],
+        ["ビデオ", "https://www.nisekocentral.com/blog/videos"],
+        ["冬", "https://www.nisekocentral.com/blog/niseko-winter"]
+      ]
+    },
+    "rss_feed": "RSSフィードを購読する",
+    "posts": {
+      "title": "最新の投稿"
+    }
+  },
+  "read_more": "続きを読む"
 }
