@@ -23,8 +23,6 @@ export default function Blog() {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const [numToShow, setNumToShow] = useState<number>(3);
 
-  console.log(numToShow);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
