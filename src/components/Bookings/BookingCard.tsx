@@ -12,7 +12,6 @@ const StyledStack = styled(Stack, {
   border: `0.1px solid ${theme.palette.divider}`,
   margin: "0.5rem",
   borderRadius: "10px",
-  transition: "all 0.5s ease-in-out",
   backgroundColor: theme.palette.background.default,
   position: "relative",
   "&:hover": {
