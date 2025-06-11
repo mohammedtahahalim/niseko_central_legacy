@@ -292,6 +292,11 @@
       "title": "Niseko Central",
       "sous_title": "Weather",
       "bannerIMG": "/weather_banner.jpg"
+    },
+    "faq": {
+      "title": "Niseko Central",
+      "sous_title": "FAQ",
+      "bannerIMG": "/faq_banner.jpg"
     }
   },
   "live_camera": {
@@ -371,5 +376,159 @@
       "title": "Most recent posts"
     }
   },
-  "read_more": "Read More"
+  "read_more": "Read More",
+  "faq": {
+    "niseko": {
+      "title": "Niseko",
+      "content": [
+        [
+          "Where is Niseko?",
+          "Niseko is located on the northernmost island of Japan, Hokkaido. It is around 110 km from New Chitose Airport and 95 kms from Sapporo, Japan's 5th largest city. Niseko is approximately 800 kms north of Tokyo, the capital of Japan. You can find it on Google Maps here.\n\nThe name 'Niseko' usually refers to the ski resorts positioned on Mt. Niseko-Annupuri and the surrounding areas. Technically though, two of the four major resorts (Grand Hirafu and Hanazono) are located within Kutchan Town and two (Niseko Village and Annupuri) within Niseko Town."
+        ],
+        [
+          "How do I get there?",
+          "The easiest way to get to Niseko is to fly to New Chitose Airport (CTS). There are a variety of transportation options available from the airport including private transfers, buses and trains. Niseko Central can assist with your airport transfers from New Chitose International Airport. For more information, please visit our Transfers page.\n\nIf you are taking the train, you will need to change trains at either Otaru or Sapporo Station. Please make sure to get off at Kutchan Station and not Hirafu Station. For timetable and price information, please see the Hyperdia website."
+        ],
+        [
+          "Which airlines fly to New Chitose Airport?",
+          "International direct flights are available from Hong Kong (Hong Kong Airlines, Cathay Pacific Airways, Japan Airlines), Singapore (Scoot), Malaysia (AirAsia X), Thailand (Thai Airways, All Nippon Airways, China Airlines, Japan Airlines), Taiwan (All Nippon Airways, China Airways, EVA Airways, Japan Airlines), Korea (Korean Airlines, Japan Airlines, Air Busan + more), China (Air China, Japan Airways, All Nippon Airways + more) and Hawaii (Hawaiian Airlines).\n\nDomestic flights from Tokyo (Haneda and Narita) and Osaka (Kansai Airport) are available with Japan Airlines, All Nippon Airways (ANA) along with low-cost carriers including Peach Aviation, Air Do, Vanilla Air, Skymark Airlines and Jetstar Airways"
+        ],
+        [
+          "Do I need to book Guest Services (transfers/lessons/restaurants/etc.) before arrival?",
+          "Yes, it is recommend to book all services as soon as possible. Availability for services such as transfers and ski lessons are very limited especially during peak periods. For more details on the different services available and to request a booking, please see our Guest Services page.\n\nMany of the more popular restaurants in Niseko tend to book out well ahead of time, while others will not start accepting bookings until they open, usually in late-November to early-December. Most restaurants in Niseko-Hirafu now take bookings online or have English speaking staff. The majority of restaurant reservations can be made directly. For more details on the dining options available in Niseko including how you can make a reservation, please visit our Restaurants page."
+        ],
+        [
+          "When is the best time to come to Niseko?",
+          "The four seasons offer differing experiences in Niseko. While mostly known for its abundant powder snow for skiers and snowboarders, more and more Guests have been taking advantage of Niseko's cool summer climate and visiting during the green season from June till October.\n\nThe ski season usually lasts from late-November till early May and therefore during spring, you can enjoy a mix of skiing, whitewater rafting and cycling. Summer brings perfect weather to be outdoors and enjoy golf, hiking, cycling (road and mountain bike), rafting and harvesting of local crops and fruits that stretch out into the autumn period as well.\n\nWinter's consistent, dry powder snow brings many visitors from all over the globe who rave not only about the fantastic snow, but also the accommodation, quality of food and restaurant options and Onsens (hot spring baths)."
+        ],
+        [
+          "What are the weather and snow conditions like in winter?",
+          "The weather will vary greatly from the start of the season (early Nov) till the end (beginning of May). December through to February will be the coldest months with the most amount of fresh snow. March and April are the spring skiing months with more sunny weather and higher temperatures. Skiing in spring is also enjoyable with the melting snow being soft and there can also be fresh powder in the start or middle of March. Please see here for the average temperature and snowfall in Niseko."
+        ],
+        [
+          "Where can I buy groceries in Niseko?",
+          "There are several options for groceries within Niseko-Hirafu including Sapporo Drug Store, Seicomart and Lawson convenience stores. However, if you are looking for a range of goods, there are 3 main supermarkets in Kutchan approximately 10-15 minutes away by car: Lucky, MaxValu and Co-Op, you can also find more produces in MPocket."
+        ],
+        [
+          "Where can I enjoy an Onsen (hot spring bath)?",
+          "There are several options for Onsen within the Niseko-Hirafu village within walking distance including Hirafu-tei in the upper village. The Annupuri area has a large selection of Onsens including Kanronomori, Yugokorotei, even a men and women mixed Onsen at the Grand Hotel."
+        ]
+      ]
+    },
+    "niseko_central": {
+      "title": "Niseko Central",
+      "content": [
+        [
+          "What's the difference between Standard, Eco Serviced & Serviced cleaning?",
+          "Your accommodation level of servicing is either Standard, Eco Serviced or Serviced, which is indicated in your proposal and confirmation under the section Service Type.\n\nPlease note, Standard cleaning requires the accommodation to be left in a clean and tidy condition - see the next FAQ for more information.\n\nStandard - 1 Mid Stay Clean includes full clean, fresh towels, linen change and garbage removal per 8 nights, evenly distributed across the stay (applicable for 8+ nights or more).\n\nEco Serviced - Fresh towels and garbage removed every 2nd day. Full clean, fresh towels, linen change and garbage removal every 4th day.\n\nServiced - Full clean includes fresh towels, bed making and garbage removal every 2nd day. Bed linen changed every 4th day.\n\nFor more information on cleaning or to change your cleaning, please contact us."
+        ],
+        [
+          "What if I don't want to clean up?",
+          "At Check-Out, Guests are required to leave their accommodation in a clean and tidy condition, including:\n\nAll furniture returned to its original positions.\n\nAll rubbish placed in rubbish bins.\n\nAll used crockery, cutlery and cookware washed and placed in cupboards or left in drying rack, or put into the dishwasher with the cycle started.\n\nIf Guests would prefer, our housekeeping team can attend to these tasks after Check-Out for an additional ¥15,000 fee for apartments/condominiums and ¥20,000 fee for houses. In the case where Guests leave these tasks to our housekeeping staff, the ¥15,000/¥20,000 fee will be automatically charged upon Check-Out."
+        ],
+        [
+          "What amenities are provided in the accommodation? Do I need to bring anything?",
+          "All of our accommodations are supplied with amenities such as shampoo, conditioner, body wash, hand soap, and towels. Hair dryers are provided in each bathroom. Washing powder can be found in accommodations with laundry facilities. There are also kitchen cleaning supplies such as sponges, gloves and dishwashing liquid. Accommodations with a full kitchen are equipped with cutlery, dishware and common kitchen equipment and utensils."
+        ],
+        [
+          "What are your check-in and check-out times?",
+          "Check-in is from 3pm and check-out is before 10am."
+        ],
+        [
+          "Where do I check-in?",
+          "Your check-in will take place in the accommodation. Therefore we ask that you provide your arrival time and method beforehand so we can arrange to meet you."
+        ],
+        [
+          "Is it possible to have an early check-in or late check-out?",
+          "Early-check-in/late check-out cannot be guaranteed but where possible we try to accommodate all requests. Charges may apply. Please let us know if you would like to request an early check-in or late check-out."
+        ],
+        [
+          "Where is your front desk?",
+          "Our Front Desk is located on the 1st floor of Yama Shizen East building. Please note the opening hours vary by season."
+        ],
+        [
+          "Is there Wi-Fi in the accommodation?",
+          "Yes, all our accommodations have complimentary, unlimited use of Wi-Fi."
+        ],
+        [
+          "Are there skis/boards storage facilities in my accommodation?",
+          "Yes, all our accommodations have ski/board storage facilities."
+        ],
+        [
+          "Is there car parking available at my accommodation?",
+          "Some accommodations have undercover car parking facilities, garages, carports or designated parking areas. Spaces can be very limited and fees apply to parking at some properties. Please inform us in advance if you require car parking during your stay."
+        ],
+        [
+          "Can I add another person?",
+          "In many cases we are able to accommodate another guest to your accommodation. However, all accommodations have a maximum number of guests which may not be exceeded, so depending on the number of guests in your booking, adding more guests may not be possible.\n\nCases of where we are able to assist you in adding an additional person to your booking, there may be an additional charge for this.\n\nIf more guests than there are number of beds are staying, we will provide a Japanese style futon for you. Please note that only one Japanese style futon may be added to each accommodation.\n\nPlease contact our Reservations team (reservations@nisekocentral.com) to enquire about adding additional guests."
+        ],
+        [
+          "What if I want to change my dates?",
+          "It may be possible to make slight changes to your travel dates, however this will depend on other bookings in the accommodation you have booked. Depending on the change required, a fee may be incurred. Our Reservations team will be able to advise if changes are possible and any fees which may be incurred."
+        ],
+        [
+          "What services does Niseko Central offer?",
+          "Apart from accommodation, Niseko Central can also book all your Guest Services for your stay including airport transfers, lift passes, ski/snowboard lessons, equipment rental, delivered wine and more."
+        ],
+        [
+          "What if my booking involves moving rooms?",
+          "When your stay includes a room move, you will be informed at the time of booking. Please pack and leave your luggage in your room by 10am. Our staff will collect and move your luggage to your new room. Your new room will be ready from 3pm, and you will be able to collect your new keys from Front Desk at your convenience after 3pm."
+        ]
+      ]
+    },
+    "japan": {
+      "title": "Japan",
+      "content": [
+        [
+          "Can I rent a car and drive in Japan?",
+          "If you wish to drive in Japan, you must possess one of the following driving permits:\n\nA Japanese Driver's License.\n\nAn International Driver's License (90 member countries) based on the Treaty of Geneva (1949).\n\nFor more information please visit: http://www.japan-guide.com/e/e2022.html"
+        ],
+        [
+          "Do I need travel insurance?",
+          "Travelling without insurance is crazy. You need travel insurance which covers you for:\n\nHoliday cancellation due to illness or injury as well as flight delays and cancellations.\n\nSnowsports - for strong intermediate and advanced skiers and boarders it is essential that your insurance covers 'off-piste' areas. Some of Niseko's best 'off piste' ridings are 'through the gates'. These areas are not in the official boundary of the resort but can be accessed legally from the resort area. Most ski schools require you to have insurance which covers you for skiing in these areas. Costs of rescue and appropriate medical care can be very high.\n\nLike most highly seasonal resort hotels and resorts we cannot provide a refund or reschedule your accommodation or services if your flights are cancelled or delayed or if you reschedule or cancel your trip for a medical or other reason beyond your control.\n\nWinter weather can delay flights and travel arrangements. If your usual travel insurer does not provide sufficient cover then an easy option that provides cover for both delayed flights and snowsports is World Nomads."
+        ],
+        [
+          "What about credit cards & money in Japan?",
+          "Although most stores and restaurants will accept VISA, MasterCard and American Express cards, travellers should keep in mind that some smaller shops will only accept cash. There are ATMs for getting money out (Aya and Lucky Supermarket in Kutchan)."
+        ],
+        [
+          "What if I do not speak Japanese?",
+          "Travelling in a country where you do not speak the language can be both challenging and rewarding, but even if you don't speak any Japanese, finding your way around Japan needn't be difficult. English is widely spoken throughout the country, particularly in major cities and tourist centers.\n\nPublic transportation announcements are frequently made in both Japanese and English, and signs generally include decipherable roman characters or an English explanation. A comprehensive range of tourist services also provides a helping hand to foreign visitors in Japan."
+        ]
+      ]
+    },
+    "skiing": {
+      "title": "Skiing/Boarding",
+      "content": [
+        [
+          "What clothing do I need for Niseko?",
+          "Waterproof and well insulated ski wear is needed for skiing/snowboarding in Niseko. While other ski resorts and areas in Japan are colder, temperatures during December to mid-March will generally be in the negatives to -10 range. Sometimes it can reach as cold as -20 degrees for night skiing near the top of the mountain.\n\nThermal underwear should also be worn by beginners and those that feel the cold. When not skiing, warm waterproof boots with grip (ice/snow is very slippery to walk on) are highly recommended. Slip-on spikes can be purchased in Niseko and recommended for walking around town but be sure not to wear any spikes inside your accommodation as they will damage the floors."
+        ],
+        [
+          "What is the difference between an All Mountain and Grand Hirafu lift pass?",
+          "An All Mountain lift pass gives access to all four resorts on the Niseko-Annupuri mountains - Grand Hirafu, Annupuri, Niseko Village and Hanazono.\n\nA Grand Hirafu lift pass allows you to ski at Grand Hirafu and Hanazono."
+        ],
+        [
+          "How can I get to the other resorts on the mountain?",
+          "All the resorts are connected via lifts at the top of the mountain for intermediate and advanced skiers. Depending on conditions, some traversing may be required.\n\nGrand Hirafu, Niseko Village and Annupuri are also linked via the Grand United Shuttle bus which is free for All Mountain lift pass holders.\n\nHanazono can also be accessed via the complimentary Hanazono Shuttle from Grand Hirafu."
+        ],
+        [
+          "Do I need a separate lift pass for night skiing?",
+          "Night skiing is available at no extra cost if you have a valid lift pass for 1 day or longer. Grand Hirafu's night skiing gives access to the largest areas in Japan till night skiing closing time, meaning you could potentially ski for 12 hours a day if you have the energy.\n\nDepending on snow conditions, night skiing usually starts early December and runs through till late March. Please see the Grand Hirafu website here for planned lift operation date and times."
+        ],
+        [
+          "How many ski runs are there at the resort?",
+          "There are a total of 61 ski runs across the whole Niseko United resort with 2,191 acres (8.87 km2) skiable. The lift system comprises 3 gondolas and 35 lifts in total."
+        ],
+        [
+          "Where can I find a trail map?",
+          "You can find the latest All Mountain and Grand Hirafu resort maps on our lift passes information page."
+        ],
+        [
+          "What sites do you recommend for a Niseko weather forecast and updates on snow conditions?",
+          "Experience Niseko has a daily snow updates along with Snow Japan. Snow-forecast.com is a good source of weather forecast in winter with snowfall forecasts at village level, mid-mountain and at the top of the lifts."
+        ]
+      ]
+    }
+  }
 }
