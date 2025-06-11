@@ -46,13 +46,13 @@ function App() {
                 <Route path="/long-stay" element={<LongStay />} />
                 <Route path="/special-deals" element={<SpecialDeals />} />
                 <Route path="/guest-service" element={<GuestService />} />
-                <Route path="/faq" element={<FAQ />} />
                 <Route path="/contact" element={<Contact />} />
               </Route>
               <Route element={<GeneralLayout isBlog={false} />}>
                 <Route path="/niseko" element={<Niseko />} />
                 <Route path="/live" element={<Live />} />
                 <Route path="/Weather" element={<Weather />} />
+                <Route path="/faq" element={<FAQ />} />
               </Route>
               <Route element={<GeneralLayout isBlog={true} />}>
                 <Route path="/blog" element={<Blog />} />

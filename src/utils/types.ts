@@ -129,6 +129,24 @@ export type TAppContent = {
     };
   };
   read_more: string;
+  faq: {
+    niseko: {
+      title: string;
+      content: string[][];
+    };
+    niseko_central: {
+      title: string;
+      content: string[][];
+    };
+    japan: {
+      title: string;
+      content: string[][];
+    };
+    skiing: {
+      title: string;
+      content: string[][];
+    };
+  };
 };
 
 export type TAppContext = {

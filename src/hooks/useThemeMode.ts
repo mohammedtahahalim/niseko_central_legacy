@@ -29,6 +29,7 @@ export default function useThemeMode(threshold: number = 500) {
     },
     info: {
       main: "rgb(77,110,194, 0.3)",
+      contrastText: "#000",
     },
   };
 
@@ -43,6 +44,7 @@ export default function useThemeMode(threshold: number = 500) {
     },
     info: {
       main: "rgb(255,107,107, 0.15)",
+      contrastText: "#fff",
     },
   };
 
