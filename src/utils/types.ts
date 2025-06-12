@@ -156,6 +156,10 @@ export type TAppContent = {
       general: string;
     };
   };
+  specialDeals: {
+    title: string;
+    articles: string[][];
+  };
 };
 
 export type TAppContext = {
