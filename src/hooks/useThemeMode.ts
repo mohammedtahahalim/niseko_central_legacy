@@ -102,6 +102,18 @@ export default function useThemeMode(threshold: number = 500) {
               color: currentTheme === "light" ? "#4A637D" : "#7895B1",
             },
           },
+          {
+            props: { color: "success" },
+            style: {
+              color: "green",
+            },
+          },
+          {
+            props: { color: "error" },
+            style: {
+              color: "red",
+            },
+          },
         ],
       },
       MuiSvgIcon: {
@@ -120,6 +132,15 @@ export default function useThemeMode(threshold: number = 500) {
         styleOverrides: {
           root: {
             fontFamily: "Source Code Pro",
+          },
+        },
+      },
+      MuiInputLabel: {
+        styleOverrides: {
+          root: {
+            zIndex: 1,
+            paddingLeft: "4px",
+            paddingRight: "4px",
           },
         },
       },

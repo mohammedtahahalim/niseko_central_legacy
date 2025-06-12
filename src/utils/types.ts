@@ -147,6 +147,15 @@ export type TAppContent = {
       content: string[][];
     };
   };
+  contact: {
+    enquire: string;
+    contact_info: string[][];
+    contact_details: { [key: string]: string | string[] };
+    types: {
+      accomodation: string;
+      general: string;
+    };
+  };
 };
 
 export type TAppContext = {
@@ -155,4 +164,37 @@ export type TAppContext = {
   setLang: React.Dispatch<React.SetStateAction<"en" | "jp">>;
   appContent: TAppContent;
   lang: "en" | "jp";
+};
+
+export interface IContactState {
+  firstName: string;
+  lastName: string;
+  email?: string;
+  country?: string;
+  phoneNumber?: string;
+  flexible?: "yes" | "no";
+  nights?: number;
+  adults?: number;
+  children?: number;
+  infants?: number;
+  interest?: Set<string>;
+  message?: string;
+}
+
+export type TContactAction = {
+  type:
+    | "firstName"
+    | "lastName"
+    | "email"
+    | "country"
+    | "phoneNumber"
+    | "date"
+    | "flexible"
+    | "nights"
+    | "adults"
+    | "children"
+    | "infants"
+    | "interest"
+    | "message";
+  payload: string | number | Set<string>;
 };

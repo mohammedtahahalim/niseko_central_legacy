@@ -41,7 +41,7 @@ export default function DurationAndQuantity() {
         <Box display={"flex"} overflow={"hidden"} gap={"5px"}>
           <StyledDatePicker
             value={dayjs(startDate)}
-            minDate={dayjs(new Date().getTime())}
+            minDate={dayjs(startDate)}
             onChange={(e) =>
               setStartDate(
                 e ? Math.max(e.valueOf(), new Date().getTime()) : startDate
