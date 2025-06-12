@@ -14,12 +14,12 @@ import {
   Radio,
   FormControlLabel,
   Typography,
+  CircularProgress,
 } from "@mui/material";
-import { useContext, useReducer } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import { AppContext } from "../../utils/context";
 import type { IContactState, TContactAction } from "../../utils/types";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import dayjs from "dayjs";
+import emailjs from "@emailjs/browser";
 
 const StyledTextField = styled(TextField, {
   shouldForwardProp: (prop) => prop !== "danger",
@@ -52,7 +52,6 @@ const initialState: IContactState = {
   email: "",
   country: "",
   phoneNumber: "",
-  date: "",
   flexible: "no",
   nights: 0,
   adults: 0,
@@ -65,10 +64,53 @@ const initialState: IContactState = {
 export default function Accomodation() {
   const { appContent, lang } = useContext(AppContext);
   const [formElements, dispatch] = useReducer(reducer, initialState);
+  const [loadingState, setLoadingState] = useState<boolean>(false);
+  const [fallbackMessage, setFallBackMessage] = useState<string>("");
 
-  const sendInquiry = () => {
-    console.log(formElements);
+  const sendInquiry = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoadingState(true);
+    const message = `
+      From: ${formElements.firstName} ${formElements.lastName}
+      Email: ${formElements.email}
+      Phone Number: ${formElements.phoneNumber}
+      Country: ${formElements.country}
+      Flexible Dates: ${formElements.flexible}
+      Duration Stay: ${formElements.nights}
+      Guests: ${formElements.adults} Adults, ${
+      formElements.children
+    } Children, ${formElements.infants} Infants
+      Interests: ${[...(formElements.interest ?? new Set())].join(", ")}
+      Message: ${formElements.message}
+    `;
+    try {
+      emailjs
+        .send(
+          "service_gxs9l81",
+          "template_p83yoeu",
+          { message },
+          {
+            publicKey: "xRd4DEqPqBERaiCHZ",
+          }
+        )
+        .then(() => {
+          setFallBackMessage("Message Sent Successfully ...");
+        })
+        .catch((err) => {
+          setFallBackMessage(err);
+        });
+    } catch (err) {
+      setFallBackMessage(err as string);
+    } finally {
+      setLoadingState(false);
+    }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFallBackMessage("");
+    }, 3500);
+  }, [fallbackMessage]);
 
   return (
     <StyledForm onSubmit={sendInquiry}>
@@ -81,6 +123,13 @@ export default function Accomodation() {
           onChange={(e) =>
             dispatch({ type: "firstName", payload: e.target.value })
           }
+          size="small"
+          InputLabelProps={{
+            sx: {
+              backgroundColor: "background.default",
+              px: 1,
+            },
+          }}
         />
         <TextField
           type="text"
@@ -90,17 +139,37 @@ export default function Accomodation() {
           onChange={(e) =>
             dispatch({ type: "lastName", payload: e.target.value })
           }
+          size="small"
+          InputLabelProps={{
+            sx: {
+              backgroundColor: "background.default",
+              px: 1,
+            },
+          }}
         />
       </Box>
       <StyledTextField
         type="email"
         label={appContent.contact.contact_details.email}
         color="secondary"
+        size="small"
         value={formElements.email}
         onChange={(e) => dispatch({ type: "email", payload: e.target.value })}
+        InputLabelProps={{
+          sx: {
+            backgroundColor: "background.default",
+            px: 1,
+          },
+        }}
       />
-      <FormControl>
-        <InputLabel id="country-label">
+      <FormControl size="small">
+        <InputLabel
+          id="country-label"
+          sx={{
+            backgroundColor: "background.default",
+            px: 1,
+          }}
+        >
           {appContent.contact.contact_details.country}
         </InputLabel>
         <Select
@@ -132,15 +201,14 @@ export default function Accomodation() {
         onChange={(e) =>
           dispatch({ type: "phoneNumber", payload: e.target.value })
         }
-        sx={{ maxWidth: "20ch" }}
-      />
-      <DatePicker
-        label={appContent.contact.contact_details.select_date}
-        value={dayjs(formElements.date || new Date().getTime())}
-        sx={{ maxWidth: "25ch" }}
-        onChange={(e) =>
-          dispatch({ type: "date", payload: e ? e.format("YYYY-MM-DD") : "" })
-        }
+        size="small"
+        sx={{ maxWidth: "30ch" }}
+        InputLabelProps={{
+          sx: {
+            backgroundColor: "background.default",
+            px: 1,
+          },
+        }}
       />
       <FormControl>
         <Typography variant="body1">
@@ -168,94 +236,134 @@ export default function Accomodation() {
           />
         </RadioGroup>
       </FormControl>
-      <FormControl>
-        <InputLabel id="nights-label">
-          {appContent.contact.contact_details.nights_title}
-        </InputLabel>
-        <Select
-          value={formElements.nights || ""}
-          sx={{ maxWidth: "30ch" }}
-          color="secondary"
-          onChange={(e) =>
-            dispatch({ type: "nights", payload: e.target.value || 0 })
-          }
-          labelId="nights-label"
-        >
-          {Array.from({ length: 15 }).map((_, idx) => {
-            return (
-              <MenuItem key={idx} value={idx + 1}>
-                {idx + 1}
-              </MenuItem>
-            );
-          })}
-        </Select>
-      </FormControl>
-      <FormControl>
-        <InputLabel id="adults-label">
-          {appContent.contact.contact_details.adults_title}
-        </InputLabel>
-        <Select
-          value={formElements.adults || ""}
-          sx={{ maxWidth: "30ch" }}
-          color="secondary"
-          onChange={(e) =>
-            dispatch({ type: "adults", payload: e.target.value || 0 })
-          }
-          labelId="adults-label"
-        >
-          {Array.from({ length: 15 }).map((_, idx) => {
-            return (
-              <MenuItem key={idx} value={idx + 1}>
-                {idx + 1}
-              </MenuItem>
-            );
-          })}
-        </Select>
-      </FormControl>
-      <FormControl>
-        <InputLabel id="children-label">
-          {appContent.contact.contact_details.children_title}
-        </InputLabel>
-        <Select
-          value={formElements.children || ""}
-          sx={{ maxWidth: "30ch" }}
-          color="secondary"
-          onChange={(e) =>
-            dispatch({ type: "children", payload: e.target.value || 0 })
-          }
-          labelId="children-label"
-        >
-          {Array.from({ length: 15 }).map((_, idx) => {
-            return (
-              <MenuItem key={idx} value={idx + 1}>
-                {idx + 1}
-              </MenuItem>
-            );
-          })}
-        </Select>
-      </FormControl>
-      <FormControl>
-        <InputLabel id="infants-label">
-          {appContent.contact.contact_details.infants_title}
-        </InputLabel>
-        <Select
-          value={formElements.infants || ""}
-          sx={{ maxWidth: "30ch" }}
-          color="secondary"
-          onChange={(e) =>
-            dispatch({ type: "infants", payload: e.target.value || 0 })
-          }
-          labelId="infants-label"
-        >
-          {Array.from({ length: 15 }).map((_, idx) => {
-            return (
-              <MenuItem key={idx} value={idx + 1}>
-                {idx + 1}
-              </MenuItem>
-            );
-          })}
-        </Select>
-      </FormControl>
+      <Box
+        display={"flex"}
+        flexDirection={{ md: "row", xs: "column" }}
+        gap={"10px"}
+        sx={{ "& > *": { flex: "1" } }}
+        maxWidth={"550px"}
+      >
+        <FormControl size="small">
+          <InputLabel
+            id="nights-label"
+            sx={{
+              backgroundColor: "background.default",
+              px: 1,
+            }}
+          >
+            {appContent.contact.contact_details.nights_title}
+          </InputLabel>
+          <Select
+            value={formElements.nights || ""}
+            sx={{ maxWidth: "30ch" }}
+            color="secondary"
+            onChange={(e) =>
+              dispatch({ type: "nights", payload: e.target.value || 0 })
+            }
+            labelId="nights-label"
+          >
+            {Array.from({ length: 15 }).map((_, idx) => {
+              return (
+                <MenuItem key={idx} value={idx + 1}>
+                  {idx + 1}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+        <FormControl size="small">
+          <InputLabel
+            id="adults-label"
+            sx={{
+              backgroundColor: "background.default",
+              px: 1,
+            }}
+          >
+            {appContent.contact.contact_details.adults_title}
+          </InputLabel>
+          <Select
+            value={formElements.adults || ""}
+            sx={{ maxWidth: "30ch" }}
+            color="secondary"
+            onChange={(e) =>
+              dispatch({ type: "adults", payload: e.target.value || 0 })
+            }
+            labelId="adults-label"
+          >
+            {Array.from({ length: 15 }).map((_, idx) => {
+              return (
+                <MenuItem key={idx} value={idx + 1}>
+                  {idx + 1}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+      </Box>
+      <Box
+        display={"flex"}
+        flexDirection={{ md: "row", xs: "column" }}
+        gap={"10px"}
+        sx={{ "& > *": { flex: "1" } }}
+        maxWidth={"550px"}
+      >
+        <FormControl size="small">
+          <InputLabel
+            id="children-label"
+            sx={{
+              backgroundColor: "background.default",
+              px: 1,
+            }}
+          >
+            {appContent.contact.contact_details.children_title}
+          </InputLabel>
+          <Select
+            value={formElements.children || ""}
+            sx={{ maxWidth: "30ch" }}
+            color="secondary"
+            onChange={(e) =>
+              dispatch({ type: "children", payload: e.target.value || 0 })
+            }
+            labelId="children-label"
+          >
+            {Array.from({ length: 15 }).map((_, idx) => {
+              return (
+                <MenuItem key={idx} value={idx + 1}>
+                  {idx + 1}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+        <FormControl size="small">
+          <InputLabel
+            id="infants-label"
+            sx={{
+              backgroundColor: "background.default",
+              px: 1,
+            }}
+          >
+            {appContent.contact.contact_details.infants_title}
+          </InputLabel>
+          <Select
+            value={formElements.infants || ""}
+            sx={{ maxWidth: "30ch" }}
+            color="secondary"
+            onChange={(e) =>
+              dispatch({ type: "infants", payload: e.target.value || 0 })
+            }
+            labelId="infants-label"
+          >
+            {Array.from({ length: 15 }).map((_, idx) => {
+              return (
+                <MenuItem key={idx} value={idx + 1}>
+                  {idx + 1}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+      </Box>
       <FormControl>
         <FormLabel>{appContent.contact.contact_details.properties}</FormLabel>
         <FormGroup
@@ -303,6 +411,7 @@ export default function Accomodation() {
                       });
                     }}
                     checked={formElements.interest?.has(element) ?? false}
+                    size="small"
                   />
                   <FormLabel
                     id={element}
@@ -311,6 +420,7 @@ export default function Accomodation() {
                         ? "secondary"
                         : "primary"
                     }
+                    sx={{ fontSize: "0.8rem" }}
                   >
                     {element}
                   </FormLabel>
@@ -328,15 +438,38 @@ export default function Accomodation() {
         label={appContent.contact.contact_details.message as string}
         sx={{ maxWidth: "75ch" }}
         onChange={(e) => dispatch({ type: "message", payload: e.target.value })}
+        InputLabelProps={{
+          sx: {
+            backgroundColor: "background.default",
+            px: 1,
+          },
+        }}
       />
-      <Button
-        sx={{ maxWidth: "fit-content" }}
-        variant="contained"
-        color="secondary"
-        onClick={sendInquiry}
-      >
-        {appContent.contact.contact_details.submit}
-      </Button>
+      {loadingState ? (
+        <CircularProgress />
+      ) : (
+        <Button
+          sx={{ maxWidth: "fit-content" }}
+          variant="contained"
+          color="secondary"
+          type="submit"
+          disabled={loadingState}
+        >
+          {appContent.contact.contact_details.submit}
+        </Button>
+      )}
+      {fallbackMessage && (
+        <Typography
+          variant="body1"
+          color={
+            fallbackMessage === "Message Sent Successfully ..."
+              ? "success"
+              : "error"
+          }
+        >
+          {fallbackMessage}
+        </Typography>
+      )}
     </StyledForm>
   );
 }

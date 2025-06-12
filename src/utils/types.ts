@@ -172,7 +172,6 @@ export interface IContactState {
   email?: string;
   country?: string;
   phoneNumber?: string;
-  date?: string;
   flexible?: "yes" | "no";
   nights?: number;
   adults?: number;
