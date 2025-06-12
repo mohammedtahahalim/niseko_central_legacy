@@ -27,6 +27,9 @@ import Management from "./pages/About/Management";
 import NisekoJobs from "./pages/About/NisekoJobs";
 import Testimonials from "./pages/About/Testimonials";
 import GeneralLayout from "./layouts/GeneralLayout";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import "dayjs/locale/ja";
 
 function App() {
   const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(500);
@@ -39,35 +42,40 @@ function App() {
       >
         <ThemeProvider theme={themeStyle}>
           <MantineProvider>
-            <CssBaseline />
-            <Routes>
-              <Route element={<Main />}>
-                <Route path="/" element={<Home />} />
-                <Route path="/long-stay" element={<LongStay />} />
-                <Route path="/special-deals" element={<SpecialDeals />} />
-                <Route path="/guest-service" element={<GuestService />} />
-              </Route>
-              <Route element={<GeneralLayout isBlog={false} />}>
-                <Route path="/niseko" element={<Niseko />} />
-                <Route path="/live" element={<Live />} />
-                <Route path="/Weather" element={<Weather />} />
-                <Route path="/faq" element={<FAQ />} />
-                <Route path="/contact" element={<Contact />} />
-              </Route>
-              <Route element={<GeneralLayout isBlog={true} />}>
-                <Route path="/blog" element={<Blog />} />
-              </Route>
-              <Route element={<AboutLayout />}>
-                <Route index path="/about" element={<About />} />
-                <Route path="/management" element={<Management />} />
-                <Route path="/niseko-jobs" element={<NisekoJobs />} />
-                <Route path="/testimonials" element={<Testimonials />} />
-              </Route>
-              <Route element={<Auth />}>
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-              </Route>
-            </Routes>
+            <LocalizationProvider
+              dateAdapter={AdapterDayjs}
+              adapterLocale={lang === "jp" ? "ja" : "en"}
+            >
+              <CssBaseline />
+              <Routes>
+                <Route element={<Main />}>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/long-stay" element={<LongStay />} />
+                  <Route path="/special-deals" element={<SpecialDeals />} />
+                  <Route path="/guest-service" element={<GuestService />} />
+                </Route>
+                <Route element={<GeneralLayout isBlog={false} />}>
+                  <Route path="/niseko" element={<Niseko />} />
+                  <Route path="/live" element={<Live />} />
+                  <Route path="/Weather" element={<Weather />} />
+                  <Route path="/faq" element={<FAQ />} />
+                  <Route path="/contact" element={<Contact />} />
+                </Route>
+                <Route element={<GeneralLayout isBlog={true} />}>
+                  <Route path="/blog" element={<Blog />} />
+                </Route>
+                <Route element={<AboutLayout />}>
+                  <Route index path="/about" element={<About />} />
+                  <Route path="/management" element={<Management />} />
+                  <Route path="/niseko-jobs" element={<NisekoJobs />} />
+                  <Route path="/testimonials" element={<Testimonials />} />
+                </Route>
+                <Route element={<Auth />}>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                </Route>
+              </Routes>
+            </LocalizationProvider>
           </MantineProvider>
         </ThemeProvider>
       </AppContext.Provider>

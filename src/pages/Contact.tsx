@@ -51,11 +51,11 @@ const OverlayBox = styled(Box)(({ theme }) => ({
 export default function Contact() {
   const { appContent } = useContext(AppContext);
   const [activeForm, setActiveForm] = useState<"accomodation" | "general">(
-    "general"
+    "accomodation"
   );
   return (
     <Stack direction={"column"} width={"100%"} p={"2rem"} gap={"2rem"}>
-      <Stack direction={"column"} gap={"5px"}>
+      <Stack direction={"column"} gap={{ md: "5px", xs: "15px" }}>
         <Typography variant="h6" color="primary">
           {appContent.contact.enquire}
         </Typography>
@@ -66,10 +66,12 @@ export default function Contact() {
                 key={element[0]}
                 display={"flex"}
                 gap={"2px"}
-                alignItems={"center"}
+                alignItems={"flex-start"}
               >
-                <strong>{element[0]}</strong> :{" "}
-                <Typography variant="body1">{element[1]}</Typography>
+                <strong style={{ textWrap: "nowrap" }}>{element[0]} :</strong>{" "}
+                <Typography variant="subtitle1" color="secondary">
+                  {element[1]}
+                </Typography>
               </Box>
             );
           })}

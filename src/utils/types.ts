@@ -165,3 +165,37 @@ export type TAppContext = {
   appContent: TAppContent;
   lang: "en" | "jp";
 };
+
+export interface IContactState {
+  firstName: string;
+  lastName: string;
+  email?: string;
+  country?: string;
+  phoneNumber?: string;
+  date?: string;
+  flexible?: "yes" | "no";
+  nights?: number;
+  adults?: number;
+  children?: number;
+  infants?: number;
+  interest?: Set<string>;
+  message?: string;
+}
+
+export type TContactAction = {
+  type:
+    | "firstName"
+    | "lastName"
+    | "email"
+    | "country"
+    | "phoneNumber"
+    | "date"
+    | "flexible"
+    | "nights"
+    | "adults"
+    | "children"
+    | "infants"
+    | "interest"
+    | "message";
+  payload: string | number | Set<string>;
+};
