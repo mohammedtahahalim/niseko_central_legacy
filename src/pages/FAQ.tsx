@@ -10,7 +10,7 @@ export default function FAQ() {
   const { appContent } = useContext(AppContext);
   console.log(currentActiveAccordion);
   return (
-    <Stack direction={"column"} flexWrap={"wrap"} width={"100%"} p={"0.5rem"}>
+    <Stack direction={"column"} width={"100%"} p={"2rem"}>
       {(Object.keys(appContent.faq) as Array<keyof typeof appContent.faq>).map(
         (box, firstIndex) => {
           return (

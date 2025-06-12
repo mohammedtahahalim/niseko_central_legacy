@@ -297,6 +297,11 @@
       "title": "Niseko Central",
       "sous_title": "FAQ",
       "bannerIMG": "/faq_banner.jpg"
+    },
+    "contact": {
+      "title": "Niseko Central",
+      "sous_title": "Contact",
+      "bannerIMG": "/contact_banner.jpg"
     }
   },
   "live_camera": {
@@ -529,6 +534,62 @@
           "Experience Niseko has a daily snow updates along with Snow Japan. Snow-forecast.com is a good source of weather forecast in winter with snowfall forecasts at village level, mid-mountain and at the top of the lifts."
         ]
       ]
+    }
+  },
+  "contact": {
+    "enquire": "Enquire Now!",
+    "contact_info": [
+      ["Front Desk", "+81 (0) 136 23 3503"],
+      ["Reservations", "+81 (0) 136 21 2558"],
+      ["Australia", "Toll Free - redirects to Japan Office: 1800-242-740"],
+      ["Hong Kong", "Toll Free - redirects to Japan Office: 800-906-113"],
+      ["Singapore", "Toll Free - redirects to Japan Office: 800-852-3866"],
+      [
+        "Niseko Central",
+        "6-8, Niseko Hirafu 1-jo 3-chome, Kutchan-cho, Abuta-gun, Hokkaido, Japan 〒044-0080"
+      ]
+    ],
+    "types": {
+      "accomodation": "Accomodation Enquiry",
+      "general": "General Enquiry"
+    },
+    "contact_details": {
+      "first": "First Name",
+      "last": "Last Name",
+      "email": "Email",
+      "country": "Country of Residence",
+      "phone": "Phone Number",
+      "arrival_date": "Arrival Date",
+      "flexible": "Are your dates flexible? *",
+      "nights": "",
+      "adults": "",
+      "children": "",
+      "infants": "",
+      "properties": "Which properties are you interested in?\n\n(check all that apply)",
+      "all_properties": [
+        "All properties",
+        "Condominiums",
+        "Resort Homes",
+        "Deep Tracks",
+        "Ezo 365",
+        "Horizon Townhouses",
+        "Hirafu Woods",
+        "J House",
+        "Kashi Lodge",
+        "Kisetsukan",
+        "Konkuriito",
+        "Miharashi",
+        "Miyuki",
+        "Mori Houses",
+        "Powder Tracks",
+        "Sekka Kan",
+        "Shirakaba",
+        "Tsuru",
+        "Whiskey Woods",
+        "Yama Shizen",
+        "Youtei Tracks"
+      ],
+      "please_check": ["Please check if applicable", "Currently In House"]
     }
   }
 }

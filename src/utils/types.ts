@@ -147,6 +147,15 @@ export type TAppContent = {
       content: string[][];
     };
   };
+  contact: {
+    enquire: string;
+    contact_info: string[][];
+    contact_details: { [key: string]: string | string[] };
+    types: {
+      accomodation: string;
+      general: string;
+    };
+  };
 };
 
 export type TAppContext = {
