@@ -16,7 +16,6 @@ import Blog from "./pages/Blog";
 import Niseko from "./pages/Niseko";
 import Live from "./pages/Live";
 import Weather from "./pages/Weather";
-import LongStay from "./pages/LongStay";
 import SpecialDeals from "./pages/SpecialDeals";
 import GuestService from "./pages/GuestService";
 import FAQ from "./pages/FAQ";
@@ -50,8 +49,6 @@ function App() {
               <Routes>
                 <Route element={<Main />}>
                   <Route path="/" element={<Home />} />
-                  <Route path="/long-stay" element={<LongStay />} />
-                  <Route path="/special-deals" element={<SpecialDeals />} />
                   <Route path="/guest-service" element={<GuestService />} />
                 </Route>
                 <Route element={<GeneralLayout isBlog={false} />}>
@@ -60,6 +57,7 @@ function App() {
                   <Route path="/Weather" element={<Weather />} />
                   <Route path="/faq" element={<FAQ />} />
                   <Route path="/contact" element={<Contact />} />
+                  <Route path="/special-deals" element={<SpecialDeals />} />
                 </Route>
                 <Route element={<GeneralLayout isBlog={true} />}>
                   <Route path="/blog" element={<Blog />} />

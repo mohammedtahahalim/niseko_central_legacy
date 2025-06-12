@@ -13,7 +13,6 @@
     ],
     "specialMenu": [
       ["Accommodation", "/"],
-      ["Long Stay", "/long-stay"],
       ["Special Deals", "/special-deals"],
       ["Guest Services", "/guest-service"],
       ["FAQ", "/faq"],
@@ -302,6 +301,11 @@
       "title": "Niseko Central",
       "sous_title": "Contact",
       "bannerIMG": "/contact_banner.jpg"
+    },
+    "special-deals": {
+      "title": "Niseko Central",
+      "sous_title": "Contact",
+      "bannerIMG": "/special_deals.jpg"
     }
   },
   "live_camera": {
@@ -796,5 +800,58 @@
       "please_check": ["Please check if applicable", "Currently In House"],
       "submit": "Submit"
     }
+  },
+  "specialDeals": {
+    "title": "Search for exciting deals on Niseko accommodation and discount hotel rates to make your next trip to Japan more fun and affordable!",
+    "articles": [
+      [
+        "/special_deals/1.jpg",
+        "Freedom to Explore: Niseko Central Properties With a Rental Car Included",
+        "Enjoy the ultimate flexibility with select Niseko Central accommodations, where a car is included—perfect for exploring Niseko’s resorts, restaurants, and more.",
+        "https://www.nisekocentral.com/niseko-accommodation-deals/freedom-to-explore-niseko"
+      ],
+      [
+        "/special_deals/2.jpg",
+        "Selected Properties Come with a Complimentary Shuttle Service 2025-26",
+        "Guests staying at Kisetsukan, Yama Shizen, or Youtei Tracks can enjoy the free shuttle service to and from the King Gondola Base.",
+        "https://www.nisekocentral.com/niseko-accommodation-deals/selected-properties-come-with-a-complimentary-shuttle-service-2025-26"
+      ],
+      [
+        "/special_deals/3.jpg",
+        "Warm Up to Savings: Winter 2025/26 Early Bird Sale Now Open!",
+        "Lock in the best rates for your Niseko ski holiday with Winter 2025/26 Early Bird Deals. Secure your stay today & enjoy exclusive savings on top accommodation.",
+        "https://www.nisekocentral.com/niseko-accommodation-deals/winter-2025-26-early-bird"
+      ],
+      [
+        "/special_deals/4.jpg",
+        "A welcome back gift for our returning Guests. Enjoy 5% off your Winter 2025/26 stay!",
+        "Returning to Niseko Central? Enjoy exclusive savings with our Winter 2025/26 Repeater Discount. Book now and get rewarded for your loyalty with special rates!",
+        "https://www.nisekocentral.com/niseko-accommodation-deals/winter-2025-26-repeater-discount"
+      ],
+      [
+        "/special_deals/5.jpg",
+        "Stay and Save Special Returns for Winter 2025/26",
+        "Stay longer and save even more with up to 4 complimentary nights during your Niseko Central stay next Winter",
+        "https://www.nisekocentral.com/niseko-accommodation-deals/stay-and-save-winter-2025-26"
+      ],
+      [
+        "/special_deals/6.jpg",
+        "10% off stays for Niseko Classic 2025 Participants",
+        "Get ready for Niseko's premier cycling event with a discounted stay with Niseko Central.",
+        "https://www.nisekocentral.com/niseko-accommodation-deals/niseko-classic-2025"
+      ],
+      [
+        "/special_deals/7.jpg",
+        "Member-only Deals",
+        "Exclusive access to the best deals on Niseko accommodation, town houses, condominiums, apartments and chalets.",
+        "https://www.nisekocentral.com/niseko-accommodation-deals/member-only-deals"
+      ],
+      [
+        "/special_deals/8.jpg",
+        "Experience Niseko Passport",
+        "Your passport to great discounts in and around Niseko including restaurants, activities, rentals and more, available during your stay with Niseko Central.",
+        "https://www.nisekocentral.com/niseko-accommodation-deals/experience-niseko-passport"
+      ]
+    ]
   }
 }

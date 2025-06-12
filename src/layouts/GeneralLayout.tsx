@@ -13,7 +13,7 @@ type TGeneralLayout = {
 };
 
 export default function GeneralLayout({ isBlog }: TGeneralLayout) {
-  const title = useLocation().pathname.split("-").join(" ").replace("/", "");
+  const title = useLocation().pathname.replace("/", "");
   const { appContent } = useContext(AppContext);
 
   return (
