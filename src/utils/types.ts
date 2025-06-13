@@ -160,6 +160,13 @@ export type TAppContent = {
     title: string;
     articles: string[][];
   };
+  guestService: {
+    choose: string;
+    services: {
+      title: string;
+      content: string[][];
+    }[];
+  };
 };
 
 export type TAppContext = {

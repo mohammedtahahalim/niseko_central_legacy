@@ -1,5 +1,6 @@
 import "./App.css";
 import "@mantine/dates/styles.css";
+import "dayjs/locale/ja";
 import { lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import useThemeMode from "./hooks/useThemeMode";
@@ -28,7 +29,6 @@ import Testimonials from "./pages/About/Testimonials";
 import GeneralLayout from "./layouts/GeneralLayout";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import "dayjs/locale/ja";
 
 function App() {
   const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(500);
@@ -49,7 +49,6 @@ function App() {
               <Routes>
                 <Route element={<Main />}>
                   <Route path="/" element={<Home />} />
-                  <Route path="/guest-service" element={<GuestService />} />
                 </Route>
                 <Route element={<GeneralLayout isBlog={false} />}>
                   <Route path="/niseko" element={<Niseko />} />
@@ -58,6 +57,7 @@ function App() {
                   <Route path="/faq" element={<FAQ />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/special-deals" element={<SpecialDeals />} />
+                  <Route path="/guest-service" element={<GuestService />} />
                 </Route>
                 <Route element={<GeneralLayout isBlog={true} />}>
                   <Route path="/blog" element={<Blog />} />
