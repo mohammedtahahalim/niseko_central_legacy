@@ -24,7 +24,7 @@ import emailjs from "@emailjs/browser";
 const StyledTextField = styled(TextField, {
   shouldForwardProp: (prop) => prop !== "danger",
 })({
-  width: "45ch",
+  maxWidth: "45ch",
 });
 
 const StyledForm = styled("form", {
@@ -86,11 +86,11 @@ export default function Accomodation() {
     try {
       emailjs
         .send(
-          "service_gxs9l81",
-          "template_p83yoeu",
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
           { message },
           {
-            publicKey: "xRd4DEqPqBERaiCHZ",
+            publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
           }
         )
         .then(() => {
@@ -126,7 +126,6 @@ export default function Accomodation() {
           size="small"
           InputLabelProps={{
             sx: {
-              backgroundColor: "background.default",
               px: 1,
             },
           }}
@@ -142,7 +141,6 @@ export default function Accomodation() {
           size="small"
           InputLabelProps={{
             sx: {
-              backgroundColor: "background.default",
               px: 1,
             },
           }}
@@ -157,7 +155,6 @@ export default function Accomodation() {
         onChange={(e) => dispatch({ type: "email", payload: e.target.value })}
         InputLabelProps={{
           sx: {
-            backgroundColor: "background.default",
             px: 1,
           },
         }}
@@ -166,7 +163,6 @@ export default function Accomodation() {
         <InputLabel
           id="country-label"
           sx={{
-            backgroundColor: "background.default",
             px: 1,
           }}
         >
@@ -205,7 +201,6 @@ export default function Accomodation() {
         sx={{ maxWidth: "30ch" }}
         InputLabelProps={{
           sx: {
-            backgroundColor: "background.default",
             px: 1,
           },
         }}
@@ -247,7 +242,6 @@ export default function Accomodation() {
           <InputLabel
             id="nights-label"
             sx={{
-              backgroundColor: "background.default",
               px: 1,
             }}
           >
@@ -275,7 +269,6 @@ export default function Accomodation() {
           <InputLabel
             id="adults-label"
             sx={{
-              backgroundColor: "background.default",
               px: 1,
             }}
           >
@@ -311,7 +304,6 @@ export default function Accomodation() {
           <InputLabel
             id="children-label"
             sx={{
-              backgroundColor: "background.default",
               px: 1,
             }}
           >
@@ -339,7 +331,6 @@ export default function Accomodation() {
           <InputLabel
             id="infants-label"
             sx={{
-              backgroundColor: "background.default",
               px: 1,
             }}
           >

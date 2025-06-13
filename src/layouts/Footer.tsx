@@ -93,9 +93,9 @@ export default function Footer() {
             </Stack>
           </Stack>
           <Box
-            maxWidth={{ md: "35%", xs: "75%" }}
+            maxWidth={{ md: "35%", xs: "100%" }}
             p={"1rem"}
-            alignSelf={"center"}
+            alignSelf={"flex-start"}
           >
             <Typography variant="subtitle1" color="primary">
               {appContent.footer.newsletter.title}

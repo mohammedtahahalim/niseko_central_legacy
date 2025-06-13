@@ -5,7 +5,11 @@ import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 
 export default function Suggestions() {
   return (
-    <Stack direction={"column"} maxWidth={"225px"}>
+    <Stack
+      direction={"column"}
+      maxWidth={{ sm: "225px", xs: "90%" }}
+      alignSelf={"center"}
+    >
       <Box width={"100%"} sx={{ aspectRatio: "4/3" }}>
         <img src="/1.jpg" alt="" width={"100%"} height={"100%"} />
       </Box>

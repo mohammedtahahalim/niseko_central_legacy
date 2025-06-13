@@ -53,7 +53,7 @@ export default function Post({
         sx={{ "& > *": { px: "0.5rem" } }}
         gap={"8px"}
       >
-        <Typography variant="body1" textAlign={"center"} color="secondary">
+        <Typography variant="body1" textAlign={"left"} color="secondary">
           {category}
         </Typography>
         <Button variant="text" sx={{ p: "0.5rem" }}>

@@ -22,7 +22,7 @@ const StyledAccordtion = styled(Box, {
   maxWidth: "550px",
   maxHeight: isClicked ? "1000px" : `${currMaxHeight}px`,
   borderBottom: isLast ? "none" : `1px solid ${theme.palette.divider}`,
-  transition: `all ${isClicked ? 1 : 0.65}s ease-in-out`,
+  transition: `all ${isClicked ? 1 : 0}s linear`,
   overflow: "hidden",
   padding: "1rem 0rem",
 }));
