@@ -19,7 +19,7 @@ const StyledBar = styled(Box, {
   maxHeight: openModal ? "300px" : `${customHeight}px`,
   transition: "max-height 0.5s linear",
   overflow: "hidden",
-  maxWidth: "300px",
+  width: "275px",
   borderBottom: `1px solid ${theme.palette.divider}`,
 }));
 

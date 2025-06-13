@@ -1,6 +1,5 @@
 import "./App.css";
 import "@mantine/dates/styles.css";
-import "swiper/css";
 import "dayjs/locale/ja";
 import { lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
