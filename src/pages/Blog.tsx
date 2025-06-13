@@ -1,9 +1,10 @@
 import { Box, Button, Stack, styled, Typography } from "@mui/material";
-import { useContext, useRef, useEffect, useState } from "react";
+import { useContext, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { AppContext } from "../utils/context";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
 import Post from "../components/Blog/Post";
+import useIntersectObserver from "../hooks/useIntersectObserver";
 
 const SimpleNavLink = styled(NavLink, {
   shouldForwardProp: (prop) => prop !== "danger",
@@ -21,28 +22,12 @@ const SimpleNavLink = styled(NavLink, {
 export default function Blog() {
   const { appContent } = useContext(AppContext);
   const sentinelRef = useRef<HTMLDivElement>(null);
-  const [numToShow, setNumToShow] = useState<number>(3);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setNumToShow(Math.min(numToShow + 2, 10));
-          }
-        });
-      },
-      { threshold: 1 }
-    );
-    if (sentinelRef.current) {
-      observer.observe(sentinelRef.current);
-    }
-    return () => {
-      if (sentinelRef.current) {
-        observer.unobserve(sentinelRef.current);
-      }
-    };
-  }, [numToShow]);
+  const { numToShow } = useIntersectObserver({
+    currRef: sentinelRef,
+    min: 2,
+    max: 6,
+    increment: 2,
+  });
 
   return (
     <Stack

@@ -10,6 +10,7 @@ export default function Live() {
       gap={"2rem"}
       width={"100%"}
       margin={"2rem 0rem"}
+      p={"1rem"}
     >
       <Box
         display={"flex"}

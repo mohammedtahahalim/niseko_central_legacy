@@ -31,7 +31,10 @@ export default function GuestService() {
       p={"2rem"}
       gap={"2rem"}
     >
-      <Stack direction={"column"}>
+      <Stack
+        direction={"column"}
+        alignSelf={{ md: "flex-start", xs: "center" }}
+      >
         <Typography variant="h6" color="secondary">
           {appContent.guestService.choose}
         </Typography>
