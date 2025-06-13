@@ -306,6 +306,11 @@
       "title": "Niseko Central",
       "sous_title": "Contact",
       "bannerIMG": "/special_deals.jpg"
+    },
+    "guest-service": {
+      "title": "Guest Services",
+      "sous_title": "Book your Guest Services pre-arrival and enjoy more holiday time!",
+      "bannerIMG": "/guest_service.jpg"
     }
   },
   "live_camera": {
@@ -852,6 +857,111 @@
         "Your passport to great discounts in and around Niseko including restaurants, activities, rentals and more, available during your stay with Niseko Central.",
         "https://www.nisekocentral.com/niseko-accommodation-deals/experience-niseko-passport"
       ]
+    ]
+  },
+  "guestService": {
+    "choose": "Choose a Service",
+    "services": [
+      {
+        "title": "Winter",
+        "content": [
+          [
+            "Ski & Board Rentals - YamaSport",
+            "Upper Hirafu location, stocking a huge range of models with knowledgeable English speaking staff.",
+            "/services/winter/1.jpg"
+          ],
+          [
+            "Ski & Board Rentals - Grand Hirafu",
+            "Quality equipment, clothing and accessories. Two great locations. Grand Hirafu ski and snowboard rental.",
+            "/services/winter/2.jpg"
+          ],
+          [
+            "GoSnow Private Ski & Board Lessons",
+            "GoSnow, the Official Snowsports School of the Grand Hirafu Resort. Private lessons tailored to suit everyone with Exclusive Priority Lift Lanes!",
+            "/services/winter/3.jpg"
+          ],
+          [
+            "GoSnow Group Ski & Board Lessons",
+            "Based at Niseko-Hirafu Gondola, GoSnow offers exclusive access to the only Magic Carpets and Priority Lift Lanes in Grand Hirafu",
+            "/services/winter/4.jpg"
+          ],
+          [
+            "GoSnow Ski & Board Workshops",
+            "The goal is to ride the best terrain throughout Niseko United with your Workshop specific focus in mind.",
+            "/services/winter/5.jpg"
+          ],
+          [
+            "Lift Passes",
+            "Have your choice of All Mountain or Niseko Grand Hirafu passes in your room ready to hit the mountain.",
+            "/services/winter/6.jpg"
+          ]
+        ]
+      },
+      {
+        "title": "Transfers",
+        "content": [
+          [
+            "Private Transfers",
+            "Private transfer service provides convenient and comfortable journey to and from Niseko.",
+            "/services/transfers/1.jpg"
+          ],
+          [
+            "Niseko -  Airport & Sapporo Hotels Bus",
+            "A great value Airport & Sapporo City Hotels transfer between New Chitose Airport or a listed Sapporo City Hotel and Niseko-Hirafu Welcome Centre!",
+            "/services/transfers/2.jpg"
+          ],
+          [
+            "Toyota Rent-a-Car",
+            "Book your Niseko car rental through Niseko Central and receive an exclusive 10% discount on standard Toyota Rent-a-Car prices.",
+            "/services/transfers/3.jpg"
+          ]
+        ]
+      },
+      {
+        "title": "Concierge",
+        "content": [
+          [
+            "Wine Delivery",
+            "With our Niseko wine delivery, you can enjoy a bottle from our great range of Australian and New Zealand wines, or Japanese umeshu and yuzushu.",
+            "/services/concierge/1.jpg"
+          ],
+          [
+            "Food Packs",
+            "Start your Niseko holiday with a tasty and convenient Welcome Food Pack - waiting in your room upon your arrival!",
+            "/services/concierge/2.jpg"
+          ],
+          [
+            "Onsens",
+            "Unwind the Japanese way and visit one of the local Niseko Onsen (natural hot spring baths).",
+            "/services/concierge/3.jpg"
+          ],
+          [
+            "Niseko Kids Club - Babysitting & Day Care",
+            "In-accommodation babysitting services or Day Care, you can take your pick with Niseko Kids Club!",
+            "/services/concierge/4.jpg"
+          ]
+        ]
+      },
+      {
+        "title": "Summer",
+        "content": [
+          [
+            "Barbecue Sets",
+            "Enjoy a great evening of delicious barbecued food in the beautiful surroundings of Niseko-Hirafu!",
+            "/services/summer/1.jpg"
+          ],
+          [
+            "Rafting, Water Activities & Trekking",
+            "Once the pristine powder snow melts, the Niseko area is awash with crystal clear river waters, perfect for white water rafting.",
+            "/services/summer/2.jpg"
+          ],
+          [
+            "NAC Adventure Park",
+            "Japan's Largest Outdoor Adventure Park!",
+            "/services/summer/3.jpg"
+          ]
+        ]
+      }
     ]
   }
 }

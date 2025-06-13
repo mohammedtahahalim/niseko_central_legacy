@@ -13,8 +13,31 @@ const StyledArticle = styled(Box, {
   maxWidth: "750px",
   alignSelf: "center",
   display: "flex",
-  overflow: "hidden",
+  position: "relative",
+  "&:hover": {
+    "&::after": {
+      "--angle": "0deg",
+      content: "''",
+      position: "absolute",
+      width: "calc(100% + 6px)",
+      height: "calc(100% + 6px)",
+      translate: "-3px -3px",
+      top: "0",
+      left: "0",
+      backgroundImage:
+        "conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545)",
+      zIndex: "-1",
+      animation: "spin 4s linear infinite",
+    },
+  },
 });
+
+const StyledBox = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "danger",
+})(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+  padding: "0.5rem",
+}));
 
 export default function SpecialArticle({
   bannerIMG,
@@ -23,19 +46,19 @@ export default function SpecialArticle({
   link,
 }: TSpecialArticle) {
   return (
-    <StyledArticle
-      flexDirection={{ md: "row", xs: "column" }}
-      gap={{ md: "20px", xs: "8px" }}
-    >
-      <Box maxWidth={{ md: "300px", xs: "100%" }} sx={{ aspectRatio: "4/3" }}>
+    <StyledArticle flexDirection={{ md: "row", xs: "column" }}>
+      <StyledBox
+        maxWidth={{ md: "300px", xs: "100%" }}
+        sx={{ aspectRatio: "4/3" }}
+      >
         <img src={bannerIMG} alt={title} width={"100%"} height={"100%"} />
-      </Box>
-      <Box
+      </StyledBox>
+      <StyledBox
         display={"flex"}
         flexDirection={"column"}
         gap={"5px"}
         flex={"1"}
-        py={"0.5rem"}
+        py={"0.75rem"}
       >
         <Button
           variant="text"
@@ -52,7 +75,7 @@ export default function SpecialArticle({
           </Typography>
         </Button>
         <Typography variant="body1">{desc}</Typography>
-      </Box>
+      </StyledBox>
     </StyledArticle>
   );
 }
