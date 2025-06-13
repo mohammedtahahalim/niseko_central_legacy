@@ -167,6 +167,22 @@ export type TAppContent = {
       content: string[][];
     }[];
   };
+  loginPage: {
+    header: string;
+    keepMeSigned: string;
+    email: string;
+    loginLink: string;
+    password: string;
+    login: string;
+    alternative: string;
+    facebook: string;
+    google: string;
+    new: string;
+    forgotPw: string;
+    agreement: string;
+    terms: string;
+    privacy: string;
+  };
 };
 
 export type TAppContext = {

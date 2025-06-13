@@ -963,5 +963,21 @@
         ]
       }
     ]
+  },
+  "loginPage": {
+    "header": "Login to your Guest Portal",
+    "keepMeSigned": "Keep me logged in on this device",
+    "email": "Email",
+    "loginLink": "Send me a Login Link",
+    "password": "Password",
+    "login": "Login with Password",
+    "alternative": "or sign in with",
+    "facebook": "Facebook",
+    "google": "Google",
+    "new": "New to Niseko Central? Create an account",
+    "forgotPw": "Forgot password?",
+    "agreement": "By signing in or creating an account, you agree with our",
+    "terms": "Terms & conditions",
+    "privacy": "Privacy statement"
   }
 }

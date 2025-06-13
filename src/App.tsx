@@ -49,6 +49,10 @@ function App() {
               <Routes>
                 <Route element={<Main />}>
                   <Route path="/" element={<Home />} />
+                  <Route element={<Auth />}>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+                  </Route>
                 </Route>
                 <Route element={<GeneralLayout isBlog={false} />}>
                   <Route path="/niseko" element={<Niseko />} />
@@ -67,10 +71,6 @@ function App() {
                   <Route path="/management" element={<Management />} />
                   <Route path="/niseko-jobs" element={<NisekoJobs />} />
                   <Route path="/testimonials" element={<Testimonials />} />
-                </Route>
-                <Route element={<Auth />}>
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/signup" element={<Signup />} />
                 </Route>
               </Routes>
             </LocalizationProvider>
