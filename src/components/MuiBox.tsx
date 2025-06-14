@@ -10,12 +10,14 @@ interface TModifiedBox {
   sx?: SxProps<Theme>;
 }
 
-const ModifiedBox = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "variant" && prop !== "currenttheme",
-})<{
+interface TModifiedBoxProps {
   variant: "primary" | "secondary" | "hybrid";
   currenttheme: "light" | "dark";
-}>(({ variant, currenttheme }) => ({
+}
+
+const ModifiedBox = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "variant" && prop !== "currenttheme",
+})<TModifiedBoxProps>(({ variant, currenttheme }) => ({
   backgroundColor:
     variant === "primary"
       ? currenttheme === "dark"

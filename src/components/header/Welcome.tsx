@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { AppContext } from "../../utils/context";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, useTheme } from "@mui/material";
 import Logo from "../Logo";
 
 export default function Welcome() {
   const { appContent } = useContext(AppContext);
+  const theme = useTheme();
   return (
     <Stack
       direction={{ xs: "column", sm: "row" }}
@@ -14,6 +15,7 @@ export default function Welcome() {
       }}
       px={"2rem"}
       py={"1rem"}
+      borderBottom={{ md: "none", xs: `1px solid ${theme.palette.divider}` }}
     >
       <Logo />
       <Typography
