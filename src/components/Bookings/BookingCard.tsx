@@ -27,7 +27,7 @@ const StyledStack = styled(Stack, {
       translate: "-50% -50%",
       zIndex: "-1",
       backgroundImage:
-        "conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545)",
+        "conic-gradient(from var(--angle), #D5B0FC, #0F83FD, #C3FDFD, #81B9FA, #9980FD, #4B82FA, #FADDED, #D5B0FC)",
       animation: "spin 4s linear infinite",
     },
   },

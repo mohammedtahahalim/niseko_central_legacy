@@ -14,22 +14,6 @@ const StyledArticle = styled(Box, {
   alignSelf: "center",
   display: "flex",
   position: "relative",
-  "&:hover": {
-    "&::after": {
-      "--angle": "0deg",
-      content: "''",
-      position: "absolute",
-      width: "calc(100% + 6px)",
-      height: "calc(100% + 6px)",
-      translate: "-3px -3px",
-      top: "0",
-      left: "0",
-      backgroundImage:
-        "conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545)",
-      zIndex: "-1",
-      animation: "spin 4s linear infinite",
-    },
-  },
 });
 
 const StyledBox = styled(Box, {
