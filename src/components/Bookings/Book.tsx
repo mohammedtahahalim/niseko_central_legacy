@@ -1,4 +1,4 @@
-import { Box, Button, Stack } from "@mui/material";
+import { Box, Button, Skeleton, Stack } from "@mui/material";
 import MailIcon from "@mui/icons-material/Mail";
 import { styled } from "@mui/material";
 import { useContext } from "react";
@@ -34,16 +34,24 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 export default function Book() {
-  const { appContent } = useContext(AppContext);
+  const { appContent, loading } = useContext(AppContext);
   return (
     <StyledStack>
       <StyledBox></StyledBox>
-      <Button variant="contained" color="secondary">
-        {appContent.book_now}
-      </Button>
-      <Button variant="text" color="primary" startIcon={<MailIcon />}>
-        {appContent.send_inquiry}
-      </Button>
+      {loading ? (
+        <Skeleton variant="rectangular" />
+      ) : (
+        <Button variant="contained" color="secondary">
+          {appContent.book_now}
+        </Button>
+      )}
+      {loading ? (
+        <Skeleton variant="rectangular" />
+      ) : (
+        <Button variant="text" color="primary" startIcon={<MailIcon />}>
+          {appContent.send_inquiry}
+        </Button>
+      )}
     </StyledStack>
   );
 }

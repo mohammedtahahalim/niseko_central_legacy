@@ -183,6 +183,17 @@ export type TAppContent = {
     terms: string;
     privacy: string;
   };
+  signupPage: {
+    title: string;
+    signUpEmail: string;
+    alternative: string;
+    facebook: string;
+    google: string;
+    login: string;
+    legality: string;
+    terms: string;
+    privacy: string;
+  };
 };
 
 export type TAppContext = {
@@ -191,6 +202,9 @@ export type TAppContext = {
   setLang: React.Dispatch<React.SetStateAction<"en" | "jp">>;
   appContent: TAppContent;
   lang: "en" | "jp";
+  loading: boolean;
+  contents: Record<string, string | Record<string, string>>[];
+  error: string;
 };
 
 export interface IContactState {

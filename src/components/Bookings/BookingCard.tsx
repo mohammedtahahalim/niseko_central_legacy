@@ -3,7 +3,7 @@ import BookingImage from "./BookingImage";
 import BookingInfo from "./BookingInfo";
 import Book from "./Book";
 import { styled } from "@mui/material";
-import { useState } from "react";
+import { memo, useState } from "react";
 import MoreInfo from "./MoreInfo";
 
 const StyledStack = styled(Stack, {
@@ -33,7 +33,7 @@ const StyledStack = styled(Stack, {
   },
 }));
 
-export default function BookingCard() {
+const BookingCard = memo(function BookingCard() {
   const [seeMore, setSeeMore] = useState<boolean>(false);
   const handleSeeMore = () => {
     setSeeMore((seeMore) => !seeMore);
@@ -63,4 +63,6 @@ export default function BookingCard() {
       </Box>
     </StyledStack>
   );
-}
+});
+
+export default BookingCard;

@@ -8,6 +8,9 @@ const defaultAppContext: TAppContext = {
   setLang: () => {},
   appContent: defaultContent,
   lang: "en",
+  loading: true,
+  contents: [],
+  error: "",
 };
 
 export const AppContext = createContext<TAppContext>(defaultAppContext);

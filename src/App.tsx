@@ -29,15 +29,26 @@ import Testimonials from "./pages/About/Testimonials";
 import GeneralLayout from "./layouts/GeneralLayout";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import useFetch from "./hooks/useFetch";
+import Article from "./pages/Article";
 
 function App() {
   const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(500);
   const { setLang, appContent, lang } = useLanguage();
-
+  const { loading, contents, error } = useFetch(0);
   return (
     <BrowserRouter>
       <AppContext.Provider
-        value={{ handleThemeChange, currentTheme, setLang, appContent, lang }}
+        value={{
+          handleThemeChange,
+          currentTheme,
+          setLang,
+          appContent,
+          lang,
+          loading,
+          error,
+          contents,
+        }}
       >
         <ThemeProvider theme={themeStyle}>
           <MantineProvider>
@@ -65,6 +76,7 @@ function App() {
                 </Route>
                 <Route element={<GeneralLayout isBlog={true} />}>
                   <Route path="/blog" element={<Blog />} />
+                  <Route path="/blog/:title" element={<Article />} />
                 </Route>
                 <Route element={<AboutLayout />}>
                   <Route index path="/about" element={<About />} />

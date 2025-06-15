@@ -979,5 +979,16 @@
     "agreement": "By signing in or creating an account, you agree with our",
     "terms": "Terms & conditions",
     "privacy": "Privacy statement"
+  },
+  "signupPage": {
+    "title": "Create Your Account",
+    "signUpEmail": "Sign Up with Email",
+    "alternative": "or sign up with",
+    "facebook": "Facebook",
+    "google": "Google",
+    "login": "Login with existing account",
+    "legality": "By signing in or creating an account, you agree with our",
+    "terms": "Terms & conditions",
+    "privacy": "Privacy statement"
   }
 }
