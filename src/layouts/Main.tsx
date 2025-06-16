@@ -2,8 +2,6 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Stack, Container } from "@mui/material";
-import { Suspense } from "react";
-import Loading from "../components/Loading";
 
 export default function Main() {
   return (
@@ -17,9 +15,7 @@ export default function Main() {
         }}
         disableGutters
       >
-        <Suspense fallback={<Loading />}>
-          <Outlet />
-        </Suspense>
+        <Outlet />
       </Container>
       <Footer />
     </Stack>

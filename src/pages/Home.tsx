@@ -1,6 +1,8 @@
 import { Stack } from "@mui/material";
 import Filters from "../components/Home/Filters";
 import Bookings from "../components/Home/Bookings";
+import { CircularProgress } from "@mui/material";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -11,8 +13,10 @@ export default function Home() {
       gap={"10px"}
       margin={"1.5rem 0rem"}
     >
-      <Filters />
-      <Bookings />
+      <Suspense fallback={<CircularProgress sx={{ alignSelf: "center" }} />}>
+        <Filters />
+        <Bookings />
+      </Suspense>
     </Stack>
   );
 }

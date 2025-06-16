@@ -1,7 +1,7 @@
-import { Box, CircularProgress } from "@mui/material";
+import { Box } from "@mui/material";
 import useIntersectObserver from "../../hooks/useIntersectObserver";
-import { lazy, Suspense, useRef } from "react";
-const BookingCard = lazy(() => import("../Bookings/BookingCard"));
+import { useRef } from "react";
+import BookingCard from "../Bookings/BookingCard";
 
 export default function Bookings() {
   const lastElemRef = useRef<HTMLDivElement | null>(null);
@@ -19,11 +19,9 @@ export default function Bookings() {
       gap={"10px"}
       alignSelf={"center"}
     >
-      <Suspense fallback={<CircularProgress sx={{ alignSelf: "center" }} />}>
-        {Array.from({ length: numToShow }).map((_, idx) => {
-          return <BookingCard key={idx} />;
-        })}
-      </Suspense>
+      {Array.from({ length: numToShow }).map((_, idx) => {
+        return <BookingCard key={idx} />;
+      })}
       <div ref={lastElemRef} style={{ height: "1px" }}></div>
     </Box>
   );

@@ -3,7 +3,7 @@ import BookingImage from "./BookingImage";
 import BookingInfo from "./BookingInfo";
 import Book from "./Book";
 import { styled } from "@mui/material";
-import { useState } from "react";
+import { memo, useState } from "react";
 import MoreInfo from "./MoreInfo";
 
 const StyledStack = styled(Stack, {
@@ -27,13 +27,13 @@ const StyledStack = styled(Stack, {
       translate: "-50% -50%",
       zIndex: "-1",
       backgroundImage:
-        "conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545)",
+        "conic-gradient(from var(--angle), #D5B0FC, #0F83FD, #C3FDFD, #81B9FA, #9980FD, #4B82FA, #FADDED, #D5B0FC)",
       animation: "spin 4s linear infinite",
     },
   },
 }));
 
-export default function BookingCard() {
+const BookingCard = memo(function BookingCard() {
   const [seeMore, setSeeMore] = useState<boolean>(false);
   const handleSeeMore = () => {
     setSeeMore((seeMore) => !seeMore);
@@ -63,4 +63,6 @@ export default function BookingCard() {
       </Box>
     </StyledStack>
   );
-}
+});
+
+export default BookingCard;
