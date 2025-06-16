@@ -989,6 +989,21 @@
     "login": "Login with existing account",
     "legality": "By signing in or creating an account, you agree with our",
     "terms": "Terms & conditions",
-    "privacy": "Privacy statement"
+    "privacy": "Privacy statement",
+    "form": {
+      "firstName": "Given Name",
+      "lastName": "Family Name",
+      "email": "Email",
+      "pw": "Password",
+      "rpPw": "Repeat Password",
+      "validation": [
+        "All fields are required.",
+        "After completing this form you will be sent a verification email. Please click the link in that email to access your account.",
+        "Where your email address below matches the booking email for any existing bookings, those bookings will automatically be loaded into your account. Note that bookings will NOT be loaded if your email address is different, even if your name matches the booking name.",
+        "Password must be 8 or more characters with a mix of letters and numbers or symbols."
+      ],
+      "backButton": "Back",
+      "submitButton": "Create"
+    }
   }
 }

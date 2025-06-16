@@ -1,3 +1,8 @@
+import { signUpSchema } from "./schema";
+import { z } from "zod";
+
+export type TSignUp = z.infer<typeof signUpSchema>;
+
 export type TAppContent = {
   lang: string;
   title: string;
@@ -193,6 +198,16 @@ export type TAppContent = {
     legality: string;
     terms: string;
     privacy: string;
+    form: {
+      firstName: string;
+      lastName: string;
+      email: string;
+      pw: string;
+      rpPw: string;
+      validation: string[];
+      backButton: string;
+      submitButton: string;
+    };
   };
 };
 

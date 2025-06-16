@@ -36,12 +36,25 @@ export default function Signup() {
       <Typography variant="h6" color="primary">
         {appContent.signupPage.title}
       </Typography>
-      <StyledButton variant="outlined" color="secondary">
+      <Button
+        variant="outlined"
+        color="secondary"
+        sx={{
+          width: "100%",
+          maxWidth: "450px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "4px",
+          padding: "8px 0px",
+        }}
+        component={Link}
+        to="/signUpForm"
+      >
         <EmailIcon />
         <Typography variant="body1" color="secondary">
           {appContent.signupPage.signUpEmail}
         </Typography>
-      </StyledButton>
+      </Button>
       <Box
         width={"100%"}
         maxWidth={"550px"}

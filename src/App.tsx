@@ -31,6 +31,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import useFetch from "./hooks/useFetch";
 import Article from "./pages/Article";
+import SignUpForm from "./pages/SignUpForm";
 
 function App() {
   const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(500);
@@ -62,7 +63,8 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route element={<Auth />}>
                     <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/signUp" element={<Signup />} />
+                    <Route path="/signUpForm" element={<SignUpForm />} />
                   </Route>
                 </Route>
                 <Route element={<GeneralLayout isBlog={false} />}>
