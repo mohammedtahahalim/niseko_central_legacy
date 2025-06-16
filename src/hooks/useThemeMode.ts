@@ -31,6 +31,9 @@ export default function useThemeMode(threshold: number = 500) {
       main: "rgb(77,110,194, 0.3)",
       contrastText: "#000",
     },
+    success: {
+      main: "#66BB6A",
+    },
   };
 
   const darkPalette: PaletteOptions = {
@@ -45,6 +48,9 @@ export default function useThemeMode(threshold: number = 500) {
     info: {
       main: "rgb(255,107,107, 0.15)",
       contrastText: "#fff",
+    },
+    success: {
+      main: "#E56448",
     },
   };
 
