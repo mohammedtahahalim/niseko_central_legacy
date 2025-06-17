@@ -388,6 +388,17 @@
     "rss_feed": "Subscribe to our RSS Feed",
     "posts": {
       "title": "Most recent posts"
+    },
+    "newEntry": {
+      "header": "Add A New Article",
+      "title": "Title",
+      "banner": "Banner Image",
+      "category": "Category",
+      "content": "Content",
+      "submit": "Submit",
+      "requiredError": "All Elements Are Required",
+      "successfullMessage": "Article Posted Successfully",
+      "generalError": "Something Went Wrong Try Again Later ..."
     }
   },
   "read_more": "Read More",

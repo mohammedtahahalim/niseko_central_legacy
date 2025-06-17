@@ -3,6 +3,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import XIcon from "@mui/icons-material/X";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import type { Ref } from "react";
+import { Link } from "react-router-dom";
 
 const PostBox = styled(Box, { shouldForwardProp: (prop) => prop !== "danger" })(
   {
@@ -56,7 +57,12 @@ export default function Post({
         <Typography variant="body1" textAlign={"left"} color="secondary">
           {category}
         </Typography>
-        <Button variant="text" sx={{ p: "0.5rem" }}>
+        <Button
+          variant="text"
+          sx={{ p: "0.5rem" }}
+          component={Link}
+          to={title.split(" ").join("-")}
+        >
           <Typography variant="h6" textAlign={"start"}>
             {title}
           </Typography>

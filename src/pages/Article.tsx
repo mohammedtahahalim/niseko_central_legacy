@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AppContext } from "../utils/context";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
+import ArticleContent from "../components/Blog/ArticleContent";
 
 const SimpleNavLink = styled(NavLink, {
   shouldForwardProp: (prop) => prop !== "danger",
@@ -19,7 +20,7 @@ const SimpleNavLink = styled(NavLink, {
 }));
 export default function Article() {
   const { appContent } = useContext(AppContext);
-  const { title } = useParams();
+  const title = useParams()["title"]?.split("-").join(" ") || "";
 
   return (
     <Stack
@@ -61,9 +62,7 @@ export default function Article() {
         </Box>
       </Stack>
       <Stack direction={"column"} flex={3} gap={"1rem"}>
-        <Typography variant="h6" color="primary">
-          {title}
-        </Typography>
+        <ArticleContent title={title} />
       </Stack>
     </Stack>
   );
