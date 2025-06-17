@@ -47,7 +47,7 @@ export default function Accordion({
 
   useLayoutEffect(() => {
     if (titleRef.current) {
-      setCurrMaxHeight(titleRef.current.offsetHeight + 25);
+      setCurrMaxHeight(titleRef.current.offsetHeight + (isLast ? 23 : 24));
     }
   }, []);
   return (

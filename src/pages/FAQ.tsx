@@ -8,7 +8,7 @@ export default function FAQ() {
     string | null
   >(null);
   const { appContent } = useContext(AppContext);
-  console.log(currentActiveAccordion);
+
   return (
     <Stack direction={"column"} width={"100%"} p={"2rem"}>
       {(Object.keys(appContent.faq) as Array<keyof typeof appContent.faq>).map(
