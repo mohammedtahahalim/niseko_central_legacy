@@ -29,6 +29,7 @@ interface PostProps {
   date: string;
   desc: string;
   ref?: Ref<HTMLDivElement>;
+  link: string;
 }
 
 export default function Post({
@@ -38,11 +39,18 @@ export default function Post({
   date,
   desc,
   ref,
+  link,
 }: PostProps) {
   return (
     <PostBox flexDirection={{ sm: "row", xs: "column" }} ref={ref}>
       <ImageWrapper>
-        <img src={image} alt="" width={"100%"} height={"100%"} />
+        <img
+          src={image}
+          alt=""
+          width={"100%"}
+          height={"100%"}
+          style={{ objectFit: "cover" }}
+        />
       </ImageWrapper>
       <Box
         flex={"2"}
@@ -61,7 +69,7 @@ export default function Post({
           variant="text"
           sx={{ p: "0.5rem" }}
           component={Link}
-          to={title.split(" ").join("-")}
+          to={encodeURIComponent(link)}
         >
           <Typography variant="h6" textAlign={"start"}>
             {title}

@@ -62,3 +62,12 @@ export const codeToIcon = {
   "50d": "fog",
   "50n": "fog",
 };
+
+export function toUrlFormat(str: string): string {
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[\s_]+/g, "-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-");
+}

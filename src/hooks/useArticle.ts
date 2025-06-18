@@ -23,7 +23,9 @@ export default function useArticle(title: string) {
       setLoading(true);
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/getArticle/?title=${title}`
+          `${
+            import.meta.env.VITE_API_URL
+          }/api/getArticle/?title=${encodeURIComponent(title)}`
         );
         if (!response.ok) {
           return;

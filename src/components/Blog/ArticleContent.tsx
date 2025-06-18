@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import useArticle from "../../hooks/useArticle";
 import { AppContext } from "../../utils/context";
-import { CircularProgress, styled } from "@mui/material";
+import { Box, CircularProgress, styled } from "@mui/material";
 
 interface IArticleContent {
   title: string;
@@ -23,8 +23,18 @@ const StyledDiv = styled("div", {
 export default function ArticleContent({ title }: IArticleContent) {
   const { lang } = useContext(AppContext);
   const { articleData, loading } = useArticle(title);
-  console.log(articleData, loading);
-  if (loading) return <CircularProgress />;
+
+  if (loading)
+    return (
+      <Box
+        width={"100%"}
+        display={"flex"}
+        justifyContent={"center"}
+        marginTop={"3rem"}
+      >
+        <CircularProgress />
+      </Box>
+    );
   return (
     <StyledDiv
       dangerouslySetInnerHTML={{
