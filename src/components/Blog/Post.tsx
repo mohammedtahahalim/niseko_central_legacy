@@ -3,6 +3,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import XIcon from "@mui/icons-material/X";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import type { Ref } from "react";
+import { Link } from "react-router-dom";
 
 const PostBox = styled(Box, { shouldForwardProp: (prop) => prop !== "danger" })(
   {
@@ -28,6 +29,7 @@ interface PostProps {
   date: string;
   desc: string;
   ref?: Ref<HTMLDivElement>;
+  link: string;
 }
 
 export default function Post({
@@ -37,11 +39,18 @@ export default function Post({
   date,
   desc,
   ref,
+  link,
 }: PostProps) {
   return (
     <PostBox flexDirection={{ sm: "row", xs: "column" }} ref={ref}>
       <ImageWrapper>
-        <img src={image} alt="" width={"100%"} height={"100%"} />
+        <img
+          src={image}
+          alt=""
+          width={"100%"}
+          height={"100%"}
+          style={{ objectFit: "cover" }}
+        />
       </ImageWrapper>
       <Box
         flex={"2"}
@@ -56,7 +65,12 @@ export default function Post({
         <Typography variant="body1" textAlign={"left"} color="secondary">
           {category}
         </Typography>
-        <Button variant="text" sx={{ p: "0.5rem" }}>
+        <Button
+          variant="text"
+          sx={{ p: "0.5rem" }}
+          component={Link}
+          to={encodeURIComponent(link)}
+        >
           <Typography variant="h6" textAlign={"start"}>
             {title}
           </Typography>

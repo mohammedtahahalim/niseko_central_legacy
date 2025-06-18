@@ -383,6 +383,17 @@
     "rss_feed": "RSSフィードを購読する",
     "posts": {
       "title": "最新の投稿"
+    },
+    "newEntry": {
+      "header": "新しい記事を追加する",
+      "title": "タイトル",
+      "banner": "バナー画像",
+      "category": "カテゴリ",
+      "content": "コンテンツ",
+      "submit": "提出する",
+      "requiredError": "すべての要素が必須",
+      "successfullMessage": "記事は正常に投稿されました",
+      "generalError": "問題が発生しました。しばらくしてからもう一度お試しください..."
     }
   },
   "read_more": "続きを読む",

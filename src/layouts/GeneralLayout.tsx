@@ -14,7 +14,7 @@ type TGeneralLayout = {
 
 export default function GeneralLayout({ isBlog }: TGeneralLayout) {
   const title = useLocation().pathname.replace("/", "");
-  console.log(title);
+
   const { appContent } = useContext(AppContext);
 
   return (

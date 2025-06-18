@@ -1,10 +1,18 @@
-import { Box, Button, Stack, styled, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Stack,
+  styled,
+  Typography,
+} from "@mui/material";
 import { useContext, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { AppContext } from "../utils/context";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
 import Post from "../components/Blog/Post";
 import useIntersectObserver from "../hooks/useIntersectObserver";
+import useTopK from "../hooks/useTopK";
 
 const SimpleNavLink = styled(NavLink, {
   shouldForwardProp: (prop) => prop !== "danger",
@@ -20,7 +28,7 @@ const SimpleNavLink = styled(NavLink, {
 }));
 
 export default function Blog() {
-  const { appContent } = useContext(AppContext);
+  const { appContent, lang } = useContext(AppContext);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const { numToShow } = useIntersectObserver({
     currRef: sentinelRef,
@@ -28,6 +36,8 @@ export default function Blog() {
     max: 6,
     increment: 2,
   });
+
+  const { topKBlogs, loading } = useTopK(8);
 
   return (
     <Stack
@@ -72,18 +82,34 @@ export default function Blog() {
         <Typography variant="h6" color="primary">
           {appContent.blog.posts.title}
         </Typography>
-        {Array.from({ length: numToShow }).map((_, idx) => {
-          return (
-            <Post
-              image="/1.jpg"
-              category="Niseko Central News , Summer"
-              title="Why You Should Try Spring Rafting in Niseko"
-              date="10 April, 2025"
-              desc="Enjoy the great outdoors and have a whole lot of fun with spring rafting in Niseko."
-              key={idx}
-            />
-          );
-        })}
+        {loading ? (
+          <Box
+            width={"100%"}
+            display={"flex"}
+            justifyContent={"center"}
+            marginTop={"3rem"}
+          >
+            <CircularProgress />
+          </Box>
+        ) : (
+          <>
+            {topKBlogs.slice(0, numToShow).map((element) => {
+              return (
+                <Post
+                  image={element.banner_img}
+                  category={
+                    lang === "en" ? element.en_category : element.jp_category
+                  }
+                  title={lang === "en" ? element.en_title : element.jp_title}
+                  date={element.date}
+                  desc="Enjoy the great outdoors and have a whole lot of fun with spring rafting in Niseko."
+                  key={element.en_title}
+                  link={element.en_title}
+                />
+              );
+            })}
+          </>
+        )}
         <div ref={sentinelRef} style={{ height: 1 }}></div>
       </Stack>
     </Stack>

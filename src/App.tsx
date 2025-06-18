@@ -32,6 +32,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import useFetch from "./hooks/useFetch";
 import Article from "./pages/Article";
 import SignUpForm from "./pages/SignUpForm";
+import NewBlogEntry from "./pages/NewBlogEntry";
 
 function App() {
   const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(500);
@@ -65,6 +66,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/signUp" element={<Signup />} />
                     <Route path="/signUpForm" element={<SignUpForm />} />
+                    <Route path="/blog/newEntry" element={<NewBlogEntry />} />
                   </Route>
                 </Route>
                 <Route element={<GeneralLayout isBlog={false} />}>

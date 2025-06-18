@@ -132,6 +132,17 @@ export type TAppContent = {
     posts: {
       title: string;
     };
+    newEntry: {
+      header: string;
+      title: string;
+      banner: string;
+      category: string;
+      content: string;
+      submit: string;
+      requiredError: string;
+      successfullMessage: string;
+      generalError: string;
+    };
   };
   read_more: string;
   faq: {
