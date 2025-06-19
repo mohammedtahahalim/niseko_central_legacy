@@ -1,78 +1,74 @@
+import { z } from "zod";
+import createDOMPurify from "isomorphic-dompurify";
+import { JSDOM } from "jsdom";
 import useTranslate from "../backendHelpers/useTranslate.js";
 import dbConnection from "../backendHelpers/dbConnection.js";
 
-import createDOMPurify from "isomorphic-dompurify";
-import { JSDOM } from "jsdom";
 const window = new JSDOM("").window;
 const DOMPurify = createDOMPurify(window);
 
+const articleSchema = z.object({
+  title: z.string().min(1),
+  category: z.string().min(1),
+  content: z.string().min(1),
+  bannerIMG: z.string().min(1),
+  lang: z.enum(["en", "jp"]),
+});
+
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method Not Allowed ..." });
-  }
+  if (req.method !== "POST")
+    return res.status(405).json({ error: "Method not allowed" });
 
-  if (!req.body || typeof req.body !== "object") {
-    return res.status(400).json({ message: "Bad Format ..." });
-  }
-
-  const { title, category, content, bannerIMG, lang } = req.body;
-  if (
-    typeof title !== "string" ||
-    title.trim() === "" ||
-    typeof category !== "string" ||
-    category.trim() === "" ||
-    typeof content !== "string" ||
-    content.trim() === "" ||
-    typeof bannerIMG !== "string" ||
-    bannerIMG.trim() === "" ||
-    (lang !== "en" && lang !== "jp")
-  ) {
-    return res.status(400).json({ message: "Missing Fields In Request ..." });
-  }
-
-  const date = new Date().toLocaleDateString();
-
+  const parse = articleSchema.safeParse(req.body);
+  if (!parse.success)
+    return res
+      .status(400)
+      .json({ error: parse.error.errors.map((e) => e.message) });
   try {
-    const connection = await dbConnection();
+    const { title, category, content, bannerIMG, lang } = parse.data;
 
-    const en_title =
-      lang === "en" ? title : await useTranslate(title, "ja", "en-US");
-    const en_category =
-      lang === "en" ? category : await useTranslate(category, "ja", "en-US");
-    const en_content =
-      lang === "en" ? content : await useTranslate(content, "ja", "en-US");
-    const jp_title =
-      lang === "jp" ? title : await useTranslate(title, "en-US", "ja");
-    const jp_category =
-      lang === "jp" ? category : await useTranslate(category, "en-US", "ja");
-    const jp_content =
-      lang === "jp" ? content : await useTranslate(content, "en-US", "ja");
+    const cleanContent = DOMPurify.sanitize(content);
 
-    const checkQuery = `SELECT * FROM articles WHERE en_title = ?`;
-    const duplicates = await connection.query(checkQuery, [en_title]);
-    console.log(duplicates);
-    if (duplicates[0].length > 0) {
-      return res.status(409).json({ message: "Article Already Exists ..." });
-    }
-
-    const INSERQuery = `INSERT INTO articles (en_title, en_category, en_content, banner_img, date, jp_title, jp_category, jp_content) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
-    const [results] = await connection.query(INSERQuery, [
+    const [
       en_title,
       en_category,
-      DOMPurify.sanitize(en_content),
-      bannerIMG,
-      date,
+      en_content,
       jp_title,
       jp_category,
-      DOMPurify.sanitize(jp_content),
+      jp_content,
+    ] = await Promise.all([
+      lang === "en" ? title : useTranslate(title, "ja", "en-US"),
+      lang === "en" ? category : useTranslate(category, "ja", "en-US"),
+      lang === "en" ? cleanContent : useTranslate(cleanContent, "ja", "en-US"),
+      lang === "jp" ? title : useTranslate(title, "en", "ja"),
+      lang === "jp" ? category : useTranslate(category, "en", "ja"),
+      lang === "jp" ? cleanContent : useTranslate(cleanContent, "en", "ja"),
     ]);
-    if (results.affectedRows === 0) {
-      return res.status(500).json({ message: "Failed to insert article ..." });
+
+    const date = new Date().toLocaleDateString();
+
+    const connection = await dbConnection();
+    const results = await connection.query(
+      "INSERT INTO articles (en_title, en_category, en_content, jp_title, jp_category, jp_content, banner_img, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      [
+        en_title,
+        en_category,
+        en_content,
+        jp_title,
+        jp_category,
+        jp_content,
+        bannerIMG,
+        date,
+      ]
+    );
+
+    if (!results[0]) {
+      return res.status(406).json({ message: "Failed to create article" });
     }
 
-    return res.status(200).json({ message: "Successfuly Added Article ..." });
+    res.status(201).json({ message: "Article created" });
   } catch (err) {
     console.log(err);
-    return res.status(500).json({ message: "Internal Server Error ..." });
+    return res.status(500).json({ message: "Internal server error" });
   }
 }

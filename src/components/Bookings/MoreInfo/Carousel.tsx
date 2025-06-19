@@ -22,16 +22,11 @@ const CarouselBox = styled(Box)<{
   transform: `translateX(-${(index * 100) / length}%)`,
 }));
 
-export default function Carousel() {
-  const [images] = useState<string[]>([
-    "1.jpg",
-    "2.jpg",
-    "3.jpg",
-    "4.jpg",
-    "5.jpg",
-    "6.jpg",
-    "7.jpg",
-  ]);
+interface ICarousel {
+  images: { url: string; blur: string }[];
+}
+
+export default function Carousel({ images }: ICarousel) {
   const [index, setIndex] = useState<number>(1);
 
   useEffect(() => {
@@ -58,8 +53,8 @@ export default function Carousel() {
               }}
             >
               <img
-                src={image}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                src={image.url}
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
                 alt=""
               />
             </Box>

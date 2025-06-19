@@ -16,7 +16,21 @@ const StyledBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export default function MoreInfo() {
+interface IMoreInfo {
+  beds: string;
+  maxPax: number;
+  amenities: string;
+  desc: string;
+  images: { url: string; blur: string }[];
+}
+
+export default function MoreInfo({
+  beds,
+  maxPax,
+  amenities,
+  desc,
+  images,
+}: IMoreInfo) {
   const { appContent } = useContext(AppContext);
   return (
     <StyledBox>
@@ -31,7 +45,8 @@ export default function MoreInfo() {
           fontSize={"0.9rem"}
           fontWeight={"600"}
         >
-          4 Beds, Maximum 5 guests
+          {beds}, {appContent.booking_card.maximum} {maxPax}{" "}
+          {appContent.booking_card.guests}
         </Typography>
         <Typography
           variant="subtitle2"
@@ -43,9 +58,9 @@ export default function MoreInfo() {
           {appContent.charges_apply}
         </Typography>
       </Box>
-      <Ammunities />
-      <Description />
-      <Carousel />
+      <Ammunities amenities={amenities} />
+      <Description desc={desc} />
+      <Carousel images={images} />
       <Typography
         variant="subtitle2"
         color="secondary"

@@ -46,3 +46,19 @@ export const signUpSchema = z
       });
     }
   });
+
+export const bookingSchema = z.object({
+  title: z.string().min(5),
+  category: z.string().min(1),
+  type_one: z.string().min(1),
+  type_two: z.string().min(1),
+  floorSize: z.number().min(10),
+  lifts: z.number().min(100),
+  villageDistance: z.number().min(100),
+  view: z.string(),
+  rawImages: z.string(),
+  maxPax: z.number().min(1),
+  amenities: z.string(),
+  desc: z.string(),
+  pricePerNight: z.number().min(10),
+});

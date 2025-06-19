@@ -98,7 +98,13 @@
   "booking_card": {
     "see_more": "もっと見る",
     "see_less": "閉じる",
-    "floor_plan": "フロアプラン"
+    "floor_plan": "フロアプラン",
+    "floor_size": "床面積",
+    "lifts_within": "エレベーター内",
+    "village_center": "ビレッジセンター内",
+    "view": "ビュー",
+    "maximum": "最大",
+    "guests": "ゲスト"
   },
   "book_now": "予約へ進む",
   "send_inquiry": "お問合せ送信",
@@ -312,6 +318,11 @@
       "title": "Niseko Central",
       "sous_title": "Contact",
       "bannerIMG": "/special_deals.jpg"
+    },
+    "add-booking": {
+      "title": "新しい予約を追加",
+      "sous_title": "システムに新しい予約を追加する",
+      "bannerIMG": "/guest_service.jpg"
     }
   },
   "live_camera": {
@@ -1000,5 +1011,21 @@
       "backButton": "戻る",
       "submitButton": "Create"
     }
+  },
+  "addBooking": {
+    "title": "タイトル",
+    "category": "カテゴリ",
+    "type_one": "タイプ1",
+    "type_two": "タイプ2",
+    "floorSize": "床面積",
+    "lifts": "内部のリフト",
+    "villageDistance": "村の中心地内",
+    "view": "表示（ある場合）",
+    "rawImages": "画像",
+    "maxPax": "最大容量",
+    "amenities": "アメニティ",
+    "desc": "説明",
+    "pricePerNight": "1泊あたりの料金（ドル）",
+    "submit": "予約を追加"
   }
 }

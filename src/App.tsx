@@ -33,6 +33,7 @@ import useFetch from "./hooks/useFetch";
 import Article from "./pages/Article";
 import SignUpForm from "./pages/SignUpForm";
 import NewBlogEntry from "./pages/NewBlogEntry";
+import AddBooking from "./pages/addBooking";
 
 function App() {
   const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(500);
@@ -77,6 +78,7 @@ function App() {
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/special-deals" element={<SpecialDeals />} />
                   <Route path="/guest-service" element={<GuestService />} />
+                  <Route path="/add-booking" element={<AddBooking />} />
                 </Route>
                 <Route element={<GeneralLayout isBlog={true} />}>
                   <Route path="/blog" element={<Blog />} />

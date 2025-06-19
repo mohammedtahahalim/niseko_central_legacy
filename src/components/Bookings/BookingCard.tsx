@@ -3,8 +3,10 @@ import BookingImage from "./BookingImage";
 import BookingInfo from "./BookingInfo";
 import Book from "./Book";
 import { styled } from "@mui/material";
-import { memo, useState } from "react";
+import { memo, useContext, useState } from "react";
 import MoreInfo from "./MoreInfo";
+import type { bookingDetails } from "../../utils/types";
+import { AppContext } from "../../utils/context";
 
 const StyledStack = styled(Stack, {
   shouldForwardProp: (prop) => prop !== "danger",
@@ -33,11 +35,16 @@ const StyledStack = styled(Stack, {
   },
 }));
 
-const BookingCard = memo(function BookingCard() {
+interface IBookingCard {
+  bookingDetail: bookingDetails;
+}
+
+const BookingCard = memo(function BookingCard({ bookingDetail }: IBookingCard) {
   const [seeMore, setSeeMore] = useState<boolean>(false);
   const handleSeeMore = () => {
     setSeeMore((seeMore) => !seeMore);
   };
+  const { lang } = useContext(AppContext);
   return (
     <StyledStack direction={"column"}>
       <Stack
@@ -46,8 +53,33 @@ const BookingCard = memo(function BookingCard() {
         direction={{ md: "row", xs: "column" }}
         height={"fit-content"}
       >
-        <BookingImage />
-        <BookingInfo setSeeMore={handleSeeMore} seeMore={seeMore} />
+        <BookingImage image={bookingDetail.images[0].url} />
+        <BookingInfo
+          setSeeMore={handleSeeMore}
+          seeMore={seeMore}
+          title={
+            lang === "en" ? bookingDetail.en_title : bookingDetail.jp_title
+          }
+          category={
+            lang === "en"
+              ? bookingDetail.en_category
+              : bookingDetail.jp_category
+          }
+          floorSize={bookingDetail.floor_size}
+          liftWithin={bookingDetail.lifts}
+          villageCenter={bookingDetail.village_distance}
+          view={bookingDetail.view}
+          type_one={
+            lang === "en"
+              ? bookingDetail.en_type_one
+              : bookingDetail.jp_type_one
+          }
+          type_two={
+            lang === "en"
+              ? bookingDetail.en_type_two
+              : bookingDetail.jp_type_two
+          }
+        />
         <Book />
       </Stack>
       <Box
@@ -59,7 +91,25 @@ const BookingCard = memo(function BookingCard() {
         alignSelf={"center"}
         width={"95%"}
       >
-        <MoreInfo />
+        <MoreInfo
+          beds={
+            lang === "en"
+              ? bookingDetail.en_type_one.split(", ")[1]
+              : bookingDetail.jp_type_one.split("、")[1]
+          }
+          maxPax={bookingDetail.max_pax}
+          amenities={
+            lang === "en"
+              ? bookingDetail.amenities.join(",")
+              : bookingDetail.jp_amenities.join(",")
+          }
+          desc={
+            lang === "en"
+              ? bookingDetail.short_desc
+              : bookingDetail.jp_short_desc
+          }
+          images={bookingDetail.images}
+        />
       </Box>
     </StyledStack>
   );

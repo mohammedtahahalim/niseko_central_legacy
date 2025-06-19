@@ -2,7 +2,11 @@ import { Box, Skeleton } from "@mui/material";
 import { useContext } from "react";
 import { AppContext } from "../../utils/context";
 
-export default function BookingImage() {
+interface IBookingImage {
+  image: string;
+}
+
+export default function BookingImage({ image }: IBookingImage) {
   const { loading } = useContext(AppContext);
 
   return (
@@ -24,8 +28,8 @@ export default function BookingImage() {
           <Skeleton variant="rectangular" width={"100%"} height={"100%"} />
         ) : (
           <img
-            src={`${Math.floor(Math.random() * 7 + 1)}.jpg`}
-            alt=""
+            src={image}
+            alt="Placeholder"
             width={"100%"}
             height={"100%"}
             style={{ borderRadius: "12px" }}

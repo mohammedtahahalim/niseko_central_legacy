@@ -7,10 +7,10 @@ const StyledBox = styled(Box)(({ theme }) => ({
   fontFamily: "Inter",
 }));
 
-export default function Ammunities() {
-  return (
-    <StyledBox>
-      Card key, Smart TV, Gondola Shuttle - Winter Only, Free WiFi, Netflix
-    </StyledBox>
-  );
+interface IAmmunities {
+  amenities: string;
+}
+
+export default function Ammunities({ amenities }: IAmmunities) {
+  return <StyledBox>{amenities}</StyledBox>;
 }

@@ -1,7 +1,10 @@
 import { signUpSchema } from "./schema";
+import { bookingSchema } from "./schema";
 import { z } from "zod";
 
 export type TSignUp = z.infer<typeof signUpSchema>;
+
+export type TBooking = z.infer<typeof bookingSchema>;
 
 export type TAppContent = {
   lang: string;
@@ -43,6 +46,12 @@ export type TAppContent = {
     see_more: string;
     see_less: string;
     floor_plan: string;
+    floor_size: string;
+    lifts_within: string;
+    village_center: string;
+    view: string;
+    maximum: string;
+    guests: string;
   };
   book_now: string;
   send_inquiry: string;
@@ -220,6 +229,22 @@ export type TAppContent = {
       submitButton: string;
     };
   };
+  addBooking: {
+    title: string;
+    category: string;
+    type_one: string;
+    type_two: string;
+    floorSize: string;
+    lifts: string;
+    villageDistance: string;
+    view: string;
+    rawImages: string;
+    maxPax: string;
+    amenities: string;
+    desc: string;
+    pricePerNight: string;
+    submit: string;
+  };
 };
 
 export type TAppContext = {
@@ -264,4 +289,30 @@ export type TContactAction = {
     | "interest"
     | "message";
   payload: string | number | Set<string>;
+};
+
+export type bookingDetails = {
+  id: number;
+  en_title: string;
+  jp_title: string;
+  en_category: string;
+  jp_category: string;
+  en_type_one: string;
+  jp_type_one: string;
+  en_type_two: string;
+  jp_type_two: string;
+  floor_size: number;
+  lifts: number;
+  village_distance: number;
+  view: string;
+  images: { url: string; blur: string }[];
+  max_pax: number;
+  amenities: string[];
+  short_desc: string;
+  rating: number;
+  price_per_night: number;
+  available: 1 | 0;
+  jp_view: string;
+  jp_short_desc: string;
+  jp_amenities: string[];
 };
