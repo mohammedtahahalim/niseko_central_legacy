@@ -80,7 +80,7 @@ const BookingCard = memo(function BookingCard({ bookingDetail }: IBookingCard) {
               : bookingDetail.jp_type_two
           }
         />
-        <Book />
+        <Book category={bookingDetail.en_category} />
       </Stack>
       <Box
         overflow={"hidden"}

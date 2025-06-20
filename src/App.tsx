@@ -34,6 +34,8 @@ import Article from "./pages/Article";
 import SignUpForm from "./pages/SignUpForm";
 import NewBlogEntry from "./pages/NewBlogEntry";
 import AddBooking from "./pages/AddBooking";
+import NotFound from "./pages/NotFound";
+import BookingCategory from "./pages/BookingCategory";
 
 function App() {
   const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(750);
@@ -64,6 +66,10 @@ function App() {
               <Routes>
                 <Route element={<Main />}>
                   <Route path="/" element={<Home />} />
+                  <Route
+                    path="/booking/:category"
+                    element={<BookingCategory />}
+                  />
                   <Route element={<Auth />}>
                     <Route path="/login" element={<Login />} />
                     <Route path="/signUp" element={<Signup />} />
@@ -91,6 +97,7 @@ function App() {
                   <Route path="/niseko-jobs" element={<NisekoJobs />} />
                   <Route path="/testimonials" element={<Testimonials />} />
                 </Route>
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </LocalizationProvider>
           </MantineProvider>
