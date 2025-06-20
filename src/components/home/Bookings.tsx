@@ -13,13 +13,14 @@ export default function Bookings() {
     currRef: lastElemRef,
     min: 3,
     max: contents.length,
-    increment: 2,
+    increment: 3,
   });
 
-  const initial =
-    window.innerWidth > 600
-      ? { opacity: 0, x: "75px" }
+  const initial = (denom: number) => {
+    return window.innerWidth > 600
+      ? { opacity: 0, x: `${denom}px` }
       : { opacity: 0, y: "75px" };
+  };
   const animate =
     window.innerWidth > 600 ? { opacity: 1, x: 0 } : { opacity: 1, y: 0 };
   return (
@@ -33,7 +34,7 @@ export default function Bookings() {
       {contents.slice(0, numToShow).map((element, idx) => {
         return (
           <motion.div
-            initial={initial}
+            initial={initial(50 + (idx % 3) * 50)}
             animate={animate}
             transition={{ type: "tween", duration: 0.75, ease: "easeInOut" }}
             key={idx}

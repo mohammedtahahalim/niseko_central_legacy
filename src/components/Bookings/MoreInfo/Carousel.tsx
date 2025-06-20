@@ -39,6 +39,8 @@ export default function Carousel({ images }: ICarousel) {
     }
   }, [index]);
 
+  console.log(isLoaded);
+
   return (
     <ContainerCarouselBox>
       <CarouselBox length={images.length} index={index}>
@@ -71,15 +73,16 @@ export default function Carousel({ images }: ICarousel) {
                 />
                 <img
                   src={image.url}
+                  alt="Placeholder"
+                  width={"100%"}
+                  height={"100%"}
                   style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
                     borderRadius: "12px",
+                    objectFit: "cover",
                     transition: "opacity 0.3s ease",
                     opacity: isLoaded ? 1 : 0,
+                    display: "block",
                   }}
-                  alt="Placeholder"
                   onLoad={() => setIsLoaded(true)}
                   loading="lazy"
                 />

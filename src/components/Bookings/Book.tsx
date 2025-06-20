@@ -53,7 +53,13 @@ export default function Book({ category }: IBook) {
       >
         {appContent.more_info}
       </Button>
-      <Button variant="text" color="primary" startIcon={<MailIcon />}>
+      <Button
+        variant="text"
+        color="primary"
+        startIcon={<MailIcon />}
+        component={Link}
+        to="/contact"
+      >
         {appContent.send_inquiry}
       </Button>
     </StyledStack>
