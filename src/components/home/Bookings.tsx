@@ -3,6 +3,7 @@ import { useContext, useRef } from "react";
 import BookingCard from "../Bookings/BookingCard";
 import { AppContext } from "../../utils/context";
 import useIntersectObserver from "../../hooks/useIntersectObserver";
+import { motion } from "framer-motion";
 
 export default function Bookings() {
   const { contents } = useContext(AppContext);
@@ -23,7 +24,15 @@ export default function Bookings() {
       alignSelf={"center"}
     >
       {contents.slice(0, numToShow).map((element, idx) => {
-        return <BookingCard key={idx} bookingDetail={element} />;
+        return (
+          <motion.div
+            initial={{ x: "40px", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 60, damping: 15 }}
+          >
+            <BookingCard key={idx} bookingDetail={element} />
+          </motion.div>
+        );
       })}
       <div ref={lastElemRef} style={{ height: "10px" }}></div>
     </Box>
