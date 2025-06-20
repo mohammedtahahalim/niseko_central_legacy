@@ -1,6 +1,6 @@
-import { styled, Typography } from "@mui/material";
+import { Box, styled } from "@mui/material";
 
-const StyledBox = styled(Typography, {
+const StyledBox = styled(Box, {
   shouldForwardProp: (prop) => prop !== "danger",
 })(({ theme }) => ({
   color: theme.palette.primary.main,
@@ -13,7 +13,7 @@ interface IDescription {
 
 export default function Description({ desc }: IDescription) {
   return (
-    <StyledBox variant="body2">
+    <StyledBox>
       <div dangerouslySetInnerHTML={{ __html: desc }}></div>
     </StyledBox>
   );

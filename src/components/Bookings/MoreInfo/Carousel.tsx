@@ -28,6 +28,7 @@ interface ICarousel {
 
 export default function Carousel({ images }: ICarousel) {
   const [index, setIndex] = useState<number>(1);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     if (index === images.length) {
@@ -52,11 +53,37 @@ export default function Carousel({ images }: ICarousel) {
                 display: "flex",
               }}
             >
-              <img
-                src={image.url}
-                style={{ width: "100%", height: "100%", objectFit: "contain" }}
-                alt=""
-              />
+              <Box width={"100%"} height={"100%"} position={"relative"}>
+                <img
+                  src={image.blur}
+                  alt="placeholder"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    transition: "opacity 0.3s ease",
+                    opacity: isLoaded ? 0 : 1,
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    borderRadius: "12px",
+                    objectFit: "cover",
+                  }}
+                />
+                <img
+                  src={image.url}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "12px",
+                    transition: "opacity 0.3s ease",
+                    opacity: isLoaded ? 1 : 0,
+                  }}
+                  alt="Placeholder"
+                  onLoad={() => setIsLoaded(true)}
+                  loading="lazy"
+                />
+              </Box>
             </Box>
           );
         })}

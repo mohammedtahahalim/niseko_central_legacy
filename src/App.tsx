@@ -33,12 +33,13 @@ import useFetch from "./hooks/useFetch";
 import Article from "./pages/Article";
 import SignUpForm from "./pages/SignUpForm";
 import NewBlogEntry from "./pages/NewBlogEntry";
-import AddBooking from "./pages/addBooking";
+import AddBooking from "./pages/AddBooking";
 
 function App() {
-  const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(500);
+  const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(750);
   const { setLang, appContent, lang } = useLanguage();
-  const { loading, contents, error } = useFetch(0);
+  const { loading, contents, error } = useFetch();
+
   return (
     <BrowserRouter>
       <AppContext.Provider

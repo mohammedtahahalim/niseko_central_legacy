@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface IIntersectObserver {
   currRef: React.RefObject<HTMLDivElement | null>;
@@ -12,13 +12,19 @@ export default function useIntersectObserver({
   max,
   increment,
 }: IIntersectObserver) {
-  const [numToShow, setNumToShow] = useState<number>(min || 1);
+  const [numToShow, setNumToShow] = useState<number>(min || 3);
+  const cooldown = useRef<boolean>(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          if (cooldown.current) return;
+          cooldown.current = true;
           setNumToShow((numToShow) => Math.min(numToShow + increment, max));
+          setTimeout(() => {
+            cooldown.current = false;
+          }, 100);
         }
       });
     });
@@ -30,7 +36,7 @@ export default function useIntersectObserver({
         observer.unobserve(currRef.current);
       }
     };
-  }, [currRef, increment, max]);
+  }, []);
 
   return { numToShow };
 }

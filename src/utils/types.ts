@@ -254,7 +254,7 @@ export type TAppContext = {
   appContent: TAppContent;
   lang: "en" | "jp";
   loading: boolean;
-  contents: Record<string, string | Record<string, string>>[];
+  contents: bookingDetails[];
   error: string;
 };
 

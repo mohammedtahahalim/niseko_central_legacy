@@ -22,8 +22,6 @@ export default function Article() {
   const { appContent } = useContext(AppContext);
   const title = useParams()["title"]?.split("-").join(" ") || "";
 
-  console.log(title);
-
   return (
     <Stack
       direction={{ md: "row", xs: "column-reverse" }}

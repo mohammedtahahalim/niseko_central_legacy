@@ -53,7 +53,7 @@ const BookingCard = memo(function BookingCard({ bookingDetail }: IBookingCard) {
         direction={{ md: "row", xs: "column" }}
         height={"fit-content"}
       >
-        <BookingImage image={bookingDetail.images[0].url} />
+        <BookingImage image={bookingDetail.images[0]} />
         <BookingInfo
           setSeeMore={handleSeeMore}
           seeMore={seeMore}

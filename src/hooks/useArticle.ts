@@ -31,7 +31,7 @@ export default function useArticle(title: string) {
           return;
         }
         const data = await response.json();
-        setArticleData(data[0] as IArticleData);
+        setArticleData(data.article[0] as IArticleData);
       } catch (err) {
         console.log("Failed Fatching Article : ", err);
       } finally {
