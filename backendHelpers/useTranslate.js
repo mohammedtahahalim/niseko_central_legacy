@@ -7,6 +7,7 @@ const authKey = process.env.DEEPL_AUTH_KEY;
 const translator = new deepl.Translator(authKey);
 
 export default async function useTranslate(text, sourceLang, targetLang) {
+  if (!text) return "";
   try {
     const result = await translator.translateText(
       text,
