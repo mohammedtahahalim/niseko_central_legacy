@@ -32,11 +32,9 @@ export default function useIntersectObserver({
       observer.observe(currRef.current);
     }
     return () => {
-      if (currRef.current) {
-        observer.unobserve(currRef.current);
-      }
+      observer.disconnect();
     };
-  }, []);
+  }, [currRef, min, max, increment]);
 
   return { numToShow };
 }
