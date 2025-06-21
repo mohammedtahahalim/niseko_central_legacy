@@ -1,9 +1,12 @@
-import { Box, Skeleton } from "@mui/material";
-import { useContext } from "react";
-import { AppContext } from "../../utils/context";
+import { Box } from "@mui/material";
+import { useState } from "react";
 
-export default function BookingImage() {
-  const { loading } = useContext(AppContext);
+interface IBookingImage {
+  image: Record<string, string>;
+}
+
+export default function BookingImage({ image }: IBookingImage) {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   return (
     <Box
@@ -19,18 +22,38 @@ export default function BookingImage() {
         overflow={"hidden"}
         alignSelf={"center"}
         sx={{ aspectRatio: "1" }}
+        position={"relative"}
       >
-        {loading ? (
-          <Skeleton variant="rectangular" width={"100%"} height={"100%"} />
-        ) : (
-          <img
-            src={`${Math.floor(Math.random() * 7 + 1)}.jpg`}
-            alt=""
-            width={"100%"}
-            height={"100%"}
-            style={{ borderRadius: "12px" }}
-          />
-        )}
+        <img
+          src={image.blur}
+          alt="placeholder"
+          style={{
+            width: "100%",
+            height: "100%",
+            transition: "opacity 0.3s ease",
+            opacity: isLoaded ? 0 : 1,
+            position: "absolute",
+            top: 0,
+            left: 0,
+            borderRadius: "12px",
+            objectFit: "cover",
+          }}
+        />
+        <img
+          src={image.url}
+          alt="Placeholder"
+          width={"100%"}
+          height={"100%"}
+          style={{
+            borderRadius: "12px",
+            objectFit: "cover",
+            transition: "opacity 0.3s ease",
+            opacity: isLoaded ? 1 : 0,
+            display: "block",
+          }}
+          onLoad={() => setIsLoaded(true)}
+          loading="lazy"
+        />
       </Box>
     </Box>
   );

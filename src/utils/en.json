@@ -98,9 +98,16 @@
   "booking_card": {
     "see_more": "See More",
     "see_less": "See Less",
-    "floor_plan": "Floor Plan"
+    "floor_plan": "Floor Plan",
+    "floor_size": "Floor size",
+    "lifts_within": "Lifts within",
+    "village_center": "Village Centre within",
+    "view": "View",
+    "maximum": "Maximum",
+    "guests": "Guests"
   },
   "book_now": "Book Now",
+  "more_info": "More Info",
   "send_inquiry": "Send Inquiry",
   "charges_apply": "*Charges apply where number of adults exceeds number of beds",
   "general_image_advise": "*General images of property. Actual room may differ.",
@@ -310,6 +317,11 @@
     "guest-service": {
       "title": "Guest Services",
       "sous_title": "Book your Guest Services pre-arrival and enjoy more holiday time!",
+      "bannerIMG": "/guest_service.jpg"
+    },
+    "add-booking": {
+      "title": "Add New Booking",
+      "sous_title": "Add New Booking To The System",
       "bannerIMG": "/guest_service.jpg"
     }
   },
@@ -1016,5 +1028,21 @@
       "backButton": "Back",
       "submitButton": "Create"
     }
+  },
+  "addBooking": {
+    "title": "Title",
+    "category": "Category",
+    "type_one": "Type 1",
+    "type_two": "Type 2",
+    "floorSize": "Floor Size",
+    "lifts": "Lifts Within",
+    "villageDistance": "Village Center Within",
+    "view": "View If Any",
+    "rawImages": "Images",
+    "maxPax": "Max Capacity",
+    "amenities": "Amenities",
+    "desc": "Description",
+    "pricePerNight": "Price Per Night In $",
+    "submit": "Add Booking"
   }
 }

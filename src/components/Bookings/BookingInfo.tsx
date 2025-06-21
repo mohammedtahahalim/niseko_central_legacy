@@ -6,9 +6,28 @@ import FloorPlan from "./FloorPlan";
 interface BookingInfoProps {
   seeMore: boolean;
   setSeeMore: React.Dispatch<React.SetStateAction<boolean>>;
+  title: string;
+  category: string;
+  type_one: string;
+  type_two: string;
+  floorSize: number;
+  liftWithin: number;
+  villageCenter: number;
+  view?: string;
 }
 
-export default function BookingInfo({ setSeeMore, seeMore }: BookingInfoProps) {
+export default function BookingInfo({
+  setSeeMore,
+  seeMore,
+  title,
+  category,
+  type_one,
+  type_two,
+  floorSize,
+  liftWithin,
+  villageCenter,
+  view,
+}: BookingInfoProps) {
   const { appContent, loading } = useContext(AppContext);
   const floorButtonRef = useRef<HTMLButtonElement | null>(null);
   const [floorPlan, setFloorPlan] = useState<boolean>(false);
@@ -23,14 +42,14 @@ export default function BookingInfo({ setSeeMore, seeMore }: BookingInfoProps) {
         <Skeleton variant="text" />
       ) : (
         <Typography variant="h6" color="secondary">
-          Youtei Tracks 301a
+          {title}
         </Typography>
       )}
       {loading ? (
         <Skeleton variant="text" />
       ) : (
         <Typography variant="subtitle2" fontWeight={"200"} color="secondary">
-          Youtei Tracks
+          {category}
         </Typography>
       )}
       <Box display={"flex"} flexDirection={"column"} gap={"0px"}>
@@ -38,14 +57,14 @@ export default function BookingInfo({ setSeeMore, seeMore }: BookingInfoProps) {
           <Skeleton variant="text" />
         ) : (
           <Typography variant="body2" fontWeight={"800"} color="secondary">
-            1 Bedroom, 2 Beds
+            {type_one}
           </Typography>
         )}
         {loading ? (
           <Skeleton variant="text" />
         ) : (
           <Typography variant="body2" fontWeight={"800"} color="secondary">
-            1 Bathroom, Full Kitchen
+            {type_two}
           </Typography>
         )}
       </Box>
@@ -54,28 +73,26 @@ export default function BookingInfo({ setSeeMore, seeMore }: BookingInfoProps) {
           <Skeleton variant="text" />
         ) : (
           <Typography variant="subtitle2" fontWeight={"200"} color="secondary">
-            Floor size: 56 sqm
+            {appContent.booking_card.floor_size}: {floorSize} sqm
           </Typography>
         )}
         {loading ? (
           <Skeleton variant="text" />
         ) : (
           <Typography variant="subtitle2" fontWeight={"200"} color="secondary">
-            Lifts within 600m
+            {appContent.booking_card.lifts_within}: {liftWithin}m
           </Typography>
         )}
         {loading ? (
           <Skeleton variant="text" />
         ) : (
           <Typography variant="subtitle2" fontWeight={"200"} color="secondary">
-            Village Centre within 300m
+            {appContent.booking_card.village_center}: {villageCenter}m
           </Typography>
         )}
-        {loading ? (
-          <Skeleton variant="text" />
-        ) : (
+        {view && (
           <Typography variant="subtitle2" fontWeight={"200"} color="secondary">
-            Mt Yotei View
+            {view} {appContent.booking_card.view}
           </Typography>
         )}
         {!loading && (

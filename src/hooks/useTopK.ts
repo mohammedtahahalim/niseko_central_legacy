@@ -12,7 +12,7 @@ export default function useTopK(k: number) {
           `${import.meta.env.VITE_API_URL}/api/mostViewedBlogs?k=${k}`
         );
         const data = await response.json();
-        setTopKBlogs(data.blogs);
+        setTopKBlogs(data.articles);
       } catch (err) {
         console.log(err);
       } finally {

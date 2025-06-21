@@ -33,11 +33,15 @@ import useFetch from "./hooks/useFetch";
 import Article from "./pages/Article";
 import SignUpForm from "./pages/SignUpForm";
 import NewBlogEntry from "./pages/NewBlogEntry";
+import AddBooking from "./pages/AddBooking";
+import NotFound from "./pages/NotFound";
+import BookingCategory from "./pages/BookingCategory";
 
 function App() {
-  const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(500);
+  const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(750);
   const { setLang, appContent, lang } = useLanguage();
-  const { loading, contents, error } = useFetch(0);
+  const { loading, contents, error } = useFetch();
+
   return (
     <BrowserRouter>
       <AppContext.Provider
@@ -62,6 +66,10 @@ function App() {
               <Routes>
                 <Route element={<Main />}>
                   <Route path="/" element={<Home />} />
+                  <Route
+                    path="/booking/:category"
+                    element={<BookingCategory />}
+                  />
                   <Route element={<Auth />}>
                     <Route path="/login" element={<Login />} />
                     <Route path="/signUp" element={<Signup />} />
@@ -77,6 +85,7 @@ function App() {
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/special-deals" element={<SpecialDeals />} />
                   <Route path="/guest-service" element={<GuestService />} />
+                  <Route path="/add-booking" element={<AddBooking />} />
                 </Route>
                 <Route element={<GeneralLayout isBlog={true} />}>
                   <Route path="/blog" element={<Blog />} />
@@ -88,6 +97,7 @@ function App() {
                   <Route path="/niseko-jobs" element={<NisekoJobs />} />
                   <Route path="/testimonials" element={<Testimonials />} />
                 </Route>
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </LocalizationProvider>
           </MantineProvider>

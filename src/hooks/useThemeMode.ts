@@ -134,13 +134,6 @@ export default function useThemeMode(threshold: number = 500) {
           },
         },
       },
-      MuiFormLabel: {
-        styleOverrides: {
-          root: {
-            fontFamily: "Source Code Pro",
-          },
-        },
-      },
       MuiInputLabel: {
         styleOverrides: {
           root: {

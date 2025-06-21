@@ -13,7 +13,6 @@ export default async function handler(req, res) {
     if (!results) {
       return res.status(404).json({ message: "Article Not Found ..." });
     }
-    console.log(results);
     return res.status(200).json({ article: results[0] });
   } catch (err) {
     console.log(err);

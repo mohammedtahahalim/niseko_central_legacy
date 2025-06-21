@@ -16,8 +16,11 @@ export default async function useTranslate(text, sourceLang, targetLang) {
         tagHandling: "html",
       }
     );
-    return result.text;
+    return sourceLang === "en"
+      ? result.text.split(", ")
+      : result.text.split("、");
   } catch (err) {
     console.log(err);
+    return "";
   }
 }

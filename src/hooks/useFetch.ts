@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import type { bookingDetails } from "../utils/types";
 
-export default function useFetch(id: number = 0) {
-  const url = import.meta.env.API_URL + `?id=${id}`;
-  const [contents, setContents] = useState([]);
+export default function useFetch() {
+  const url = import.meta.env.VITE_API_URL + `/api/getBookings`;
+
+  const [contents, setContents] = useState<bookingDetails[]>([]);
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -13,7 +15,16 @@ export default function useFetch(id: number = 0) {
       try {
         const response = await fetch(url, { signal: controller.signal });
         const data = await response.json();
-        setContents(data);
+        setContents(
+          data.bookings.map((element: any) => {
+            return {
+              ...element,
+              images: JSON.parse(element.images),
+              amenities: JSON.parse(element.amenities),
+              jp_amenities: JSON.parse(element.jp_amenities),
+            };
+          })
+        );
       } catch (err) {
         setError(err as string);
       } finally {
@@ -25,5 +36,5 @@ export default function useFetch(id: number = 0) {
     })();
   }, []);
 
-  return { contents, error, loading, setLoading };
+  return { contents, error, loading };
 }

@@ -22,17 +22,13 @@ const CarouselBox = styled(Box)<{
   transform: `translateX(-${(index * 100) / length}%)`,
 }));
 
-export default function Carousel() {
-  const [images] = useState<string[]>([
-    "1.jpg",
-    "2.jpg",
-    "3.jpg",
-    "4.jpg",
-    "5.jpg",
-    "6.jpg",
-    "7.jpg",
-  ]);
+interface ICarousel {
+  images: { url: string; blur: string }[];
+}
+
+export default function Carousel({ images }: ICarousel) {
   const [index, setIndex] = useState<number>(1);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     if (index === images.length) {
@@ -42,6 +38,8 @@ export default function Carousel() {
       setIndex(images.length - 1);
     }
   }, [index]);
+
+  console.log(isLoaded);
 
   return (
     <ContainerCarouselBox>
@@ -57,11 +55,38 @@ export default function Carousel() {
                 display: "flex",
               }}
             >
-              <img
-                src={image}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                alt=""
-              />
+              <Box width={"100%"} height={"100%"} position={"relative"}>
+                <img
+                  src={image.blur}
+                  alt="placeholder"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    transition: "opacity 0.3s ease",
+                    opacity: isLoaded ? 0 : 1,
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    borderRadius: "12px",
+                    objectFit: "cover",
+                  }}
+                />
+                <img
+                  src={image.url}
+                  alt="Placeholder"
+                  width={"100%"}
+                  height={"100%"}
+                  style={{
+                    borderRadius: "12px",
+                    objectFit: "cover",
+                    transition: "opacity 0.3s ease",
+                    opacity: isLoaded ? 1 : 0,
+                    display: "block",
+                  }}
+                  onLoad={() => setIsLoaded(true)}
+                  loading="lazy"
+                />
+              </Box>
             </Box>
           );
         })}
