@@ -69,7 +69,6 @@ export default function AddBooking() {
     try {
       for (let key in bookingElements) {
         if (key !== "view" && !bookingElements[key as keyof TBooking]) {
-          console.log(key === "view");
           setMessage("Fill all element");
           return;
         }

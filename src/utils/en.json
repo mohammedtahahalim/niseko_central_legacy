@@ -1044,5 +1044,28 @@
     "desc": "Description",
     "pricePerNight": "Price Per Night In $",
     "submit": "Add Booking"
-  }
+  },
+  "bookings_category": {
+    "customers_feedback": "What our customers say about : "
+  },
+  "all_booking_categories": [
+    ["Deep Tracks", "/deep-tracks"],
+    ["Ezo 365", "/ezo-365"],
+    ["Hirafu House", "/hirafu-house"],
+    ["Hirafu Woods", "/hirafu-woods"],
+    ["Horizon Townhouses", "/horizon-townhouses"],
+    ["J House", "/j-house"],
+    ["Kashi Lodge", "/kashi-lodge"],
+    ["Kisetsukan", "/kisetsukan"],
+    ["Konkuriito", "/konkuriito"],
+    ["Miharashi", "/miharashi"],
+    ["Miyuki", "/miyuki"],
+    ["Mori Houses", "/mori-houses"],
+    ["Powder Tracks", "/powder-tracks"],
+    ["Shirakaba", "/shirakaba"],
+    ["Tsuru", "/tsuru"],
+    ["Whiskey Woods", "/whiskey-woods"],
+    ["Yama Shizen", "/yama-shizen"],
+    ["Youtei Tracks", "/youtei-tracks"]
+  ]
 }

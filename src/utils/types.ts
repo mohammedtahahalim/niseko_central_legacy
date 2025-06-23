@@ -246,6 +246,10 @@ export type TAppContent = {
     pricePerNight: string;
     submit: string;
   };
+  bookings_category: {
+    customers_feedback: string;
+  };
+  all_booking_categories: string[][];
 };
 
 export type TAppContext = {
@@ -317,3 +321,29 @@ export type bookingDetails = {
   jp_short_desc: string;
   jp_amenities: string[];
 };
+
+export type MoreInfo = {
+  en: {
+    title: string;
+    description: string;
+    feedbacks: {
+      feedback: string;
+      author: string;
+    }[];
+  };
+  jp: {
+    title: string;
+    description: string;
+    feedbacks: {
+      feedback: string;
+      author: string;
+    }[];
+  };
+  banner_img: string;
+  location: {
+    image: string;
+    url: string;
+  };
+};
+
+export type SuggestionBox = Omit<bookingDetails, "images"> & { images: string };

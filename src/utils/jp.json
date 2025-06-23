@@ -1028,5 +1028,28 @@
     "desc": "説明",
     "pricePerNight": "1泊あたりの料金（ドル）",
     "submit": "予約を追加"
-  }
+  },
+  "bookings_category": {
+    "customers_feedback": "お客様の声："
+  },
+  "all_booking_categories": [
+    ["ディープトラックス", "/deep-tracks"],
+    ["エゾ365", "/ezo-365"],
+    ["ヒラフハウス", "/hirafu-house"],
+    ["ヒラフウッズ", "/hirafu-woods"],
+    ["ホライゾンタウンハウス", "/horizon-townhouses"],
+    ["Jハウス", "/j-house"],
+    ["カシロッジ", "/kashi-lodge"],
+    ["キセツカン", "/kisetsukan"],
+    ["コンクリート", "/konkuriito"],
+    ["見晴らし", "/miharashi"],
+    ["美雪", "/miyuki"],
+    ["森の家", "/mori-houses"],
+    ["パウダートラックス", "/powder-tracks"],
+    ["白樺", "/shirakaba"],
+    ["鶴", "/tsuru"],
+    ["ウィスキーウッズ", "/whiskey-woods"],
+    ["山自然", "/yama-shizen"],
+    ["羊蹄トラックス", "/youtei-tracks"]
+  ]
 }

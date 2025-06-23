@@ -66,10 +66,6 @@ function App() {
               <Routes>
                 <Route element={<Main />}>
                   <Route path="/" element={<Home />} />
-                  <Route
-                    path="/booking/:category"
-                    element={<BookingCategory />}
-                  />
                   <Route element={<Auth />}>
                     <Route path="/login" element={<Login />} />
                     <Route path="/signUp" element={<Signup />} />
@@ -77,6 +73,10 @@ function App() {
                     <Route path="/blog/newEntry" element={<NewBlogEntry />} />
                   </Route>
                 </Route>
+                <Route
+                  path="/booking/:category"
+                  element={<BookingCategory />}
+                />
                 <Route element={<GeneralLayout isBlog={false} />}>
                   <Route path="/niseko" element={<Niseko />} />
                   <Route path="/live" element={<Live />} />

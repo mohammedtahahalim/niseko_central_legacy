@@ -2,23 +2,71 @@ import { Box, Stack, Typography } from "@mui/material";
 import MuiBox from "./MuiBox";
 import PersonIcon from "@mui/icons-material/Person";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
+import { useContext, useState } from "react";
+import { AppContext } from "../utils/context";
 
-export default function Suggestions() {
+interface ISuggestions {
+  type: string;
+  category: string;
+  maxPax: number;
+  lifts: number;
+  img: {
+    url: string;
+    blur: string;
+  };
+}
+
+export default function Suggestions({
+  type,
+  category,
+  maxPax,
+  lifts,
+  img,
+}: ISuggestions) {
+  const [loaded, setLoaded] = useState<boolean>(false);
+  const { appContent } = useContext(AppContext);
   return (
     <Stack
       direction={"column"}
-      maxWidth={{ sm: "225px", xs: "90%" }}
+      maxWidth={{ sm: "300px", xs: "100%" }}
       alignSelf={"center"}
     >
-      <Box width={"100%"} sx={{ aspectRatio: "4/3" }}>
-        <img src="/1.jpg" alt="" width={"100%"} height={"100%"} />
+      <Box
+        width={"100%"}
+        sx={{
+          aspectRatio: "4/3",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <img
+          style={{
+            position: "absolute",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+            opacity: loaded ? 0 : 1,
+            transition: "opacity 0.5s linear",
+            display: "block",
+          }}
+          src={img.blur}
+        />
+        <img
+          src={img.url}
+          alt="Placeholder"
+          width={"100%"}
+          height={"100%"}
+          onLoad={() => setLoaded(true)}
+          style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.5s linear" }}
+        />
       </Box>
       <MuiBox variant="hybrid" sx={{ p: "0.5rem", gap: "10px" }}>
         <Typography variant="h6" color="secondary" fontSize={"0.95rem"}>
-          3 Bedroom Penthouse
+          {type}
         </Typography>
         <Typography variant="body2" fontSize={"0.85rem"}>
-          Yama Shizen
+          {category}
         </Typography>
       </MuiBox>
       <MuiBox variant="secondary">
@@ -33,7 +81,7 @@ export default function Suggestions() {
           >
             <PersonIcon color="info" />
             <Typography variant="body2" color="primary" fontSize={"0.75rem"}>
-              7 Max Guests
+              {maxPax} {appContent.guests}
             </Typography>
           </Box>
           <Box
@@ -51,8 +99,13 @@ export default function Suggestions() {
             p={"5px"}
           >
             <DirectionsRunIcon color="info" />
-            <Typography variant="body2" color="primary" fontSize={"0.75rem"}>
-              7 Max Guests
+            <Typography
+              variant="body2"
+              color="primary"
+              fontSize={"0.75rem"}
+              textAlign={"center"}
+            >
+              {appContent.addBooking.lifts} {lifts}m
             </Typography>
           </Box>
         </Stack>
