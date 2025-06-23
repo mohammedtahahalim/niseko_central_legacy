@@ -73,7 +73,6 @@ export default function SignUpForm() {
       setError(verification.error.errors[0].message);
       return;
     }
-    console.log(formElements);
   };
 
   return (

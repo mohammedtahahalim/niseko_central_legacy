@@ -39,8 +39,6 @@ export default function Carousel({ images }: ICarousel) {
     }
   }, [index]);
 
-  console.log(isLoaded);
-
   return (
     <ContainerCarouselBox>
       <CarouselBox length={images.length} index={index}>

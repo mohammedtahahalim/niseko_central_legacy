@@ -75,7 +75,6 @@ export default function NewBlogEntry() {
         },
         body: JSON.stringify({ ...articleElements, lang }),
       };
-      console.log(options);
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/newArticle`,
         options

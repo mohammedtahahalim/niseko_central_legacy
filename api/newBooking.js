@@ -98,6 +98,8 @@ export default async function handler(req, res) {
     return res.status(201).json({ message: "Booking created" });
   } catch (err) {
     console.log(err);
-    return res.status(500).json({ message: "Internal server error" });
+    return res
+      .status(500)
+      .json({ message: "Failed to add article, Try again later" });
   }
 }
