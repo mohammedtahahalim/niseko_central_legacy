@@ -5,6 +5,7 @@ export default function useFetch() {
   const url = import.meta.env.VITE_API_URL + `/api/getBookings`;
 
   const [contents, setContents] = useState<bookingDetails[]>([]);
+  const [filteredContent, setFilteredContent] = useState<bookingDetails[]>([]);
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -25,6 +26,16 @@ export default function useFetch() {
             };
           })
         );
+        setFilteredContent(
+          data.bookings.map((element: any) => {
+            return {
+              ...element,
+              images: JSON.parse(element.images),
+              amenities: JSON.parse(element.amenities),
+              jp_amenities: JSON.parse(element.jp_amenities),
+            };
+          })
+        );
       } catch (err) {
         setError(err as string);
       } finally {
@@ -36,5 +47,12 @@ export default function useFetch() {
     })();
   }, []);
 
-  return { contents, error, loading };
+  return {
+    contents,
+    error,
+    loading,
+    filteredContent,
+    setFilteredContent,
+    setLoading,
+  };
 }

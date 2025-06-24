@@ -10,6 +10,9 @@ const defaultAppContext: TAppContext = {
   lang: "en",
   loading: true,
   contents: [],
+  filteredContent: [],
+  setFilteredContent: () => {},
+  setLoading: () => {},
   error: "",
 };
 

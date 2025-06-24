@@ -1,16 +1,14 @@
 import { Box, Button, FormLabel, TextField } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../../utils/context";
 import * as wanakana from "wanakana";
+import { filter } from "../../utils/helpers";
 
-type TSearch = {
-  setSearchFilter: React.Dispatch<React.SetStateAction<string>>;
-  searchFilter: string;
-};
-
-export default function Search({ setSearchFilter, searchFilter }: TSearch) {
-  const { appContent } = useContext(AppContext);
+export default function Search() {
+  const { appContent, contents, setFilteredContent, setLoading } =
+    useContext(AppContext);
   const { lang } = useContext(AppContext);
+  const [searchFilter, setSearchFilter] = useState<string>("");
 
   return (
     <>
@@ -26,13 +24,20 @@ export default function Search({ setSearchFilter, searchFilter }: TSearch) {
               ? wanakana.toKana(searchFilter, { IMEMode: true })
               : searchFilter
           }
-          onChange={(e) => setSearchFilter(e.target.value)}
+          onChange={(e) => setSearchFilter(wanakana.toRomaji(e.target.value))}
         />
       </Box>
       <Button
         variant="contained"
         color="secondary"
         sx={{ alignSelf: "flex-end", px: "3rem" }}
+        onClick={() => {
+          setLoading(true);
+          setFilteredContent(filter("keyword", [searchFilter], contents));
+          setTimeout(() => {
+            setLoading(false);
+          }, 500);
+        }}
       >
         Search
       </Button>

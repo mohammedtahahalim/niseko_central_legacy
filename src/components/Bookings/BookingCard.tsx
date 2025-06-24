@@ -3,7 +3,7 @@ import BookingImage from "./BookingImage";
 import BookingInfo from "./BookingInfo";
 import Book from "./Book";
 import { styled } from "@mui/material";
-import { memo, useContext, useState } from "react";
+import { memo, useContext } from "react";
 import MoreInfo from "./MoreInfo";
 import type { bookingDetails } from "../../utils/types";
 import { AppContext } from "../../utils/context";
@@ -37,13 +37,15 @@ const StyledStack = styled(Stack, {
 
 interface IBookingCard {
   bookingDetail: bookingDetails;
+  setShowMore: () => void;
+  isShownMore: boolean;
 }
 
-const BookingCard = memo(function BookingCard({ bookingDetail }: IBookingCard) {
-  const [seeMore, setSeeMore] = useState<boolean>(false);
-  const handleSeeMore = () => {
-    setSeeMore((seeMore) => !seeMore);
-  };
+const BookingCard = memo(function BookingCard({
+  bookingDetail,
+  setShowMore,
+  isShownMore,
+}: IBookingCard) {
   const { lang } = useContext(AppContext);
   return (
     <StyledStack direction={"column"}>
@@ -55,8 +57,8 @@ const BookingCard = memo(function BookingCard({ bookingDetail }: IBookingCard) {
       >
         <BookingImage image={bookingDetail.images[0]} />
         <BookingInfo
-          setSeeMore={handleSeeMore}
-          seeMore={seeMore}
+          setSeeMore={setShowMore}
+          seeMore={isShownMore}
           title={
             lang === "en" ? bookingDetail.en_title : bookingDetail.jp_title
           }
@@ -84,7 +86,7 @@ const BookingCard = memo(function BookingCard({ bookingDetail }: IBookingCard) {
       </Stack>
       <Box
         overflow={"hidden"}
-        maxHeight={seeMore ? "750px" : "0px"}
+        maxHeight={isShownMore ? "750px" : "0px"}
         sx={{
           transition: `max-height 0.4s ease-in-out`,
         }}

@@ -1067,5 +1067,6 @@
     ["Whiskey Woods", "/whiskey-woods"],
     ["Yama Shizen", "/yama-shizen"],
     ["Youtei Tracks", "/youtei-tracks"]
-  ]
+  ],
+  "no_bookings_error": "No Bookings were found, try changing search parameters"
 }

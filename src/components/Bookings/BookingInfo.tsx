@@ -5,7 +5,7 @@ import FloorPlan from "./FloorPlan";
 
 interface BookingInfoProps {
   seeMore: boolean;
-  setSeeMore: React.Dispatch<React.SetStateAction<boolean>>;
+  setSeeMore: () => void;
   title: string;
   category: string;
   type_one: string;
@@ -107,7 +107,7 @@ export default function BookingInfo({
               variant="text"
               color="secondary"
               size="small"
-              onClick={() => setSeeMore(true)}
+              onClick={setSeeMore}
             >
               {seeMore
                 ? appContent.booking_card.see_less

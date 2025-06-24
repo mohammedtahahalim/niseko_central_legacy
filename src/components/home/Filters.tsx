@@ -10,7 +10,7 @@ export default function Filters() {
   const [showFilters, setShowFilters] = useState<boolean>(
     window.innerWidth > 900
   );
-  const [searchFilter, setSearchFilter] = useState<string>("");
+  const [durationStay, setDurationStay] = useState<number>(1);
 
   return (
     <Box
@@ -32,12 +32,12 @@ export default function Filters() {
       </Box>
       {showFilters && (
         <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-          <DurationAndQuantity />
-          <PriceAndType />
-          <Search
-            setSearchFilter={setSearchFilter}
-            searchFilter={searchFilter}
+          <DurationAndQuantity
+            durationStay={durationStay}
+            setDurationStay={setDurationStay}
           />
+          <PriceAndType durationStay={durationStay} />
+          <Search />
         </Box>
       )}
     </Box>

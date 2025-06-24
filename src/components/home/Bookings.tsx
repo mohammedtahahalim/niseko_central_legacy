@@ -1,18 +1,20 @@
 import { Box } from "@mui/material";
-import { useContext, useRef } from "react";
+import { useCallback, useContext, useRef, useState } from "react";
 import BookingCard from "../Bookings/BookingCard";
 import { AppContext } from "../../utils/context";
 import useIntersectObserver from "../../hooks/useIntersectObserver";
 import { motion } from "framer-motion";
 
 export default function Bookings() {
-  const { contents } = useContext(AppContext);
+  const { filteredContent } = useContext(AppContext);
   const lastElemRef = useRef<HTMLDivElement | null>(null);
-
+  const [currentlyActive, setCurrentlyActive] = useState<boolean[]>(
+    Array.from({ length: filteredContent.length }, () => false)
+  );
   const { numToShow } = useIntersectObserver({
     currRef: lastElemRef,
     min: 3,
-    max: contents.length,
+    max: filteredContent.length,
     increment: 3,
   });
 
@@ -23,6 +25,21 @@ export default function Bookings() {
   };
   const animate =
     window.innerWidth > 600 ? { opacity: 1, x: 0 } : { opacity: 1, y: 0 };
+
+  const handleSeeMoreLogic = useCallback(
+    (idx: number) => {
+      setCurrentlyActive(
+        currentlyActive.map((element, odx) => {
+          if (odx === idx) {
+            return !element;
+          }
+          return false;
+        })
+      );
+    },
+    [currentlyActive, setCurrentlyActive]
+  );
+
   return (
     <Box
       sx={{ width: { md: "65%", xs: "90%" } }}
@@ -31,7 +48,7 @@ export default function Bookings() {
       gap={"10px"}
       alignSelf={"center"}
     >
-      {contents.slice(0, numToShow).map((element, idx) => {
+      {filteredContent.slice(0, numToShow).map((element, idx) => {
         return (
           <motion.div
             initial={initial(50 + (idx % 3) * 50)}
@@ -39,7 +56,11 @@ export default function Bookings() {
             transition={{ type: "tween", duration: 0.75, ease: "easeInOut" }}
             key={idx}
           >
-            <BookingCard bookingDetail={element} />
+            <BookingCard
+              bookingDetail={element}
+              setShowMore={() => handleSeeMoreLogic(idx)}
+              isShownMore={currentlyActive[idx]}
+            />
           </motion.div>
         );
       })}
