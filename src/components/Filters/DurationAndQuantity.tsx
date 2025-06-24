@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import { convertIntoDays } from "../../utils/helpers";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
+import { filter } from "../../utils/helpers";
 
 const StyledDatePicker = styled(DatePicker, {
   shouldForwardProp: (prop) => prop !== "danger",
@@ -26,10 +27,18 @@ const StyledIconButton = styled(IconButton, {
   scale: "0.8",
 }));
 
-export default function DurationAndQuantity() {
-  const { appContent } = useContext(AppContext);
+interface IDurationAndQuantity {
+  durationStay: number;
+  setDurationStay: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export default function DurationAndQuantity({
+  durationStay,
+  setDurationStay,
+}: IDurationAndQuantity) {
+  const { appContent, setLoading, setFilteredContent, contents } =
+    useContext(AppContext);
   const [startDate, setStartDate] = useState<number>(new Date().getTime());
-  const [durationStay, setDurationStay] = useState<number>(1);
   const [guests, setGuests] = useState<number[]>([1, 0, 0]);
   const [controlNights, setControlNights] = useState<boolean>(false);
   const [controlGuests, setControlGuests] = useState<boolean>(false);
@@ -144,7 +153,7 @@ export default function DurationAndQuantity() {
                 </StyledIconButton>
                 <StyledIconButton
                   onClick={() =>
-                    setGuests([guests[0], Math.max(guests[1] + 1), guests[2]])
+                    setGuests([guests[0], Math.max(guests[1], 1), guests[2]])
                   }
                 >
                   <AddIcon fontSize="small" color="secondary" />
@@ -171,7 +180,7 @@ export default function DurationAndQuantity() {
                 </StyledIconButton>
                 <StyledIconButton
                   onClick={() =>
-                    setGuests([guests[0], guests[1], Math.max(guests[2] + 1)])
+                    setGuests([guests[0], guests[1], Math.max(guests[2], 1)])
                   }
                 >
                   <AddIcon fontSize="small" color="secondary" />
@@ -185,6 +194,19 @@ export default function DurationAndQuantity() {
         variant="contained"
         color="secondary"
         sx={{ width: "fit-content", alignSelf: "flex-end", px: "3rem" }}
+        onClick={() => {
+          setLoading(true);
+          setFilteredContent(
+            filter(
+              "date_duration_guests",
+              [(guests[0] + guests[1] + guests[2]).toString()],
+              contents
+            )
+          );
+          setTimeout(() => {
+            setLoading(false);
+          }, 500);
+        }}
       >
         Search
       </Button>

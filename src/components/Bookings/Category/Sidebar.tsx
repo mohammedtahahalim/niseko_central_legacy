@@ -1,7 +1,7 @@
 import { Box, Button, Stack, styled } from "@mui/material";
 import { useContext } from "react";
 import { AppContext } from "../../../utils/context";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const StyledSideBar = styled(Box, {
   shouldForwardProp: (prop) => prop !== "danger",
@@ -11,6 +11,7 @@ const StyledSideBar = styled(Box, {
 });
 export default function Sidebar() {
   const { appContent } = useContext(AppContext);
+  const currentLink = useLocation().pathname.split("booking")[1];
   return (
     <StyledSideBar
       width={{ md: "30%", xs: "100%" }}
@@ -21,7 +22,7 @@ export default function Sidebar() {
           return (
             <Button
               variant="text"
-              color="primary"
+              color={currentLink === element[1] ? "secondary" : "primary"}
               component={Link}
               to={`/booking${element[1]}`}
               key={element[1]}

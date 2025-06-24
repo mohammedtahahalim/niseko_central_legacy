@@ -2,7 +2,7 @@ import { Box, Button, styled, Typography } from "@mui/material";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import XIcon from "@mui/icons-material/X";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import type { Ref } from "react";
+import { useState, type Ref } from "react";
 import { Link } from "react-router-dom";
 
 const PostBox = styled(Box, { shouldForwardProp: (prop) => prop !== "danger" })(
@@ -21,9 +21,13 @@ const ImageWrapper = styled(Box)({
   maxWidth: "350px",
   overflow: "hidden",
   borderRadius: "5px",
+  position: "relative",
 });
 interface PostProps {
-  image: string;
+  image: {
+    image: string;
+    blur: string;
+  };
   category: string;
   title: string;
   date: string;
@@ -41,15 +45,33 @@ export default function Post({
   ref,
   link,
 }: PostProps) {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
   return (
     <PostBox flexDirection={{ sm: "row", xs: "column" }} ref={ref}>
       <ImageWrapper>
         <img
-          src={image}
+          src={image.blur}
+          style={{
+            position: "absolute",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+            opacity: isLoaded ? 0 : 1,
+            transition: "opacity 0.5s linear",
+          }}
+        />
+        <img
+          src={image.image}
           alt=""
           width={"100%"}
           height={"100%"}
-          style={{ objectFit: "cover" }}
+          style={{
+            objectFit: "cover",
+            opacity: isLoaded ? 1 : 0,
+            transition: "opacity 0.5s linear",
+          }}
+          onLoad={() => setIsLoaded(true)}
         />
       </ImageWrapper>
       <Box
@@ -67,7 +89,7 @@ export default function Post({
         </Typography>
         <Button
           variant="text"
-          sx={{ p: "0.5rem" }}
+          sx={{ p: "0.5rem", display: "flex", justifyContent: "flex-start" }}
           component={Link}
           to={encodeURIComponent(link)}
         >

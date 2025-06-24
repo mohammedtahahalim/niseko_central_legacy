@@ -1051,5 +1051,6 @@
     ["ウィスキーウッズ", "/whiskey-woods"],
     ["山自然", "/yama-shizen"],
     ["羊蹄トラックス", "/youtei-tracks"]
-  ]
+  ],
+  "no_bookings_error": "予約が見つかりませんでした。検索パラメータを変更してみてください"
 }

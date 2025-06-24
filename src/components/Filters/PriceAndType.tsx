@@ -10,10 +10,16 @@ import type { SelectChangeEvent } from "@mui/material";
 import { useContext, useState } from "react";
 import { AppContext } from "../../utils/context";
 import { room_options } from "../../utils/helpers";
+import { filter } from "../../utils/helpers";
 
-export default function PriceAndType() {
+interface IPriceAndType {
+  durationStay: number;
+}
+
+export default function PriceAndType({ durationStay }: IPriceAndType) {
   const [price, setPrice] = useState<number>(1000000);
-  const { appContent } = useContext(AppContext);
+  const { appContent, setLoading, setFilteredContent, contents } =
+    useContext(AppContext);
   const [roomType, setRoomType] = useState<string[]>([]);
 
   const handleRoomType = (event: SelectChangeEvent<typeof roomType>) => {
@@ -62,6 +68,23 @@ export default function PriceAndType() {
         variant="contained"
         color="secondary"
         sx={{ alignSelf: "flex-end", px: "3rem" }}
+        onClick={() => {
+          setLoading(true);
+          setFilteredContent(
+            filter(
+              "price_and_type",
+              [
+                durationStay.toString(),
+                price.toString(),
+                JSON.stringify(roomType),
+              ],
+              contents
+            )
+          );
+          setTimeout(() => {
+            setLoading(false);
+          }, 500);
+        }}
       >
         Filter
       </Button>

@@ -61,7 +61,7 @@ export default function Article() {
           </Button>
         </Box>
       </Stack>
-      <Stack direction={"column"} flex={3} gap={"1rem"}>
+      <Stack direction={"column"} flex={3} gap={"1rem"} overflow={"hidden"}>
         <ArticleContent title={title} />
       </Stack>
     </Stack>

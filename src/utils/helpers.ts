@@ -1,3 +1,4 @@
+import type { bookingDetails } from "./types";
 export const convertIntoDays = (time: number): number => {
   if (time < 0) return 0;
   return Math.floor(time / 86400000);
@@ -70,4 +71,45 @@ export function toUrlFormat(str: string): string {
     .replace(/[\s_]+/g, "-")
     .replace(/[^\w\-]+/g, "")
     .replace(/\-\-+/g, "-");
+}
+
+type FilterFn = (
+  payload: string[],
+  toFilterArray: bookingDetails[]
+) => bookingDetails[];
+
+const filterRecords: Record<string, FilterFn> = {
+  keyword: (payload, toFilterArray) => {
+    return toFilterArray.filter(
+      (element) =>
+        element.en_title.toLowerCase().includes(payload[0].toLowerCase()) ||
+        element.short_desc.toLowerCase().includes(payload[0].toLowerCase())
+    );
+  },
+  price_and_type: (payload, toFilterArray) => {
+    return toFilterArray.filter(
+      (element) =>
+        element.price_per_night * Number(payload[0]) * 100 <
+          Number(payload[1]) &&
+        JSON.parse(payload[2]).includes(element.en_type_one.split(", ")[0])
+    );
+  },
+  date_duration_guests: (payload, toFilterArray) => {
+    return toFilterArray.filter(
+      (element) => Number(element.max_pax) > Number(payload[0])
+    );
+  },
+};
+
+export function filter(
+  filterType: string,
+  payload: string[],
+  toFilterArray: bookingDetails[]
+) {
+  if (filterType in filterRecords) {
+    console.log(filterType);
+    console.log(payload);
+    return filterRecords[filterType](payload, toFilterArray);
+  }
+  return toFilterArray;
 }

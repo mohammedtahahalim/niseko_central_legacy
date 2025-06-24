@@ -250,6 +250,7 @@ export type TAppContent = {
     customers_feedback: string;
   };
   all_booking_categories: string[][];
+  no_bookings_error: string;
 };
 
 export type TAppContext = {
@@ -260,6 +261,9 @@ export type TAppContext = {
   lang: "en" | "jp";
   loading: boolean;
   contents: bookingDetails[];
+  filteredContent: bookingDetails[];
+  setFilteredContent: React.Dispatch<React.SetStateAction<bookingDetails[]>>;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   error: string;
 };
 

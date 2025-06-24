@@ -10,10 +10,10 @@ interface IArticleContent {
 const StyledDiv = styled("div", {
   shouldForwardProp: (prop) => prop !== "danger",
 })(({ theme }) => ({
-  padding: "0rem 3rem",
   "& *": {
     backgroundColor: "transparent !important",
     fontFamily: "Source Code Pro",
+    maxWidth: "100%",
   },
   "& p > span": {
     color: `${theme.palette.primary.main} !important`,
@@ -37,6 +37,7 @@ export default function ArticleContent({ title }: IArticleContent) {
     );
   return (
     <StyledDiv
+      sx={{ p: { md: "0rem 3rem", xs: "0rem 1rem" } }}
       dangerouslySetInnerHTML={{
         __html:
           lang === "en"

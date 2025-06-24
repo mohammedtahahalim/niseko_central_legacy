@@ -1,11 +1,11 @@
-import { Box, CircularProgress, Stack } from "@mui/material";
+import { Box, CircularProgress, Stack, Typography } from "@mui/material";
 import Filters from "../components/Home/Filters";
 import Bookings from "../components/Home/Bookings";
 import { useContext } from "react";
 import { AppContext } from "../utils/context";
 
 export default function Home() {
-  const { loading } = useContext(AppContext);
+  const { loading, filteredContent, appContent } = useContext(AppContext);
   return (
     <Stack
       direction={{ md: "row", xs: "column" }}
@@ -24,6 +24,16 @@ export default function Home() {
             }}
           />
         </Box>
+      ) : filteredContent.length === 0 ? (
+        <Typography
+          variant="h6"
+          color="primary"
+          width={"100%"}
+          textAlign={"center"}
+          marginTop={"1rem"}
+        >
+          {appContent.no_bookings_error}
+        </Typography>
       ) : (
         <Bookings />
       )}

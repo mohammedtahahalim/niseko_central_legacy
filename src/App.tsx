@@ -40,7 +40,14 @@ import BookingCategory from "./pages/BookingCategory";
 function App() {
   const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(750);
   const { setLang, appContent, lang } = useLanguage();
-  const { loading, contents, error } = useFetch();
+  const {
+    loading,
+    contents,
+    error,
+    filteredContent,
+    setFilteredContent,
+    setLoading,
+  } = useFetch();
 
   return (
     <BrowserRouter>
@@ -54,6 +61,9 @@ function App() {
           loading,
           error,
           contents,
+          filteredContent,
+          setFilteredContent,
+          setLoading,
         }}
       >
         <ThemeProvider theme={themeStyle}>

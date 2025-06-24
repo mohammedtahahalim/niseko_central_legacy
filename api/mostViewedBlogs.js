@@ -1,4 +1,5 @@
 import dbConnection from "../backendHelpers/dbConnection.js";
+import blurrifyImages from "../backendHelpers/blurrifyImages.js";
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
@@ -12,7 +13,18 @@ export default async function handler(req, res) {
     if (!results) {
       return res.status(404).json({ message: "Found No Blogs" });
     }
-    return res.status(200).json({ articles: results[0] });
+    const articles = await Promise.all(
+      results[0].map(async (eleme) => {
+        return {
+          ...eleme,
+          banner_img: {
+            image: eleme.banner_img,
+            blur: (await blurrifyImages([eleme.banner_img]))[0].blur,
+          },
+        };
+      })
+    );
+    return res.status(200).json({ articles });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ message: "Internal Server Error ..." });
