@@ -11,6 +11,7 @@ export default function Bookings() {
   const [currentlyActive, setCurrentlyActive] = useState<boolean[]>(
     Array.from({ length: filteredContent.length }, () => false)
   );
+
   const { numToShow } = useIntersectObserver({
     currRef: lastElemRef,
     min: 3,
