@@ -1,4 +1,4 @@
-import { useContext, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import { AppContext } from "../utils/context";
 import {
   Box,
@@ -50,13 +50,22 @@ const initialState: TSignUp = {
 };
 
 type TAction = {
-  type: "firstName" | "lastName" | "email" | "password" | "repeatPassword";
+  type:
+    | "firstName"
+    | "lastName"
+    | "email"
+    | "password"
+    | "repeatPassword"
+    | "reset";
   payload: string;
 };
 
 const reducer = (state: TSignUp, action: TAction): TSignUp => {
   if (action.type in state) {
     return { ...state, [action.type]: action.payload };
+  }
+  if (action.type === "reset") {
+    return initialState;
   }
   return { ...state };
 };
@@ -66,13 +75,45 @@ export default function SignUpForm() {
   const [formElements, setFormElements] = useReducer(reducer, initialState);
   const [error, setError] = useState<string>("");
 
-  const handleSignUp = (e: React.FormEvent) => {
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setError("");
+    }, 2500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [error]);
+
+  const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     const verification = signUpSchema.safeParse(formElements);
     if (!verification.success) {
       setError(verification.error.errors[0].message);
       return;
     }
+    const controller = new AbortController();
+    const { repeatPassword, ...rest } = formElements;
+    try {
+      const options = {
+        method: "POST",
+        body: JSON.stringify(rest),
+        credentials: "include" as RequestCredentials,
+        signal: controller.signal,
+        headers: { "Content-Type": "application/json" }, // <-- Add this line
+      };
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/signUp`,
+        options
+      );
+      const data = await response.json();
+      setError(data.message);
+      setFormElements({ type: "reset", payload: "" });
+    } catch (err) {
+      setError(err as string);
+    }
+    return () => {
+      controller.abort();
+    };
   };
 
   return (

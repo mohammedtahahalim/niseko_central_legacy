@@ -25,6 +25,7 @@ const Divider = styled(Box)(({ theme }) => ({
 
 export default function Signup() {
   const { appContent } = useContext(AppContext);
+
   return (
     <Stack
       direction={"column"}
