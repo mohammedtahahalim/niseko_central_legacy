@@ -97,7 +97,7 @@ export default function Login() {
         setError(data.message);
         return;
       }
-      navigator("/");
+      navigator(0);
     } catch (err) {
       console.log(err);
     } finally {
