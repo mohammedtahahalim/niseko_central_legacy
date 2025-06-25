@@ -37,7 +37,7 @@ export default async function handler(req, res) {
   }
   try {
     const connection = await dbConnection();
-    const fetchQuery = `SELECT hashed_password FROM accounts WHERE email = ? LIMIT 1`;
+    const fetchQuery = `SELECT hashed_password, first_name FROM accounts WHERE email = ? LIMIT 1`;
     const [hashed_password] = await connection.query(fetchQuery, [email]);
     if (!hashed_password.length) {
       return res.status(401).json({ message: "Bad Credentials" });
@@ -47,9 +47,13 @@ export default async function handler(req, res) {
     if (!match) {
       return res.status(401).json({ message: "Bad Credentials" });
     }
-    const token = jwt.sign({ email }, process.env.SECRET_KEY, {
-      expiresIn: "3h",
-    });
+    const token = jwt.sign(
+      { email, firstName: hashed_password[0].first_name },
+      process.env.SECRET_KEY,
+      {
+        expiresIn: "3h",
+      }
+    );
     const cookie = serialize("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -59,6 +63,7 @@ export default async function handler(req, res) {
     res.setHeader("Set-Cookie", cookie);
     return res.status(200).json({ message: "Login successful" });
   } catch (err) {
+    console.log(err);
     return res.status(500).json({ message: "Internal server error" });
   }
 }

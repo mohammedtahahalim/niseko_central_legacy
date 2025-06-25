@@ -36,6 +36,7 @@ import NewBlogEntry from "./pages/NewBlogEntry";
 import AddBooking from "./pages/AddBooking";
 import NotFound from "./pages/NotFound";
 import BookingCategory from "./pages/BookingCategory";
+import ProtectedRoutes from "./layouts/ProtectedRoutes";
 
 function App() {
   const { themeStyle, handleThemeChange, currentTheme } = useThemeMode(750);
@@ -80,6 +81,8 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/signUp" element={<Signup />} />
                     <Route path="/signUpForm" element={<SignUpForm />} />
+                  </Route>
+                  <Route element={<ProtectedRoutes />}>
                     <Route path="/blog/newEntry" element={<NewBlogEntry />} />
                   </Route>
                 </Route>

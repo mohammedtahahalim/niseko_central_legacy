@@ -107,8 +107,6 @@ export function filter(
   toFilterArray: bookingDetails[]
 ) {
   if (filterType in filterRecords) {
-    console.log(filterType);
-    console.log(payload);
     return filterRecords[filterType](payload, toFilterArray);
   }
   return toFilterArray;
