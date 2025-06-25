@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 import { Box } from "@mui/material";
 
-export default function Auth() {
+export default function ProtectedRoutes() {
   const [loading, setLoading] = useState<boolean>(true);
   const navigator = useNavigate();
 
@@ -16,7 +16,7 @@ export default function Auth() {
             credentials: "include",
           }
         );
-        if (response.ok) {
+        if (!response.ok) {
           navigator("/");
         } else {
           setLoading(false);

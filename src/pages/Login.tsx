@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Checkbox,
+  CircularProgress,
   FormControlLabel,
   Stack,
   styled,
@@ -10,11 +11,23 @@ import {
 } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../utils/context";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { loginSchema } from "../utils/schema";
 
 const StyledBox = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "danger",
+})(({ theme }) => ({
+  padding: "1.5rem",
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
+  border: `1px solid ${theme.palette.divider}`,
+  width: "100%",
+  maxWidth: "500px",
+}));
+const StyledForm = styled("form", {
   shouldForwardProp: (prop) => prop !== "danger",
 })(({ theme }) => ({
   padding: "1.5rem",
@@ -47,6 +60,54 @@ const AuthBox = styled(Box)(({ theme }) => ({
 
 export default function Login() {
   const { appContent } = useContext(AppContext);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const navigator = useNavigate();
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !password) {
+      setError("All fields are required");
+      return;
+    }
+    if (!loginSchema.safeParse({ email, password }).success) {
+      setError("Bad format");
+      return;
+    }
+    const controller = new AbortController();
+    try {
+      setLoading(true);
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: "include" as RequestCredentials,
+        signal: controller.signal,
+      };
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/login`,
+        options
+      );
+      const data = await response.json();
+      if (!response.ok) {
+        setError(data.message);
+        return;
+      }
+      navigator("/");
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+    return () => {
+      controller.abort();
+    };
+  };
+
   return (
     <Stack
       direction={"column"}
@@ -72,21 +133,34 @@ export default function Login() {
           {appContent.loginPage.loginLink}
         </Button>
       </StyledBox>
-      <StyledBox>
+      <StyledForm onSubmit={handleSubmit}>
         <TextField
           type="email"
           size="small"
           label={appContent.loginPage.email}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
           type="password"
           size="small"
           label={appContent.loginPage.password}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <Button variant="contained" color="secondary">
-          {appContent.loginPage.login}
-        </Button>
-      </StyledBox>
+        {loading ? (
+          <CircularProgress sx={{ alignSelf: "center" }} />
+        ) : (
+          <Button variant="contained" color="secondary" type="submit">
+            {appContent.loginPage.login}
+          </Button>
+        )}
+        {error && (
+          <Typography variant="h6" color="error" fontSize={"0.9rem"}>
+            {error}
+          </Typography>
+        )}
+      </StyledForm>
       <Box
         width={"100%"}
         maxWidth={"550px"}

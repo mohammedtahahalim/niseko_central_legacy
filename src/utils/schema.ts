@@ -47,6 +47,20 @@ export const signUpSchema = z
     }
   });
 
+export const loginSchema = z.object({
+  email: z
+    .string()
+    .regex(/^(?!=.*\.\.)[a-zA-z0-9._]+@[a-zA-Z0-9]{2,}(.[a-zA-Z0-9]{2,})+$/, {
+      message: "Enter a Valid Email",
+    }),
+  password: z
+    .string()
+    .regex(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[~!@#$%^&*_+=-])[a-zA-Z0-9~!@#$%^&*_+=-]{8,}$/,
+      { message: "Password Must Be Secure" }
+    ),
+});
+
 export const bookingSchema = z.object({
   title: z.string().min(5),
   category: z.string().min(1),

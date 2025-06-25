@@ -3,10 +3,11 @@ import {
   Button,
   Container,
   IconButton,
+  LinearProgress,
   Stack,
   Typography,
 } from "@mui/material";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../../utils/context";
 import { Link, useLocation } from "react-router-dom";
 import LightModeIcon from "@mui/icons-material/LightMode";
@@ -20,6 +21,33 @@ export default function PreHeader() {
   const [transition, setTransition] = useState<boolean>(true);
   const menuRef = useRef<HTMLDivElement>(null);
   const currentLocation = useLocation().pathname;
+  const [isAuthenticated, setIsAuthenticated] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    (async () => {
+      const controller = new AbortController();
+      try {
+        setIsLoading(true);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/me`, {
+          credentials: "include",
+          signal: controller.signal,
+        });
+        if (!response.ok) {
+          return;
+        }
+        const data = await response.json();
+        setIsAuthenticated(data.user);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setIsLoading(false);
+      }
+      return () => {
+        controller.abort();
+      };
+    })();
+  }, []);
 
   return (
     <>
@@ -99,15 +127,32 @@ export default function PreHeader() {
             >
               {appContent.lang}
             </Button>
-            <Button variant="text" component={Link} to="/signup">
-              {appContent.createAccount}
-            </Button>
-            <Box
-              sx={{ width: "1px", height: "15px", bgcolor: "#5E867A" }}
-            ></Box>
-            <Button variant="text" component={Link} to="/login">
-              {appContent.login}
-            </Button>
+            <>
+              {isLoading ? (
+                <LinearProgress />
+              ) : isAuthenticated ? (
+                <Typography
+                  variant="h6"
+                  color="secondary"
+                  fontSize={"0.8rem"}
+                  px={"20px"}
+                >
+                  {isAuthenticated}
+                </Typography>
+              ) : (
+                <>
+                  <Button variant="text" component={Link} to="/signup">
+                    {appContent.createAccount}
+                  </Button>
+                  <Box
+                    sx={{ width: "1px", height: "15px", bgcolor: "#5E867A" }}
+                  ></Box>
+                  <Button variant="text" component={Link} to="/login">
+                    {appContent.login}
+                  </Button>
+                </>
+              )}
+            </>
           </Stack>
         </Container>
       </Box>
