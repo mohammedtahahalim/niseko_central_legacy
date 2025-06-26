@@ -4,7 +4,8 @@ import { useContext } from "react";
 import { AppContext } from "../../utils/context";
 import Ammunities from "./MoreInfo/Ammunities";
 import Description from "./MoreInfo/Description";
-import Carousel from "./MoreInfo/Carousel";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   borderTop: `1px solid ${theme.palette.divider}`,
@@ -60,7 +61,31 @@ export default function MoreInfo({
       </Box>
       <Ammunities amenities={amenities} />
       <Description desc={desc} />
-      <Carousel images={images} />
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={15}
+        autoplay={{ delay: 1500 }}
+        style={{
+          width: "100%",
+          aspectRatio: "4/3",
+          paddingBottom: "35px",
+          marginTop: "25px",
+        }}
+        modules={[Pagination]}
+        pagination={{ clickable: true }}
+      >
+        {images.map((image, idx) => {
+          return (
+            <SwiperSlide key={idx}>
+              <img
+                src={image.url}
+                alt="Place Holder"
+                style={{ width: "100%", height: "100%", borderRadius: "12px" }}
+              />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
       <Typography
         variant="subtitle2"
         color="secondary"
