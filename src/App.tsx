@@ -1,14 +1,16 @@
 import "./App.css";
 import "@mantine/dates/styles.css";
+import { MantineProvider } from "@mantine/core";
 import "dayjs/locale/ja";
 import { lazy } from "react";
+import { AppContext } from "./utils/context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import useThemeMode from "./hooks/useThemeMode";
-import { MantineProvider } from "@mantine/core";
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 const Home = lazy(() => import("./pages/Home"));
 const AboutLayout = lazy(() => import("./layouts/AboutLayout"));
-import { AppContext } from "./utils/context";
 import Main from "./layouts/Main";
 import Auth from "./layouts/Auth";
 import useLanguage from "./hooks/useLanguage";
@@ -27,8 +29,7 @@ import Management from "./pages/About/Management";
 import NisekoJobs from "./pages/About/NisekoJobs";
 import Testimonials from "./pages/About/Testimonials";
 import GeneralLayout from "./layouts/GeneralLayout";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+
 import useFetch from "./hooks/useFetch";
 import Article from "./pages/Article";
 import SignUpForm from "./pages/SignUpForm";
