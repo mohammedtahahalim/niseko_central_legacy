@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     }
 
     const connection = await dbConnection();
-    const fetchQuery = `SELECT * FROM locations WHERE en_title = ? LIMIT 1`;
+    const fetchQuery = `SELECT * FROM locations WHERE en_title = ?`;
 
     const results = await connection.query(fetchQuery, [
       cleanTitle.split("-").join(" "),
