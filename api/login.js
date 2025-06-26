@@ -27,7 +27,7 @@ const bodySchema = z.object({
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(403).json({ message: "Method not allowed" });
+    return res.status(405).json({ message: "Method not allowed" });
   }
   let { email, password } = req.body;
   email = DOMPurify.sanitize(email);

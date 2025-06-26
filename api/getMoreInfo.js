@@ -10,7 +10,7 @@ const titleSchema = z.string().min(4).max(30);
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
-    return res.status(403).json({ message: "Method not allowed" });
+    return res.status(405).json({ message: "Method not allowed" });
   }
   try {
     const { title } = req.query;

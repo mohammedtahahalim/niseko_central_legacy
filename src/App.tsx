@@ -29,7 +29,6 @@ import Management from "./pages/About/Management";
 import NisekoJobs from "./pages/About/NisekoJobs";
 import Testimonials from "./pages/About/Testimonials";
 import GeneralLayout from "./layouts/GeneralLayout";
-
 import useFetch from "./hooks/useFetch";
 import Article from "./pages/Article";
 import SignUpForm from "./pages/SignUpForm";
