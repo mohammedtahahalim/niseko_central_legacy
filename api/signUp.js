@@ -44,7 +44,7 @@ export default async function handler(req, res) {
     if (fetchResults.length) {
       return res.status(401).json({ message: "Email already exists" });
     }
-    const insertQuery = `INSERT INTO accounts (email, hashed_password, first_name, last_name) VALUES (?, ?, ?, ?)`;
+    const insertQuery = `INSERT INTO accounts VALUES (?, ?, ?, ?)`;
     const [results] = await connection.query(insertQuery, [
       email,
       hashed_password,
