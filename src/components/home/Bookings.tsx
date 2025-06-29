@@ -4,6 +4,7 @@ import BookingCard from "../Bookings/BookingCard";
 import { AppContext } from "../../utils/context";
 import useIntersectObserver from "../../hooks/useIntersectObserver";
 import { motion } from "framer-motion";
+import Sorters from "./Sorters";
 
 export default function Bookings() {
   const { filteredContent } = useContext(AppContext);
@@ -49,6 +50,7 @@ export default function Bookings() {
       gap={"10px"}
       alignSelf={"center"}
     >
+      <Sorters />
       {filteredContent.slice(0, numToShow).map((element, idx) => {
         return (
           <motion.div

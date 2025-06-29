@@ -78,6 +78,11 @@ type FilterFn = (
   toFilterArray: bookingDetails[]
 ) => bookingDetails[];
 
+type SortFn = (
+  state: "ASC" | "DESC",
+  toFilterArray: bookingDetails[]
+) => bookingDetails[];
+
 const filterRecords: Record<string, FilterFn> = {
   keyword: (payload, toFilterArray) => {
     return toFilterArray.filter(
@@ -87,6 +92,13 @@ const filterRecords: Record<string, FilterFn> = {
     );
   },
   price_and_type: (payload, toFilterArray) => {
+    if (!JSON.parse(payload[2]).length) {
+      return toFilterArray.filter(
+        (element) =>
+          element.price_per_night * Number(payload[0]) * 100 <
+          Number(payload[1])
+      );
+    }
     return toFilterArray.filter(
       (element) =>
         element.price_per_night * Number(payload[0]) * 100 <
@@ -101,6 +113,32 @@ const filterRecords: Record<string, FilterFn> = {
   },
 };
 
+const sortRecords: Record<string, SortFn> = {
+  price: (state, toSortArray) => {
+    const arr = [...toSortArray];
+    if (state === "ASC")
+      return arr.sort((a, b) => a.price_per_night - b.price_per_night);
+    return arr.sort((a, b) => b.price_per_night - a.price_per_night);
+  },
+  name: (state, toSortArray) => {
+    const arr = [...toSortArray];
+    if (state === "ASC")
+      return arr.sort((a, b) => a.en_title.localeCompare(b.en_title));
+    return arr.sort((a, b) => b.en_title.localeCompare(a.en_title));
+  },
+  size: (state, toSortArray) => {
+    const arr = [...toSortArray];
+    if (state === "ASC") return arr.sort((a, b) => a.floor_size - b.floor_size);
+    return arr.sort((a, b) => b.floor_size - a.floor_size);
+  },
+  bedrooms: (state, toSortArray) => {
+    const arr = [...toSortArray];
+    if (state === "ASC")
+      return arr.sort((a, b) => a.en_type_one.localeCompare(b.en_type_one));
+    return arr.sort((a, b) => b.en_type_one.localeCompare(a.en_type_one));
+  },
+};
+
 export function filter(
   filterType: string,
   payload: string[],
@@ -110,4 +148,15 @@ export function filter(
     return filterRecords[filterType](payload, toFilterArray);
   }
   return toFilterArray;
+}
+
+export function sorters(
+  sorter: string,
+  state: "ASC" | "DESC",
+  toSortArray: bookingDetails[]
+) {
+  if (sorter in sortRecords) {
+    return sortRecords[sorter](state, toSortArray);
+  }
+  return toSortArray;
 }
