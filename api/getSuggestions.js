@@ -12,11 +12,11 @@ export default async function handler(req, res) {
   }
   let { k = 6, category = "" } = req.query;
   k = Number(k);
-  if (category === "Horizon Townhouses") {
-    category = "Horizon";
-  }
   if (!querySchema.safeParse({ k, category }).success) {
     return res.status(403).json({ message: "Bad format" });
+  }
+  if (category.toLowerCase() === "mori houses") {
+    category = "mori";
   }
   const fetchQuery = category
     ? `SELECT * FROM bookings WHERE en_category = ? ORDER BY RAND() LIMIT ?`

@@ -19,7 +19,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: "Missing title parameter" });
     }
 
-    const cleanTitle = DOMPurify.sanitize(title);
+    let cleanTitle = DOMPurify.sanitize(title);
     if (!titleSchema.safeParse(cleanTitle).success) {
       return res.status(401).json({ message: "Bad format" });
     }

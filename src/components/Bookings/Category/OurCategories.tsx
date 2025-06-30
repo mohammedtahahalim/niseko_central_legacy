@@ -25,7 +25,9 @@ const StyledCategories = styled(Box, {
 
 const FeedBack = styled(Box, {
   shouldForwardProp: (prop) => prop !== "danger",
-})({});
+})({
+  height: "fit-content",
+});
 
 const SuggestedBooking = styled(Box)({
   display: "grid",
@@ -127,9 +129,14 @@ export default function OurCategories({ data }: IOurCategories) {
                       variant="hybrid"
                       sx={{
                         width: "95%",
-                        height: { md: "50%", xs: "75" },
+                        height: { md: "50%", xs: "75%" },
                         p: "1rem",
                         fontFamily: "Source Code Pro",
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "normal",
                       }}
                     >
                       {feedback.feedback}
