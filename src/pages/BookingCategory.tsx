@@ -8,20 +8,21 @@ import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
 import Sidebar from "../components/Bookings/Category/Sidebar";
 import OurCategories from "../components/Bookings/Category/OurCategories";
+import { AnimatePresence, motion } from "framer-motion";
+
+const MotionBox = motion(Box);
 
 export default function BookingCategory() {
   const { category } = useParams();
   const { lang } = useContext(AppContext);
   const [data, setData] = useState<MoreInfo | null>(null);
   const navigator = useNavigate();
-  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (!category) {
       navigator("/not-found");
     }
     (async () => {
-      setLoading(true);
       try {
         const response = await fetch(
           `${import.meta.env.VITE_API_URL}/api/getMoreInfo?title=${category}`
@@ -34,8 +35,6 @@ export default function BookingCategory() {
       } catch (err) {
         console.log(err);
         navigator("/not-found");
-      } finally {
-        setLoading(false);
       }
     })();
   }, [category]);
@@ -44,13 +43,22 @@ export default function BookingCategory() {
     <Stack direction={"column"} sx={{ height: "100%", minHeight: "100vh" }}>
       <Header />
       <Stack direction={"column"} width={"100%"}>
-        {data && (
-          <Banner
-            title={lang === "en" ? "Accomodation" : "宿泊施設"}
-            subtitle={data[lang].title}
-            bannerIMG={data.banner_img}
-          />
-        )}
+        <Box
+          height={"350px"}
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          {data ? (
+            <Banner
+              title={lang === "en" ? "Accomodation" : "宿泊施設"}
+              subtitle={data[lang].title}
+              bannerIMG={data.banner_img}
+            />
+          ) : (
+            <CircularProgress />
+          )}
+        </Box>
         <Container
           sx={{
             display: "flex",
@@ -60,27 +68,25 @@ export default function BookingCategory() {
           }}
           disableGutters
         >
-          <Box
-            width={"100%"}
-            height={"100%"}
-            display={"flex"}
-            flexDirection={{ md: "row", xs: "column-reverse" }}
-            gap={"10px"}
-          >
-            <Sidebar />
-            {loading || !data ? (
-              <Box
+          <AnimatePresence>
+            {data && (
+              <MotionBox
                 width={"100%"}
+                height={"100%"}
                 display={"flex"}
-                justifyContent={"center"}
-                marginTop={"3rem"}
+                flexDirection={{ md: "row", xs: "column-reverse" }}
+                gap={"10px"}
+                key="animated-box"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.4 }}
               >
-                <CircularProgress color="secondary" />
-              </Box>
-            ) : (
-              <OurCategories data={data} />
+                <Sidebar />
+                <OurCategories data={data} />
+              </MotionBox>
             )}
-          </Box>
+          </AnimatePresence>
         </Container>
       </Stack>
       <Footer />
