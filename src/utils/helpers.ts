@@ -155,8 +155,8 @@ export function sorters(
   state: "ASC" | "DESC",
   toSortArray: bookingDetails[]
 ) {
-  if (sorter in sortRecords) {
-    return sortRecords[sorter](state, toSortArray);
+  if (sorter.toLowerCase() in sortRecords) {
+    return sortRecords[sorter.toLowerCase()](state, toSortArray);
   }
   return toSortArray;
 }
