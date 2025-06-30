@@ -25,10 +25,10 @@ To run the project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/tatsuhik_o/niseko_central.git
+   git clone https://github.com/Tatsuhik-o/niseko_central.git
 2. Navigate into the project directory:
    ```bash
-   cd niseko-central
+   cd niseko_central
 3. Install dependencies:
    ```bash
    npm install
