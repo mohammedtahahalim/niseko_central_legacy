@@ -155,8 +155,16 @@ export function sorters(
   state: "ASC" | "DESC",
   toSortArray: bookingDetails[]
 ) {
-  if (sorter.toLowerCase() in sortRecords) {
-    return sortRecords[sorter.toLowerCase()](state, toSortArray);
+  const jpSorters = {
+    価格: "Price",
+    名前: "Name",
+    サイズ: "Size",
+    ベッドルーム数: "Bedrooms",
+  };
+  let customSorter =
+    sorter in jpSorters ? jpSorters[sorter as keyof typeof jpSorters] : sorter;
+  if (customSorter.toLowerCase() in sortRecords) {
+    return sortRecords[customSorter.toLowerCase()](state, toSortArray);
   }
   return toSortArray;
 }
