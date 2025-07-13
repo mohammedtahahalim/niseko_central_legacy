@@ -1,13 +1,25 @@
 import { useEffect, useState, useMemo } from "react";
 import defaultEn from "../utils/en.json";
 import defaultJp from "../utils/jp.json";
+import type { TAppContent } from "../utils/types";
+
+interface IUseLanguage {
+  lang: "en" | "jp";
+  appContent: TAppContent;
+  setLang: React.Dispatch<React.SetStateAction<"en" | "jp">>;
+}
 
 const getInitialLanguage = (): "en" | "jp" => {
-  const storedLanguage = localStorage.getItem("language") as "en" | "jp";
-  return storedLanguage === "jp" ? "jp" : "en";
+  try {
+    const storedLanguage = localStorage.getItem("language");
+    return storedLanguage === "jp" ? "jp" : "en";
+  } catch (err) {
+    console.log("Error fetching default language from local storage");
+    return "en";
+  }
 };
 
-export default function useLanguage() {
+export default function useLanguage(): IUseLanguage {
   const [lang, setLang] = useState<"en" | "jp">(getInitialLanguage);
 
   const appContent = useMemo(() => {
@@ -16,8 +28,11 @@ export default function useLanguage() {
 
   useEffect(() => {
     localStorage.setItem("language", lang);
+  }, [lang]);
+
+  useEffect(() => {
     document.title = appContent.title;
-  }, [lang, appContent]);
+  }, [appContent]);
 
   return { setLang, appContent, lang };
 }
