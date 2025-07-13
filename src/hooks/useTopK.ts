@@ -15,7 +15,12 @@ interface IBlogs {
   count: string;
 }
 
-export default function useTopK(k: number) {
+interface IUseTopK {
+  loading: boolean;
+  topKBlogs: IBlogs[];
+}
+
+export default function useTopK(k: number): IUseTopK {
   const [topKBlogs, setTopKBlogs] = useState<IBlogs[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -26,6 +31,13 @@ export default function useTopK(k: number) {
         const response = await fetch(
           `${import.meta.env.VITE_API_URL}/api/mostViewedBlogs?k=${k}`
         );
+        if (!response.ok) {
+          console.log(
+            "Error fetching date from backend with a status error of : ",
+            response.status
+          );
+          return;
+        }
         const data = await response.json();
         setTopKBlogs(data.articles);
       } catch (err) {
