@@ -12,7 +12,12 @@ interface IUseLanguage {
 const getInitialLanguage = (): "en" | "jp" => {
   try {
     const storedLanguage = localStorage.getItem("language");
-    return storedLanguage === "jp" ? "jp" : "en";
+    if (storedLanguage === "jp" || storedLanguage === "en")
+      return storedLanguage;
+    const browserLanguage = navigator.language;
+    if (browserLanguage === "jp" || browserLanguage === "en")
+      return browserLanguage;
+    return "en";
   } catch (err) {
     console.log("Error fetching default language from local storage");
     return "en";
