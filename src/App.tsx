@@ -98,7 +98,9 @@ function App() {
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/special-deals" element={<SpecialDeals />} />
                   <Route path="/guest-service" element={<GuestService />} />
-                  <Route path="/add-booking" element={<AddBooking />} />
+                  <Route element={<ProtectedRoutes />}>
+                    <Route path="/add-booking" element={<AddBooking />} />
+                  </Route>
                 </Route>
                 <Route element={<GeneralLayout isBlog={true} />}>
                   <Route path="/blog" element={<Blog />} />

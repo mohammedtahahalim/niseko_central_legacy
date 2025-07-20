@@ -43,6 +43,16 @@ export default function useFetch(): IUseFetch {
             };
           })
         );
+        setFilteredContent(
+          data.bookings.map((element: any) => {
+            return {
+              ...element,
+              images: JSON.parse(element.images),
+              amenities: JSON.parse(element.amenities),
+              jp_amenities: JSON.parse(element.jp_amenities),
+            };
+          })
+        );
       } catch (err) {
         setError(err as string);
       } finally {
@@ -53,10 +63,6 @@ export default function useFetch(): IUseFetch {
       };
     })();
   }, []);
-
-  useEffect(() => {
-    setContents({ ...contents });
-  }, [contents]);
 
   return {
     contents,
