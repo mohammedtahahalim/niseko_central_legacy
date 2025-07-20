@@ -35,7 +35,7 @@ To run the project locally:
 4. Start the development server:
    ```bash
    npm run dev
-5. Open your browser and go to http://localhost:5173. (make sure to setup your env file to contain informations about both api endpoint and sql db)
+5. Open your browser and go to http://localhost:5173. (make sure to setup your env file to contain informations about both api endpoint and db informations)
 
 ## Contributions
 
