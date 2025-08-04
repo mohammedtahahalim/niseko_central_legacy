@@ -33,6 +33,7 @@ export default function useFetch({
 
     setLoading(true);
     setError("");
+    // This is a workaround because for some reason react batch all updates resulting in loading not changing to true before data is received
     await new Promise((resolve) => setTimeout(resolve, 0));
     try {
       const url = `${baseAPI}/api/${endpoint}`;

@@ -24,6 +24,7 @@ export default function useArticle(
 
     setLoading(true);
     setError("");
+    // This is a workaround because for some reason react batch all updates resulting in loading not changing to true before data is received
     await new Promise((resolve) => setTimeout(resolve, 0));
     try {
       const validTitle = articleTitleSchema.safeParse(title);
@@ -59,6 +60,9 @@ export default function useArticle(
 
   useEffect(() => {
     fetchArticle();
+    return () => {
+      if (controllerRef.current) controllerRef.current.abort();
+    };
   }, []);
 
   return { articleData, loading, error };

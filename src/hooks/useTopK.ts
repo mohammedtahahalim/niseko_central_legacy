@@ -32,7 +32,8 @@ export default function useTopK({
 
     setLoading(true);
     setError("");
-    await new Promise((resolve) => setTimeout(resolve, 0)); // This is a workaround because for some reason react batch all updates resulting in loading not changing to true before data is received
+    // This is a workaround because for some reason react batch all updates resulting in loading not changing to true before data is received
+    await new Promise((resolve) => setTimeout(resolve, 0));
     try {
       const url: string = `${baseAPI}/api/${endpoint}?k=${k}`;
       const fullOptions: RequestInit = {
