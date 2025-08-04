@@ -5,13 +5,20 @@ interface IIntersectObserver {
   max: number;
   min: number;
   increment: number;
+  intersectionTimeout?: number;
 }
+
+interface IUseObserver {
+  numToShow: number;
+}
+
 export default function useIntersectObserver({
   currRef,
   min,
   max,
   increment,
-}: IIntersectObserver) {
+  intersectionTimeout = 100,
+}: IIntersectObserver): IUseObserver {
   const [numToShow, setNumToShow] = useState<number>(min || 3);
   const cooldown = useRef<boolean>(false);
 
@@ -24,7 +31,7 @@ export default function useIntersectObserver({
           setNumToShow((numToShow) => Math.min(numToShow + increment, max));
           setTimeout(() => {
             cooldown.current = false;
-          }, 100);
+          }, intersectionTimeout);
         }
       });
     });
@@ -34,7 +41,7 @@ export default function useIntersectObserver({
     return () => {
       observer.disconnect();
     };
-  }, [currRef, min, max, increment]);
+  }, [currRef, min, max, increment, intersectionTimeout]);
 
   return { numToShow };
 }

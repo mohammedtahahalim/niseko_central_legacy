@@ -7,10 +7,10 @@ export default async function handler(req, res) {
   try {
     const connection = await dbConnection();
     const fetchQuery = `SELECT * FROM bookings ORDER BY RAND()`;
-    const results = await connection.query(fetchQuery);
-    if (!results[0])
+    const [results] = await connection.query(fetchQuery);
+    if (!results.length)
       return res.status(404).json({ message: "Found No Bookings ..." });
-    return res.status(200).json({ bookings: results[0] });
+    return res.status(200).json({ bookings: results });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ message: "Internal Server Error ..." });

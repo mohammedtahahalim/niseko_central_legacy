@@ -7,6 +7,7 @@ export default async function handler(req, res) {
   }
   const { k } = req.query;
   try {
+    throw new Error("Testing");
     const fetchQuery = `SELECT * FROM articles ORDER BY count LIMIT ?`;
     const connection = await dbConnection();
     const results = await connection.query(fetchQuery, [Number(k)]);

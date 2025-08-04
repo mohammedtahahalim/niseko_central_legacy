@@ -14,6 +14,7 @@ import Post from "../components/Blog/Post";
 import useIntersectObserver from "../hooks/useIntersectObserver";
 import useTopK from "../hooks/useTopK";
 import { motion } from "framer-motion";
+import Error from "../components/Error";
 
 const SimpleNavLink = styled(NavLink, {
   shouldForwardProp: (prop) => prop !== "danger",
@@ -38,7 +39,7 @@ export default function Blog() {
     increment: 2,
   });
 
-  const { topKBlogs, loading } = useTopK(8);
+  const { topKBlogs, loading, error } = useTopK({ k: 8 });
 
   return (
     <Stack
@@ -94,27 +95,41 @@ export default function Blog() {
           </Box>
         ) : (
           <>
-            {topKBlogs.slice(0, numToShow).map((element) => {
-              return (
-                <motion.div
-                  initial={{ x: 25, y: 0, opacity: 0 }}
-                  animate={{ x: 0, y: 0, opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                  key={element.en_title}
-                >
-                  <Post
-                    image={element.banner_img}
-                    category={
-                      lang === "en" ? element.en_category : element.jp_category
-                    }
-                    title={lang === "en" ? element.en_title : element.jp_title}
-                    date={element.date}
-                    desc="Enjoy the great outdoors and have a whole lot of fun with spring rafting in Niseko."
-                    link={element.en_title}
-                  />
-                </motion.div>
-              );
-            })}
+            {!error &&
+              topKBlogs.slice(0, numToShow).map((element) => {
+                return (
+                  <motion.div
+                    initial={{ x: 25, y: 0, opacity: 0 }}
+                    animate={{ x: 0, y: 0, opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    key={element.en_title}
+                  >
+                    <Post
+                      image={element.banner_img}
+                      category={
+                        lang === "en"
+                          ? element.en_category
+                          : element.jp_category
+                      }
+                      title={
+                        lang === "en" ? element.en_title : element.jp_title
+                      }
+                      date={element.date}
+                      desc="Enjoy the great outdoors and have a whole lot of fun with spring rafting in Niseko."
+                      link={element.en_title}
+                    />
+                  </motion.div>
+                );
+              })}
+            {error && (
+              <Error
+                errorMsg={
+                  lang === "en"
+                    ? "Articles Not Found ..."
+                    : "記事が見つかりません..."
+                }
+              />
+            )}
           </>
         )}
         <div ref={sentinelRef} style={{ height: 1 }}></div>

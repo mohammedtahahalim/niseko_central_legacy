@@ -19,7 +19,9 @@ const getInitialLanguage = (): "en" | "jp" => {
       return browserLanguage;
     return "en";
   } catch (err) {
-    console.log("Error fetching default language from local storage");
+    console.log(
+      "Error fetching language from local storage defaulting back to english"
+    );
     return "en";
   }
 };

@@ -363,3 +363,18 @@ export interface IArticleData {
   en_content: string;
   jp_content: string;
 }
+
+export interface IBlogs {
+  en_title: string;
+  banner_img: {
+    image: string;
+    blur: string;
+  };
+  en_category: string;
+  date: string;
+  en_content: string;
+  jp_title: string;
+  jp_category: string;
+  jp_content: string;
+  count: string;
+}
