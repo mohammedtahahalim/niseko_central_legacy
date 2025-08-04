@@ -47,6 +47,7 @@ export default function SpecialDeals() {
             title={article[1]}
             desc={article[2]}
             link={article[3]}
+            key={article[0]}
           />
         );
       })}

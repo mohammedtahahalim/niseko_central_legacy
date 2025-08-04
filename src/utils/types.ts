@@ -352,3 +352,14 @@ export type MoreInfo = {
 };
 
 export type SuggestionBox = Omit<bookingDetails, "images"> & { images: string };
+
+export interface IArticleData {
+  en_title: string;
+  jp_title: string;
+  bannerIMG: string;
+  en_category: string;
+  jp_category: string;
+  date: string;
+  en_content: string;
+  jp_content: string;
+}

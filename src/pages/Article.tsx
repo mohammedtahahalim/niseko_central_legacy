@@ -20,8 +20,7 @@ const SimpleNavLink = styled(NavLink, {
 }));
 export default function Article() {
   const { appContent } = useContext(AppContext);
-  const title = useParams()["title"]?.split("-").join(" ") || "";
-
+  const title = useParams()["title"] || "";
   return (
     <Stack
       direction={{ md: "row", xs: "column-reverse" }}

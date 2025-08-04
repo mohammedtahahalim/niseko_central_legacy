@@ -76,3 +76,9 @@ export const bookingSchema = z.object({
   desc: z.string(),
   pricePerNight: z.number().min(10),
 });
+
+export const articleTitleSchema = z
+  .string()
+  .min(5)
+  .max(255)
+  .regex(/^[a-zA-Z0-9\s!@.+':,;_-]+$/);
