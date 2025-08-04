@@ -113,6 +113,17 @@ const filterRecords: Record<string, FilterFn> = {
   },
 };
 
+export function filter(
+  filterType: string,
+  payload: string[],
+  toFilterArray: bookingDetails[]
+) {
+  if (filterType in filterRecords) {
+    return filterRecords[filterType](payload, toFilterArray);
+  }
+  return toFilterArray;
+}
+
 const sortRecords: Record<string, SortFn> = {
   price: (state, toSortArray) => {
     const arr = [...toSortArray];
@@ -138,17 +149,6 @@ const sortRecords: Record<string, SortFn> = {
     return arr.sort((a, b) => b.en_type_one.localeCompare(a.en_type_one));
   },
 };
-
-export function filter(
-  filterType: string,
-  payload: string[],
-  toFilterArray: bookingDetails[]
-) {
-  if (filterType in filterRecords) {
-    return filterRecords[filterType](payload, toFilterArray);
-  }
-  return toFilterArray;
-}
 
 export function sorters(
   sorter: string,

@@ -205,7 +205,7 @@ export default function DurationAndQuantity({
           );
           setTimeout(() => {
             setLoading(false);
-          }, 500);
+          }, 150);
         }}
       >
         Search
