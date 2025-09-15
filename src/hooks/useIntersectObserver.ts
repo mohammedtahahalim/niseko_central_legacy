@@ -23,6 +23,10 @@ export default function useIntersectObserver({
   const cooldown = useRef<boolean>(false);
 
   useEffect(() => {
+    setNumToShow(min || 3);
+  }, [max, min]);
+
+  useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {

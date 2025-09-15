@@ -45,16 +45,8 @@ export default function useFetch({
       const response = await fetch(url, fullOptions);
       if (!response.ok) throw new Error(response.status.toString());
       const data = await response.json();
-      const formattedData = data.bookings.map((element: any) => {
-        return {
-          ...element,
-          images: JSON.parse(element.images),
-          amenities: JSON.parse(element.amenities),
-          jp_amenities: JSON.parse(element.jp_amenities),
-        };
-      });
-      setContents(formattedData);
-      setFilteredContent(formattedData);
+      setContents(data.bookings);
+      setFilteredContent(data.bookings);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { ZodType } from "zod";
 import { serverErrors } from "../../utils/constants";
+import type { TAppContent } from "../../utils/types";
 
 interface FetchBookingsArgs {
   baseURL?: string;
@@ -40,7 +41,6 @@ export const fetchBookings = createAsyncThunk(
       param ? "/" + param : ""
     }${fullQueries ? "?" + fullQueries : ""}`;
     try {
-      console.log(fullURL);
       const response = await fetch(fullURL, fullOptions);
       if (!response.ok) {
         const errorStatus = response.status.toString();
@@ -71,14 +71,14 @@ export const fetchBookings = createAsyncThunk(
   }
 );
 
-interface InitialStateShape {
-  data: any | null;
-  displayData: any | null;
+interface InitialStateShape<T> {
+  data: T | null;
+  displayData: T | null;
   loading: boolean;
   error: string;
 }
 
-const initialState: InitialStateShape = {
+const initialState: InitialStateShape<TAppContent> = {
   data: null,
   displayData: null,
   loading: false,
@@ -100,22 +100,8 @@ export const bookingsSlice = createSlice({
     });
     builder.addCase(fetchBookings.fulfilled, (state, action) => {
       state.loading = false;
-      state.data = action.payload.bookings.map((element: any) => {
-        return {
-          ...element,
-          images: JSON.parse(element.images),
-          amenities: JSON.parse(element.amenities),
-          jp_amenities: JSON.parse(element.jp_amenities),
-        };
-      });
-      state.displayData = action.payload.bookings.map((element: any) => {
-        return {
-          ...element,
-          images: JSON.parse(element.images),
-          amenities: JSON.parse(element.amenities),
-          jp_amenities: JSON.parse(element.jp_amenities),
-        };
-      });
+      state.data = action.payload.bookings;
+      state.displayData = action.payload.bookings;
     });
   },
 });
