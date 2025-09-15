@@ -6,6 +6,11 @@ export type TSignUp = z.infer<typeof signUpSchema>;
 
 export type TBooking = z.infer<typeof bookingSchema>;
 
+export type TServerError = {
+  en: Record<string, string>;
+  jp: Record<string, string>;
+};
+
 export type TAppContent = {
   lang: string;
   title: string;

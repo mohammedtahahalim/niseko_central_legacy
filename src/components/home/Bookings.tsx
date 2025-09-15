@@ -1,10 +1,13 @@
 import { Box } from "@mui/material";
-import { useCallback, useContext, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import BookingCard from "../Bookings/BookingCard";
 import { AppContext } from "../../utils/context";
 import useIntersectObserver from "../../hooks/useIntersectObserver";
 import { motion } from "framer-motion";
 import Sorters from "./Sorters";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBookings } from "../../store/slices/bookingsSlice";
+import type { AppDisptach } from "../../store/store";
 
 export default function Bookings() {
   const { filteredContent } = useContext(AppContext);
@@ -12,6 +15,16 @@ export default function Bookings() {
   const [currentlyActive, setCurrentlyActive] = useState<boolean[]>(
     Array.from({ length: filteredContent.length }, () => false)
   );
+  const dispatch = useDispatch<AppDisptach>();
+  const { displayData, loading, error } = useSelector(
+    (state: any) => state.bookings
+  );
+
+  console.log(displayData, loading, error);
+
+  useEffect(() => {
+    dispatch(fetchBookings({ endpoint: "getBookings" }));
+  }, []);
 
   const { numToShow } = useIntersectObserver({
     currRef: lastElemRef,
