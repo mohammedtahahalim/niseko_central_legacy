@@ -1,4 +1,4 @@
-# Niseko Central – Accommodation Booking Platform
+# Niseko Central Legacy – Accommodation Booking Platform
 
 [![Niseko Central](https://i.imgur.com/5orLEXF.png)](https://niseko-central.vercel.app/)
 
@@ -26,21 +26,24 @@ To run the project locally:
 1. Clone the repository:
    ```bash
    git clone https://github.com/Tatsuhik-o/niseko_central.git
+   ```
 2. Navigate into the project directory:
    ```bash
    cd niseko_central
+   ```
 3. Install dependencies:
    ```bash
    npm install
+   ```
 4. Start the development server:
    ```bash
    npm run dev
+   ```
 5. Open your browser and go to http://localhost:5173. (make sure to setup your env file to contain informations about both api endpoint and db informations)
 
 ## Contributions
 
 - This project was developed to demonstrate proficiency in modern web development practices and to provide a practical solution for travelers seeking accommodations in Niseko.
-  
 - **Key contributions include**:
   - Implementing the property listing and search functionality.
   - Designing the responsive layout using Tailwind CSS.
@@ -54,5 +57,6 @@ To run the project locally:
   - Review System: Enable users to leave feedback on accommodations to assist future travelers.
 
 ## Contact
+
 - **For inquiries or feedback, please contact me at**
   mohamedtahahalim@gmail.com
