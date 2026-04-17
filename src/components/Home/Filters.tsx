@@ -1,27 +1,33 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, styled } from "@mui/material";
 import { useContext, useState } from "react";
 import { AppContext } from "../../utils/context";
 import DurationAndQuantity from "../Filters/DurationAndQuantity";
 import PriceAndType from "../Filters/PriceAndType";
 import Search from "../Filters/Search";
 
+const FiltersWrapper = styled(Box)({
+  minWidth: "350px",
+  display: "flex",
+  flexDirection: "column",
+});
+
 export default function Filters() {
   const { appContent } = useContext(AppContext);
   const [showFilters, setShowFilters] = useState<boolean>(
-    window.innerWidth > 900
+    window.innerWidth > 1200,
   );
   const [durationStay, setDurationStay] = useState<number>(1);
 
   return (
-    <Box
+    <FiltersWrapper
       sx={{
-        width: { md: "35%", xs: "100%" },
+        width: { lg: "35%", xs: "100%" },
         display: "flex",
         flexDirection: "column",
         padding: "0rem 0.5rem",
       }}
     >
-      <Box display={{ md: "none", xs: "flex" }} alignSelf={"center"}>
+      <Box display={{ lg: "none", xs: "flex" }} alignSelf={"center"}>
         <Button
           variant="contained"
           color="secondary"
@@ -36,10 +42,10 @@ export default function Filters() {
             durationStay={durationStay}
             setDurationStay={setDurationStay}
           />
-          <PriceAndType durationStay={durationStay} />
+          <PriceAndType />
           <Search />
         </Box>
       )}
-    </Box>
+    </FiltersWrapper>
   );
 }

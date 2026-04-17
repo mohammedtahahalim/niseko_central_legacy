@@ -5,12 +5,13 @@ import Book from "./Book";
 import { styled } from "@mui/material";
 import { memo, useContext } from "react";
 import MoreInfo from "./MoreInfo";
-import type { bookingDetails } from "../../utils/types";
 import { AppContext } from "../../utils/context";
+import type { Booking } from "../../store/slices/bookingsSlice";
 
 const StyledStack = styled(Stack, {
   shouldForwardProp: (prop) => prop !== "danger",
 })(({ theme }) => ({
+  minHeight: "250px",
   border: `0.1px solid ${theme.palette.divider}`,
   margin: "0.5rem",
   borderRadius: "10px",
@@ -36,17 +37,18 @@ const StyledStack = styled(Stack, {
 }));
 
 interface IBookingCard {
-  bookingDetail: bookingDetails;
-  setShowMore: () => void;
-  isShownMore: boolean;
+  bookingDetail: Booking;
+  SetCurrentActive: React.Dispatch<React.SetStateAction<number>>;
+  currentActive: number;
 }
 
 const BookingCard = memo(function BookingCard({
   bookingDetail,
-  setShowMore,
-  isShownMore,
+  SetCurrentActive,
+  currentActive,
 }: IBookingCard) {
   const { lang } = useContext(AppContext);
+
   return (
     <StyledStack direction={"column"}>
       <Stack
@@ -57,8 +59,9 @@ const BookingCard = memo(function BookingCard({
       >
         <BookingImage image={bookingDetail.images[0]} />
         <BookingInfo
-          setSeeMore={setShowMore}
-          seeMore={isShownMore}
+          id={bookingDetail.id}
+          SetCurrentActive={SetCurrentActive}
+          currentActive={currentActive}
           title={
             lang === "en" ? bookingDetail.en_title : bookingDetail.jp_title
           }
@@ -86,7 +89,7 @@ const BookingCard = memo(function BookingCard({
       </Stack>
       <Box
         overflow={"hidden"}
-        maxHeight={isShownMore ? "750px" : "0px"}
+        maxHeight={currentActive === bookingDetail.id ? "750px" : "0px"}
         sx={{
           transition: `max-height 0.4s ease-in-out`,
         }}

@@ -1,26 +1,47 @@
-import { Box } from "@mui/material";
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { Box, CircularProgress, styled } from "@mui/material";
+import { useEffect, useRef, useState } from "react";
 import BookingCard from "../Bookings/BookingCard";
-import { AppContext } from "../../utils/context";
 import useIntersectObserver from "../../hooks/useIntersectObserver";
 import { motion } from "framer-motion";
 import Sorters from "./Sorters";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBookings } from "../../store/slices/bookingsSlice";
+import {
+  fetchBookings,
+  selectDisplayData,
+  selectStatus,
+} from "../../store/slices/bookingsSlice";
 import type { AppDisptach } from "../../store/store";
 
+const BookingWrapper = styled(Box)({
+  flex: 1,
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  gap: "5px",
+  overflow: "hidden",
+});
+
+const Loader = styled(Box)({
+  width: "100%",
+  minHeight: "150px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
 export default function Bookings() {
-  const { filteredContent } = useContext(AppContext);
   const lastElemRef = useRef<HTMLDivElement | null>(null);
-  const [currentlyActive, setCurrentlyActive] = useState<boolean[]>(
-    Array.from({ length: filteredContent.length }, () => false)
-  );
   const dispatch = useDispatch<AppDisptach>();
-  const { displayData } = useSelector((state: any) => state.bookings);
+  const displayData = useSelector(selectDisplayData);
+  const [currentActive, SetCurrentActive] = useState<number>(-1);
+  const status = useSelector(selectStatus);
 
   useEffect(() => {
-    dispatch(fetchBookings({ endpoint: "getBookings" }));
-  }, []);
+    const bookingRequest = dispatch(fetchBookings());
+    return () => {
+      bookingRequest.abort();
+    };
+  }, [dispatch]);
 
   const { numToShow } = useIntersectObserver({
     currRef: lastElemRef,
@@ -37,53 +58,35 @@ export default function Bookings() {
   const animate =
     window.innerWidth > 600 ? { opacity: 1, x: 0 } : { opacity: 1, y: 0 };
 
-  const handleSeeMoreLogic = useCallback(
-    (idx: number) => {
-      setCurrentlyActive(
-        currentlyActive.map((element, odx) => {
-          if (odx === idx) {
-            return !element;
-          }
-          return false;
-        })
-      );
-    },
-    [currentlyActive, setCurrentlyActive]
-  );
-
   return (
-    <Box
-      sx={{ width: { md: "65%", xs: "90%" } }}
-      display={"flex"}
-      flexDirection={"column"}
-      gap={"10px"}
-      alignSelf={"center"}
-    >
+    <BookingWrapper>
       <Sorters />
-      {displayData &&
-        displayData
-          .slice(0, numToShow || 5)
-          .map((element: any, idx: number) => {
-            return (
-              <motion.div
-                initial={initial(75 + (idx % 3) * 75)}
-                animate={animate}
-                transition={{
-                  type: "tween",
-                  duration: 0.75,
-                  ease: "easeInOut",
-                }}
-                key={element.id}
-              >
-                <BookingCard
-                  bookingDetail={element}
-                  setShowMore={() => handleSeeMoreLogic(idx)}
-                  isShownMore={currentlyActive[idx]}
-                />
-              </motion.div>
-            );
-          })}
+      {status === "loading" && (
+        <Loader>
+          <CircularProgress color="secondary" />{" "}
+        </Loader>
+      )}
+      {displayData.slice(0, numToShow || 5).map((element, idx: number) => {
+        return (
+          <motion.div
+            initial={initial(75 + (idx % 3) * 75)}
+            animate={animate}
+            transition={{
+              type: "tween",
+              duration: 0.75,
+              ease: "easeInOut",
+            }}
+            key={element.id}
+          >
+            <BookingCard
+              bookingDetail={element}
+              SetCurrentActive={SetCurrentActive}
+              currentActive={currentActive}
+            />
+          </motion.div>
+        );
+      })}
       <div ref={lastElemRef} style={{ height: "75px" }}></div>
-    </Box>
+    </BookingWrapper>
   );
 }

@@ -1,4 +1,4 @@
-import dbConnection from "../backendHelpers/dbConnection.js";
+import dbConnection from "../helpers/dbConnection.js";
 import { z } from "zod";
 import createDOMPurify from "isomorphic-dompurify";
 import { JSDOM } from "jsdom";

@@ -1,4 +1,4 @@
-import dbConnection from "../backendHelpers/dbConnection.js";
+import dbConnection from "../helpers/dbConnection.js";
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
@@ -17,9 +17,10 @@ export default async function handler(req, res) {
         amenities: JSON.parse(property.amenities || "[]"),
         jp_amenities: JSON.parse(property.jp_amenities || "[]"),
         available: Boolean(property.available),
+        village_distance: Number(property.village_distance),
       };
     });
-    return res.status(200).json({ bookings: results });
+    return res.status(200).json({ results });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ message: "Internal Server Error ..." });

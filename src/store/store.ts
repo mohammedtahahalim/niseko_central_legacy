@@ -8,3 +8,4 @@ export const NisekoStore = configureStore({
 });
 
 export type AppDisptach = typeof NisekoStore.dispatch;
+export type RootState = ReturnType<typeof NisekoStore.getState>;

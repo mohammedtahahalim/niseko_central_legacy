@@ -1,31 +1,29 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Stack, Container } from "@mui/material";
+import { Box, Container, styled } from "@mui/material";
+
+const MainWrapper = styled(Box)({
+  width: "100%",
+  height: "100%",
+  overflow: "hidden",
+  flexDirection: "column",
+});
+
+const BodyWrapper = styled(Container)({
+  flex: 1,
+  overflow: "hidden",
+  width: "100%",
+});
 
 export default function Main() {
   return (
-    <Stack
-      direction={"column"}
-      sx={{
-        height: "100%",
-        minHeight: "100vh",
-        width: "100%",
-        overflow: "hidden",
-      }}
-    >
+    <MainWrapper>
       <Header />
-      <Container
-        sx={{
-          display: "flex",
-          flex: "1",
-          position: "relative",
-        }}
-        disableGutters
-      >
+      <BodyWrapper disableGutters maxWidth="xl">
         <Outlet />
-      </Container>
+      </BodyWrapper>
       <Footer />
-    </Stack>
+    </MainWrapper>
   );
 }

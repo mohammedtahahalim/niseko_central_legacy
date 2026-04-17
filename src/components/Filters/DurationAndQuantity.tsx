@@ -7,7 +7,6 @@ import dayjs from "dayjs";
 import { convertIntoDays } from "../../utils/helpers";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import { filter } from "../../utils/helpers";
 
 const StyledDatePicker = styled(DatePicker, {
   shouldForwardProp: (prop) => prop !== "danger",
@@ -36,8 +35,7 @@ export default function DurationAndQuantity({
   durationStay,
   setDurationStay,
 }: IDurationAndQuantity) {
-  const { appContent, setLoading, setFilteredContent, contents } =
-    useContext(AppContext);
+  const { appContent } = useContext(AppContext);
   const [startDate, setStartDate] = useState<number>(new Date().getTime());
   const [guests, setGuests] = useState<number[]>([1, 0, 0]);
   const [controlNights, setControlNights] = useState<boolean>(false);
@@ -53,7 +51,7 @@ export default function DurationAndQuantity({
             minDate={dayjs(startDate)}
             onChange={(e) =>
               setStartDate(
-                e ? Math.max(e.valueOf(), new Date().getTime()) : startDate
+                e ? Math.max(e.valueOf(), new Date().getTime()) : startDate,
               )
             }
           />
@@ -194,19 +192,6 @@ export default function DurationAndQuantity({
         variant="contained"
         color="secondary"
         sx={{ width: "fit-content", alignSelf: "flex-end", px: "3rem" }}
-        onClick={() => {
-          setLoading(true);
-          setFilteredContent(
-            filter(
-              "date_duration_guests",
-              [(guests[0] + guests[1] + guests[2]).toString()],
-              contents
-            )
-          );
-          setTimeout(() => {
-            setLoading(false);
-          }, 150);
-        }}
       >
         Search
       </Button>

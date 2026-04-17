@@ -1,6 +1,6 @@
-import blurrifyImages from "../backendHelpers/blurrifyImages.js";
-import useTranslate from "../backendHelpers/useTranslate.js";
-import dbConnection from "../backendHelpers/dbConnection.js";
+import blurrifyImages from "../helpers/blurrifyImages.js";
+import useTranslate from "../helpers/useTranslate.js";
+import dbConnection from "../helpers/dbConnection.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {

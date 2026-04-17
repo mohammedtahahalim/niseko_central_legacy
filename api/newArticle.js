@@ -1,8 +1,8 @@
 import { z } from "zod";
 import createDOMPurify from "isomorphic-dompurify";
 import { JSDOM } from "jsdom";
-import useTranslate from "../backendHelpers/useTranslate.js";
-import dbConnection from "../backendHelpers/dbConnection.js";
+import useTranslate from "../helpers/useTranslate.js";
+import dbConnection from "../helpers/dbConnection.js";
 
 const window = new JSDOM("").window;
 const DOMPurify = createDOMPurify(window);
@@ -59,7 +59,7 @@ export default async function handler(req, res) {
         jp_content,
         bannerIMG,
         date,
-      ]
+      ],
     );
 
     if (!results[0]) {

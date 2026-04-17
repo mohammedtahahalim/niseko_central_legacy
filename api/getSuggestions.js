@@ -1,4 +1,4 @@
-import dbConnection from "../backendHelpers/dbConnection.js";
+import dbConnection from "../helpers/dbConnection.js";
 import { z } from "zod";
 
 const querySchema = z.object({

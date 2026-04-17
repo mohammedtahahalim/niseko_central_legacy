@@ -4,8 +4,9 @@ import { AppContext } from "../../utils/context";
 import FloorPlan from "./FloorPlan";
 
 interface BookingInfoProps {
-  seeMore: boolean;
-  setSeeMore: () => void;
+  id: number;
+  SetCurrentActive: React.Dispatch<React.SetStateAction<number>>;
+  currentActive: number;
   title: string;
   category: string;
   type_one: string;
@@ -17,8 +18,8 @@ interface BookingInfoProps {
 }
 
 export default function BookingInfo({
-  setSeeMore,
-  seeMore,
+  SetCurrentActive,
+  currentActive,
   title,
   category,
   type_one,
@@ -27,10 +28,12 @@ export default function BookingInfo({
   liftWithin,
   villageCenter,
   view,
+  id,
 }: BookingInfoProps) {
   const { appContent, loading } = useContext(AppContext);
   const floorButtonRef = useRef<HTMLButtonElement | null>(null);
   const [floorPlan, setFloorPlan] = useState<boolean>(false);
+
   return (
     <Stack
       width={{ md: "40%", xs: "100%" }}
@@ -107,9 +110,13 @@ export default function BookingInfo({
               variant="text"
               color="secondary"
               size="small"
-              onClick={setSeeMore}
+              onClick={() =>
+                SetCurrentActive((currentActive) =>
+                  currentActive !== id ? id : -1,
+                )
+              }
             >
-              {seeMore
+              {currentActive === id
                 ? appContent.booking_card.see_less
                 : appContent.booking_card.see_more}
             </Button>

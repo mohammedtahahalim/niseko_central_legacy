@@ -1,5 +1,5 @@
-import dbConnection from "../backendHelpers/dbConnection.js";
-import blurrifyImages from "../backendHelpers/blurrifyImages.js";
+import dbConnection from "../helpers/dbConnection.js";
+import blurrifyImages from "../helpers/blurrifyImages.js";
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
             blur: (await blurrifyImages([eleme.banner_img]))[0].blur,
           },
         };
-      })
+      }),
     );
     return res.status(200).json({ articles });
   } catch (err) {

@@ -2,11 +2,9 @@ import { Box, Button, FormLabel, TextField } from "@mui/material";
 import { useContext, useState } from "react";
 import { AppContext } from "../../utils/context";
 import * as wanakana from "wanakana";
-import { filter } from "../../utils/helpers";
 
 export default function Search() {
-  const { appContent, contents, setFilteredContent, setLoading } =
-    useContext(AppContext);
+  const { appContent } = useContext(AppContext);
   const { lang } = useContext(AppContext);
   const [searchFilter, setSearchFilter] = useState<string>("");
 
@@ -31,13 +29,6 @@ export default function Search() {
         variant="contained"
         color="secondary"
         sx={{ alignSelf: "flex-end", px: "3rem" }}
-        onClick={() => {
-          setLoading(true);
-          setFilteredContent(filter("keyword", [searchFilter], contents));
-          setTimeout(() => {
-            setLoading(false);
-          }, 500);
-        }}
       >
         Search
       </Button>

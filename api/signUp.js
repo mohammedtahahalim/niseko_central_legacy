@@ -1,7 +1,7 @@
 import { z } from "zod";
 import createDOMPurify from "isomorphic-dompurify";
 import { JSDOM } from "jsdom";
-import dbConnection from "../backendHelpers/dbConnection.js";
+import dbConnection from "../helpers/dbConnection.js";
 import bcrypt from "bcrypt";
 
 const window = new JSDOM("").window;
@@ -11,12 +11,12 @@ const bodySchema = z.object({
   email: z
     .string()
     .regex(
-      /^(?!.*\.\.)(?!.*__)(?!.*--)(?![._-])[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+$/
+      /^(?!.*\.\.)(?!.*__)(?!.*--)(?![._-])[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+$/,
     ),
   password: z
     .string()
     .regex(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_.,@?-])[a-zA-Z0-9!_.,@?-]{4,50}$/
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_.,@?-])[a-zA-Z0-9!_.,@?-]{4,50}$/,
     ),
   firstName: z.string().min(1).max(40),
   lastName: z.string().min(1).max(40),
