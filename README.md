@@ -39,6 +39,9 @@ To run the project locally:
    ```bash
    npm run dev
    ```
+
+# for backend, either deploy through vercel, or convert the functions to mimic an express endpoint.
+
 5. Open your browser and go to http://localhost:5173. (make sure to setup your env file to contain informations about both api endpoint and db informations)
 
 ## Contributions
