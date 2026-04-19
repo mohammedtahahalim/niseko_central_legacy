@@ -50,7 +50,7 @@ export type Reject = "DOWN" | "SYSTEM" | "ABORT" | "MISMATCH";
 
 export type Status = "idle" | "loading" | "failure" | "success";
 
-type ActiveSort = "price" | "name" | "size" | "bed";
+export type ActiveSort = "price" | "name" | "size" | "bed";
 
 export const fetchBookings = createAsyncThunk<
   Booking[],
@@ -111,6 +111,34 @@ export const selectDisplayData = createSelector(
   (data, activeSort, sortDir) => {
     if (!data) return [];
     const temp = [...data];
+    switch (activeSort) {
+      case "bed":
+        temp.sort((a, b) =>
+          sortDir === "desc" ? a.max_pax - b.max_pax : b.max_pax - a.max_pax,
+        );
+        break;
+      case "name":
+        temp.sort((a, b) =>
+          sortDir === "desc"
+            ? a.en_title.localeCompare(b.en_title)
+            : b.en_title.localeCompare(a.en_title),
+        );
+        break;
+      case "price":
+        temp.sort((a, b) =>
+          sortDir === "desc"
+            ? a.price_per_night - b.price_per_night
+            : b.price_per_night - a.price_per_night,
+        );
+        break;
+      case "size":
+        temp.sort((a, b) =>
+          sortDir === "desc"
+            ? a.floor_size - b.floor_size
+            : b.floor_size - a.floor_size,
+        );
+        break;
+    }
     return temp;
   },
 );
@@ -118,7 +146,16 @@ export const selectDisplayData = createSelector(
 export const bookingsSlice = createSlice({
   name: "bookings",
   initialState,
-  reducers: {},
+  reducers: {
+    changeSort: (
+      state,
+      action: PayloadAction<{ sortBy: ActiveSort; sortDir: string | null }>,
+    ) => {
+      const { sortBy, sortDir } = action.payload;
+      state.activeSort = sortBy;
+      state.sortDir = sortDir === "desc" ? "asc" : "desc";
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchBookings.pending, (state) => {
       state.status = "loading";
@@ -142,3 +179,4 @@ export const bookingsSlice = createSlice({
 });
 
 export default bookingsSlice.reducer;
+export const { changeSort } = bookingsSlice.actions;

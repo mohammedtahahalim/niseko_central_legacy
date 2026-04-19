@@ -256,7 +256,7 @@ export type TAppContent = {
   };
   all_booking_categories: string[][];
   no_bookings_error: string;
-  sorters: string[];
+  sorters: { key: string; value: string }[];
 };
 
 export type TAppContext = {

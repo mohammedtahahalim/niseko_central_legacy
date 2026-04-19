@@ -1053,5 +1053,22 @@
     ["羊蹄トラックス", "/youtei-tracks"]
   ],
   "no_bookings_error": "予約が見つかりませんでした。検索パラメータを変更してみてください",
-  "sorters": ["価格", "名前", "サイズ", "ベッドルーム数"]
+  "sorters": [
+    {
+      "key": "price",
+      "value": "価格"
+    },
+    {
+      "key": "bed",
+      "value": "寝室"
+    },
+    {
+      "key": "name",
+      "value": "名前"
+    },
+    {
+      "key": "size",
+      "value": "サイズ"
+    }
+  ]
 }

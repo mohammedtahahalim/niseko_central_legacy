@@ -3,7 +3,6 @@ import {
   Button,
   Container,
   IconButton,
-  LinearProgress,
   Stack,
   Typography,
 } from "@mui/material";

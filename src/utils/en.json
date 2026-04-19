@@ -1069,5 +1069,22 @@
     ["Youtei Tracks", "/youtei-tracks"]
   ],
   "no_bookings_error": "No Bookings were found, try changing search parameters",
-  "sorters": ["Price", "Name", "Size", "Bedrooms"]
+  "sorters": [
+    {
+      "key": "price",
+      "value": "Price"
+    },
+    {
+      "key": "bed",
+      "value": "Bedrooms"
+    },
+    {
+      "key": "name",
+      "value": "Name"
+    },
+    {
+      "key": "size",
+      "value": "Size"
+    }
+  ]
 }
