@@ -1,6 +1,6 @@
 # Niseko Central Legacy – Accommodation Booking Platform
 
-[![Niseko Central](https://i.imgur.com/5orLEXF.png)](https://niseko-central.vercel.app/)
+[![Niseko Central](https://i.imgur.com/5orLEXF.png)](https://niseko-central-legacy.vercel.app/)
 
 ## Overview
 
