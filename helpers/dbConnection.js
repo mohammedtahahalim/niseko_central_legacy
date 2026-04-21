@@ -4,7 +4,6 @@ import dotenv from "../config/dotenv.js";
 let pool;
 
 export default async function dbConnection() {
-  console.log(process.env.HOST);
   if (!pool) {
     pool = mysql.createPool({
       host: process.env.HOST,
